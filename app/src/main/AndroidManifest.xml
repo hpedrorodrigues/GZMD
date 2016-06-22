@@ -3,7 +3,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hpedrorodrigues.gizmodobr">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".dagger.GizmodoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

@@ -3,15 +3,21 @@ package com.hpedrorodrigues.gizmodobr.dagger
 import android.app.Application
 import android.content.Context
 import android.location.LocationManager
+import com.hpedrorodrigues.gizmodobr.constant.GizmodoApiConstant
+import com.hpedrorodrigues.gizmodobr.network.GizmodoNetwork
 import dagger.Module
 import dagger.Provides
+import retrofit.GsonConverterFactory
+import retrofit.Retrofit
+import retrofit.RxJavaCallAdapterFactory
 import javax.inject.Singleton
 
 @Module
 class GizmodoModule(private val application: Application) {
 
     /**
-     * Allow the application context to be injected but require that it be annotated with [ ][ForApplication] to explicitly differentiate it from an activity context.
+     * Allow the application context to be injected but require that it be annotated with
+     * [ ][ForApplication] to explicitly differentiate it from an activity context.
      */
     @Provides
     @Singleton
@@ -24,5 +30,19 @@ class GizmodoModule(private val application: Application) {
     @Singleton
     fun provideLocationManager(): LocationManager {
         return application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(GizmodoApiConstant.GizmodoEndpoint).build()
+    }
+
+    @Provides
+    fun provideGizmodoNetwork(retrofit: Retrofit): GizmodoNetwork {
+        return retrofit.create(GizmodoNetwork::class.java)
     }
 }

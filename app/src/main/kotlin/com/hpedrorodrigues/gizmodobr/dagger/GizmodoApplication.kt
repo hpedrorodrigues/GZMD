@@ -1,8 +1,6 @@
 package com.hpedrorodrigues.gizmodobr.dagger
 
 import android.app.Application
-import android.location.LocationManager
-import javax.inject.Inject
 
 class GizmodoApplication : Application() {
 
@@ -12,8 +10,9 @@ class GizmodoApplication : Application() {
         lateinit var graph: GizmodoComponent
     }
 
-    @Inject
-    lateinit var locationManager: LocationManager
+    public fun component(): GizmodoComponent {
+        return graph
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -21,7 +20,5 @@ class GizmodoApplication : Application() {
         graph = DaggerGizmodoComponent.builder().gizmodoModule(GizmodoModule(this)).build()
 
         graph.inject(this)
-
-        println("App: $locationManager")
     }
 }
