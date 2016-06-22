@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
 
 android {
 
@@ -50,22 +51,33 @@ kapt {
     generateStubs = true
 }
 
+repositories {
+
+    jcenter()
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 dependencies {
 
-    // - Kotlin dependencies including Anko
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    // - Kotlin dependencies
+    compile group: "org.jetbrains.kotlin", name: "kotlin-stdlib", version: kotlin_version
 
     // - Android basic dependencies
-    compile "com.android.support:appcompat-v7:$support_library_version"
-    compile "com.android.support:design:$support_library_version"
-    compile "com.android.support:recyclerview-v7:$support_library_version"
+    compile group: "com.android.support", name: "appcompat-v7", version: support_library_version
+    compile group: "com.android.support", name: "design", version: support_library_version
+    compile group: "com.android.support", name: "cardview-v7", version: support_library_version
+    compile group: "com.android.support", name: "recyclerview-v7", version: support_library_version
 
-    // Butter Knife
+    // - Butter Knife
     compile group: 'com.jakewharton', name: 'butterknife', version: '1.2.2'
 
+    // - Super Recycler View
+    compile group: 'com.malinskiy', name: 'superrecyclerview', version: '1.1.4'
+
     // - Dagger 2 dependencies
-    compile 'com.google.dagger:dagger:2.2'
-    kapt 'com.google.dagger:dagger-compiler:2.2'
+    compile group: 'com.google.dagger', name: 'dagger', version: '2.2'
+    kapt group: 'com.google.dagger', name: 'dagger-compiler', version: '2.2'
     provided group: 'org.glassfish', name: 'javax.annotation', version: '10.0-b28'
 
     // - Networking dependencies
@@ -79,8 +91,13 @@ dependencies {
     compile group: 'io.reactivex', name: 'rxjava', version: '1.1.6'
     compile group: 'io.reactivex', name: 'rxkotlin', version: '0.60.0'
 
+    // - Crashlytics
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.7@aar') {
+        transitive = true;
+    }
+
     // - Test dependencies
-    androidTestCompile 'commons-io:commons-io:2.4'
-    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+    androidTestCompile group: 'commons-io', name: 'commons-io', version: '2.4'
+    androidTestCompile group: 'com.android.support.test', name: 'testing-support-lib', version: '0.1'
+    androidTestCompile group: 'com.android.support.test.espresso', name: 'espresso-core', version: '2.0'
 }

@@ -1,3 +1,3 @@
 package com.hpedrorodrigues.gizmodobr.entity
 
-public abstract class BaseEntity
+abstract class BaseEntity
