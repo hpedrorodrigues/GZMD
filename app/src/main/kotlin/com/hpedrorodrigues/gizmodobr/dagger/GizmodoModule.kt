@@ -7,9 +7,9 @@ import com.hpedrorodrigues.gizmodobr.constant.GizmodoApiConstant
 import com.hpedrorodrigues.gizmodobr.network.GizmodoNetwork
 import dagger.Module
 import dagger.Provides
-import retrofit.GsonConverterFactory
-import retrofit.Retrofit
-import retrofit.RxJavaCallAdapterFactory
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module

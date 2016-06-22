@@ -1,8 +1,8 @@
 package com.hpedrorodrigues.gizmodobr.network
 
 import com.hpedrorodrigues.gizmodobr.entity.Preview
-import retrofit.http.GET
-import retrofit.http.Path
+import retrofit2.http.GET
+import retrofit2.http.Path
 import rx.Observable
 
 public interface GizmodoNetwork {
