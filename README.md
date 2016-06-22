@@ -6,6 +6,10 @@ A simple Gizmodo Android App.
 
 This project use my own Gizmodo [api](gizmodo-api).
 
+## More
+
+GZMD is a work in progress, but feel free to study it.
+
 ## License
 
     Copyright 2015 Pedro Rodrigues
