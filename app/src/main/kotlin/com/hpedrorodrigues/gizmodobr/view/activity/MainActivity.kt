@@ -45,7 +45,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    override fun injectMembers(component: GizmodoComponent) {
-        component.inject(this)
-    }
+    override fun injectMembers(component: GizmodoComponent) = component.inject(this)
+
+    override fun screenName(): String = "Main Screen"
 }

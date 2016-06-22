@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
+apply plugin: 'com.google.gms.google-services'
 
 android {
 
@@ -95,6 +96,10 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.7@aar') {
         transitive = true;
     }
+
+    // - Analytics
+    compile group: 'com.google.android.gms', name: 'play-services-analytics', version: '8.3.0'
+    compile group: 'com.google.android.gms', name: 'play-services-measurement', version: '8.3.0'
 
     // - Test dependencies
     androidTestCompile group: 'commons-io', name: 'commons-io', version: '2.4'
