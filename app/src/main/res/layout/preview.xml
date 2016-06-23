@@ -9,7 +9,7 @@
     android:clickable="true"
     android:foreground="@drawable/selectable_item_background"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="@dimen/spacing_medium"
+    app:cardCornerRadius="@dimen/spacing_xsmall"
     app:cardElevation="2sp">
 
     <LinearLayout
@@ -34,7 +34,6 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="2"
                 android:text="@string/app_name"
                 android:textAppearance="@android:style/TextAppearance.Small"
                 android:textColor="@color/dark_gray"
@@ -42,6 +41,14 @@
 
             <TextView
                 android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                android:textColor="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/category_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
@@ -74,7 +81,7 @@
             android:layout_weight="1"
             android:baselineAligned="false"
             android:gravity="center"
-            android:weightSum="9">
+            android:weightSum="6">
 
             <LinearLayout
                 android:id="@+id/sharesLayout"
@@ -89,7 +96,7 @@
                     android:layout_width="@dimen/spacing_xlarge"
                     android:layout_height="@dimen/spacing_xlarge"
                     android:contentDescription="@string/app_name"
-                    android:src="@mipmap/ic_share_black" />
+                    android:src="@mipmap/ic_action_social_share" />
 
                 <TextView
                     android:id="@+id/shares_count"
@@ -101,6 +108,11 @@
                     android:textColor="@color/dark_gray" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray" />
 
             <LinearLayout
                 android:id="@+id/commentsLayout"
@@ -115,7 +127,7 @@
                     android:layout_width="@dimen/spacing_xlarge"
                     android:layout_height="@dimen/spacing_xlarge"
                     android:contentDescription="@string/app_name"
-                    android:src="@mipmap/ic_comment_black" />
+                    android:src="@mipmap/ic_action_communication_comment" />
 
                 <TextView
                     android:id="@+id/comments_count"

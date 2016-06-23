@@ -25,6 +25,7 @@ class PreviewAdapter : BaseAdapter<Preview, PreviewHolder> {
 
         holder?.title?.text = preview.title
         holder?.authorName?.text = preview.authorName
+        holder?.categoryName?.text = preview.categoryName
         holder?.sharesCount?.text = preview.sharesCount.toString()
         holder?.commentsCount?.text = preview.commentsCount.toString()
 
