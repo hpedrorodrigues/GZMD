@@ -9,7 +9,7 @@ import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.view.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.view.activity.view.PreviewView
 import com.malinskiy.superrecyclerview.SuperRecyclerView
-import kotlinx.android.synthetic.main.content_main.superRecyclerView
+import kotlinx.android.synthetic.main.activity_preview.superRecyclerView
 
 class PreviewActivity : BaseActivity(), PreviewView {
 
@@ -17,7 +17,7 @@ class PreviewActivity : BaseActivity(), PreviewView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_preview)
 
         val toolbar = findViewById(R.id.toolbar) as Toolbar?
         setSupportActionBar(toolbar)
