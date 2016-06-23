@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="380dp"
     android:layout_margin="15dp"
+    android:foreground="@drawable/selectable_item_background"
     app:cardElevation="2sp">
 
     <LinearLayout

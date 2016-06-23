@@ -6,6 +6,10 @@
     <color name="colorPrimaryDark">#2962FF</color>
     <color name="colorAccent">#616161</color>
 
-    <color name="black">#000000</color>
+    <color name="screens">#F5F5F5</color>
+
+    <color name="black">#212121</color>
+    <color name="dark_gray">#616161</color>
+    <color name="light_gray">#BDBDBD</color>
 
 </resources>
