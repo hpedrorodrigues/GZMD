@@ -98,8 +98,7 @@ dependencies {
     }
 
     // - Analytics
-    compile group: 'com.google.android.gms', name: 'play-services-analytics', version: '8.3.0'
-    compile group: 'com.google.android.gms', name: 'play-services-measurement', version: '8.3.0'
+    compile group: 'com.google.android.gms', name: 'play-services-analytics', version: '9.0.0'
 
     // - Test dependencies
     androidTestCompile group: 'commons-io', name: 'commons-io', version: '2.4'

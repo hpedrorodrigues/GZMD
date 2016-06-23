@@ -2,7 +2,7 @@ package com.hpedrorodrigues.gizmodobr.dagger
 
 import android.app.Application
 import android.content.Context
-import android.location.LocationManager
+import android.view.LayoutInflater
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoApiConstant
 import com.hpedrorodrigues.gizmodobr.network.GizmodoNetwork
 import dagger.Module
@@ -28,12 +28,6 @@ class GizmodoModule(private val application: Application) {
 
     @Provides
     @Singleton
-    fun provideLocationManager(): LocationManager {
-        return application.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-    }
-
-    @Provides
-    @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -44,5 +38,10 @@ class GizmodoModule(private val application: Application) {
     @Provides
     fun provideGizmodoNetwork(retrofit: Retrofit): GizmodoNetwork {
         return retrofit.create(GizmodoNetwork::class.java)
+    }
+
+    @Provides
+    fun provideLayoutInflater(@ForApplication context: Context): LayoutInflater {
+        return LayoutInflater.from(context)
     }
 }
