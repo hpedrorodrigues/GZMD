@@ -13,7 +13,7 @@ class GizmodoApplication : Application() {
 
     var tracker: Tracker? = null
 
-    private val isDebug = !BuildConfig.DEBUG
+    private val isDebug = BuildConfig.DEBUG
 
     companion object {
 

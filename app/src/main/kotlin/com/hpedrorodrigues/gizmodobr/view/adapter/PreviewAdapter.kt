@@ -1,10 +1,8 @@
 package com.hpedrorodrigues.gizmodobr.view.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.hpedrorodrigues.gizmodobr.R
-import com.hpedrorodrigues.gizmodobr.dagger.ForApplication
 import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.view.adapter.holder.PreviewHolder
 import com.squareup.picasso.Picasso
@@ -16,7 +14,7 @@ class PreviewAdapter : BaseAdapter<Preview, PreviewHolder> {
     lateinit var inflater: LayoutInflater
 
     @Inject
-    constructor(@ForApplication context: Context) : super(context)
+    constructor() : super()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PreviewHolder? {
         return PreviewHolder(inflater.inflate(R.layout.preview, parent, false))
@@ -30,9 +28,11 @@ class PreviewAdapter : BaseAdapter<Preview, PreviewHolder> {
         holder?.sharesCount?.text = preview.sharesCount.toString()
         holder?.commentsCount?.text = preview.commentsCount.toString()
 
-        Picasso.with(context)
+        Picasso.with(holder!!.image.context)
                 .load(preview.imageUrl)
+                .stableKey(preview.imageUrl)
+                .tag(holder)
                 .placeholder(R.drawable.preview_background)
-                .into(holder!!.image)
+                .into(holder.image)
     }
 }

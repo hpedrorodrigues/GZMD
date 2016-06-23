@@ -2,6 +2,7 @@ package com.hpedrorodrigues.gizmodobr.view.activity.presenter
 
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.view.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.view.adapter.PreviewAdapter
@@ -28,6 +29,10 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
 
         view.recyclerView().adapter = adapter
 
+        view.recyclerView().recyclerView.setHasFixedSize(true)
+        view.recyclerView().recyclerView.setItemViewCacheSize(20)
+        view.recyclerView().recyclerView.isDrawingCacheEnabled = true
+        view.recyclerView().recyclerView.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
 
         view.recyclerView().setRefreshingColorResources(
                 R.color.colorAccent,
@@ -37,27 +42,30 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
         )
 
         view.recyclerView().setRefreshListener({
-            adapter.content.clear()
+            adapter.clear()
             page = INITIAL_PAGE
             loadPreviews()
         })
 
         view.recyclerView().setupMoreListener({ numberOfItems, numberBeforeMore, currentItemPos ->
-            page += 1
+            page++
             loadPreviews()
         }, ITEM_LEFT_TO_LOAD_MORE)
     }
 
     fun loadPreviews() {
-        gizmodoNetwork.retrievePreviewByPage(page)
+        gizmodoNetwork
+                .retrievePreviewByPage(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .retry(MAX_RETRIES)
                 .subscribe(
+                        { adapter.add(it) },
+                        { Log.e("Error", it.message) },
                         {
-                            adapter.content = it
+                            view.recyclerView().swipeToRefresh?.isRefreshing = false
                             view.recyclerView().hideMoreProgress()
-                        },
-                        { Log.e("Error", it.message) }
+                        }
                 )
     }
 }
