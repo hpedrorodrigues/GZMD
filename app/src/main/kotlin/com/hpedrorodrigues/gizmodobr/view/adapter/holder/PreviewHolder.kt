@@ -10,6 +10,7 @@ class PreviewHolder(view: View) : BaseHolder(view) {
     lateinit var title: TextView
     lateinit var authorName: TextView
     lateinit var categoryName: TextView
+    lateinit var postAt: TextView
     lateinit var sharesCount: TextView
     lateinit var commentsCount: TextView
     lateinit var image: ImageView
@@ -18,6 +19,7 @@ class PreviewHolder(view: View) : BaseHolder(view) {
         title = view.findViewById(R.id.title) as TextView
         authorName = view.findViewById(R.id.author_name) as TextView
         categoryName = view.findViewById(R.id.category_name) as TextView
+        postAt = view.findViewById(R.id.post_at) as TextView
         sharesCount = view.findViewById(R.id.shares_count) as TextView
         commentsCount = view.findViewById(R.id.comments_count) as TextView
         image = view.findViewById(R.id.preview_image) as ImageView

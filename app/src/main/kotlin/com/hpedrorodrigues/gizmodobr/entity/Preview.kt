@@ -9,6 +9,7 @@ class Preview() : BaseEntity() {
     var info: String = ""
     var imageUrl: String = ""
     var postUrl: String = ""
+    var postAt: String = ""
     var categoryName: String = ""
     var categoryUrl: String = ""
     var authorName: String = ""

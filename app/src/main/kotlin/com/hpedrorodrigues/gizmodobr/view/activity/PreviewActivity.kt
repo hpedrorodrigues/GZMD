@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.gizmodobr.view.activity
 
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
@@ -10,6 +11,7 @@ import com.hpedrorodrigues.gizmodobr.view.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.view.activity.view.PreviewView
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 import kotlinx.android.synthetic.main.activity_preview.superRecyclerView
+import kotlinx.android.synthetic.main.activity_preview.fabTop
 
 class PreviewActivity : BaseActivity(), PreviewView {
 
@@ -28,6 +30,8 @@ class PreviewActivity : BaseActivity(), PreviewView {
 
         presenter.configureRecyclerView()
 
+        presenter.configureFabTop()
+
         presenter.loadPreviews()
     }
 
@@ -44,6 +48,8 @@ class PreviewActivity : BaseActivity(), PreviewView {
     }
 
     override fun recyclerView(): SuperRecyclerView = superRecyclerView
+
+    override fun fabTop(): FloatingActionButton = fabTop
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 

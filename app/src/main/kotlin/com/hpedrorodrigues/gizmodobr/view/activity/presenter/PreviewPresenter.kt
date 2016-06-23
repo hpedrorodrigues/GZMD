@@ -53,6 +53,12 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
         }, ITEM_LEFT_TO_LOAD_MORE)
     }
 
+    fun configureFabTop() {
+        view.fabTop().setOnClickListener {
+            view.recyclerView().recyclerView.smoothScrollToPosition(0)
+        }
+    }
+
     fun loadPreviews() {
         gizmodoNetwork
                 .retrievePreviewByPage(page)
