@@ -30,7 +30,7 @@
     </LinearLayout>
 
     <com.malinskiy.superrecyclerview.SuperRecyclerView
-        android:id="@+id/super_recycler_view"
+        android:id="@+id/superRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:recyclerClipToPadding="false"

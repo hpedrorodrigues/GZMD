@@ -52,6 +52,21 @@ kapt {
     generateStubs = true
 }
 
+buildscript {
+
+    repositories {
+
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
 repositories {
 
     jcenter()
@@ -69,9 +84,6 @@ dependencies {
     compile group: "com.android.support", name: "design", version: support_library_version
     compile group: "com.android.support", name: "cardview-v7", version: support_library_version
     compile group: "com.android.support", name: "recyclerview-v7", version: support_library_version
-
-    // - Butter Knife
-    compile group: 'com.jakewharton', name: 'butterknife', version: '1.2.2'
 
     // - Super Recycler View
     compile group: 'com.malinskiy', name: 'superrecyclerview', version: '1.1.4'

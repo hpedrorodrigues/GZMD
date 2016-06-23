@@ -13,14 +13,23 @@ class GizmodoApplication : Application() {
 
     var tracker: Tracker? = null
 
+    private val isDebug = !BuildConfig.DEBUG
+
     companion object {
 
         @JvmStatic
         lateinit var graph: GizmodoComponent
     }
 
-    fun component(): GizmodoComponent {
-        return graph
+    override fun onCreate() {
+        super.onCreate()
+
+        val core = CrashlyticsCore.Builder().disabled(isDebug).build()
+        Fabric.with(this, Crashlytics.Builder().core(core).build())
+
+        graph = DaggerGizmodoComponent.builder().gizmodoModule(GizmodoModule(this)).build()
+
+        graph.inject(this)
     }
 
     fun tracker(): Tracker {
@@ -28,7 +37,7 @@ class GizmodoApplication : Application() {
             if (tracker == null) {
 
                 val analytics = GoogleAnalytics.getInstance(this)
-                analytics.appOptOut = BuildConfig.DEBUG
+                analytics.appOptOut = isDebug
 
                 tracker = analytics.newTracker(R.xml.global_tracker)
                 tracker?.enableAdvertisingIdCollection(true)
@@ -38,14 +47,7 @@ class GizmodoApplication : Application() {
         }
     }
 
-    override fun onCreate() {
-        super.onCreate()
-
-        val core = CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build()
-        Fabric.with(this, Crashlytics.Builder().core(core).build());
-
-        graph = DaggerGizmodoComponent.builder().gizmodoModule(GizmodoModule(this)).build()
-
-        graph.inject(this)
+    fun component(): GizmodoComponent {
+        return graph
     }
 }
