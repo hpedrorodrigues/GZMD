@@ -20,20 +20,21 @@ class PreviewAdapter : BaseAdapter<Preview, PreviewHolder> {
         return PreviewHolder(inflater.inflate(R.layout.preview, parent, false))
     }
 
-    override fun onBindViewHolder(holder: PreviewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: PreviewHolder, position: Int) {
         val preview = content[position]
 
-        holder?.title?.text = preview.title
-        holder?.authorName?.text = preview.authorName
-        holder?.tagName?.text = preview.tagName
-        holder?.postAt?.text = preview.postAt
-        holder?.sharesCount?.text = preview.sharesCount.toString()
-        holder?.commentsCount?.text = preview.commentsCount.toString()
+        holder.title.text = preview.title
+        holder.authorName.text = preview.authorName
+        holder.postAt.text = preview.postAt
+        holder.sharesCount.text = preview.sharesCount.toString()
+        holder.commentsCount.text = preview.commentsCount.toString()
 
-        Picasso.with(holder!!.image.context)
+        holder.image.labelText = preview.tagName.toUpperCase()
+
+        holder.image.tag = preview
+
+        Picasso.with(holder.image.context)
                 .load(preview.imageUrl)
-                .stableKey(preview.imageUrl)
-                .tag(holder)
                 .placeholder(R.drawable.preview_background)
                 .into(holder.image)
     }

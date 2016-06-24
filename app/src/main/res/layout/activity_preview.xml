@@ -69,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@mipmap/ic_action_editor_vertical_align_top" />
+        android:src="@mipmap/ic_action_editor_vertical_align_top"
+        android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

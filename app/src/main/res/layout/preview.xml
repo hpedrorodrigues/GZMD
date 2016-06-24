@@ -17,34 +17,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <com.lid.lib.LabelImageView
             android:id="@+id/preview_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/app_name"
             android:scaleType="centerCrop"
-            android:src="@drawable/preview_background" />
-
-        <com.flyco.labelview.LabelView
-            android:id="@+id/tag_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="end"
-            lv:lv_background_color="@color/colorAccent"
-            lv:lv_gravity="TOP_RIGHT"
-            lv:lv_padding="10dp"
-            lv:lv_text="@string/without_tag"
-            lv:lv_text_size="12sp" />
+            android:src="@drawable/preview_background"
+            app:label_backgroundColor="@color/dark_gray"
+            app:label_distance="70dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_text="@string/app_name" />
 
         <RelativeLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:layout_alignEnd="@+id/tag_name"
+            android:layout_alignEnd="@+id/preview_image"
             android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/tag_name"
+            android:layout_alignRight="@+id/preview_image"
             android:background="@color/opaque"
             android:orientation="vertical">
 
