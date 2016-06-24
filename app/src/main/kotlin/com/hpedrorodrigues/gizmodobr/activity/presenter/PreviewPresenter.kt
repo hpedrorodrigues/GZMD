@@ -58,7 +58,16 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
 
     fun configureFabTop() {
         view.fabTop().setOnClickListener {
-            view.recyclerView().recyclerView.smoothScrollToPosition(0)
+            val recyclerView = view.recyclerView().recyclerView
+
+            val firstItemPosition = (recyclerView.layoutManager as LinearLayoutManager)
+                    .findFirstVisibleItemPosition()
+
+            if (firstItemPosition > 5) {
+                recyclerView.scrollToPosition(5)
+            }
+
+            recyclerView.smoothScrollToPosition(0)
         }
     }
 
