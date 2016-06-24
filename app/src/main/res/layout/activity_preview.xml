@@ -57,8 +57,7 @@
             android:background="@color/screens"
             android:scrollbars="vertical"
             app:layout_moreProgress="@layout/progress"
-            app:recyclerClipToPadding="false"
-            app:recyclerPadding="5dp" />
+            app:recyclerClipToPadding="false" />
 
     </LinearLayout>
 
