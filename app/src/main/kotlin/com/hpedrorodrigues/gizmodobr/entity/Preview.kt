@@ -10,8 +10,8 @@ class Preview() : BaseEntity() {
     var imageUrl: String = ""
     var postUrl: String = ""
     var postAt: String = ""
-    var categoryName: String = ""
-    var categoryUrl: String = ""
+    var tagName: String = ""
+    var tagUrl: String = ""
     var authorName: String = ""
     var authorProfileUrl: String = ""
     var commentsCount: Int = 0
@@ -19,8 +19,4 @@ class Preview() : BaseEntity() {
     var crawledAt: Long = 0L
 
     fun crawledAtAsDate() = Date(crawledAt)
-
-    override fun toString(): String {
-        return "Preview(title='$title', shortBody='$shortBody', info='$info', imageUrl='$imageUrl', postUrl='$postUrl', categoryName='$categoryName', categoryUrl='$categoryUrl', authorName='$authorName', authorProfileUrl='$authorProfileUrl', commentsCount=$commentsCount, sharesCount=$sharesCount, crawledAt=$crawledAt)"
-    }
 }

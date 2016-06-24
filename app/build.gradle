@@ -88,6 +88,9 @@ dependencies {
     // - Super Recycler View
     compile group: 'com.malinskiy', name: 'superrecyclerview', version: '1.1.4'
 
+    // - Label View
+    compile 'com.flyco.labelview:FlycoLabelView_Lib:1.0.2@aar'
+
     // - Dagger 2 dependencies
     compile group: 'com.google.dagger', name: 'dagger', version: '2.2'
     kapt group: 'com.google.dagger', name: 'dagger-compiler', version: '2.2'
