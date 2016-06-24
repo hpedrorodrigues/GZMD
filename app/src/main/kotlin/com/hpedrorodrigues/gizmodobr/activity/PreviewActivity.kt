@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.gizmodobr.view.activity
+package com.hpedrorodrigues.gizmodobr.activity
 
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -6,12 +6,11 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import com.hpedrorodrigues.gizmodobr.R
+import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
+import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
-import com.hpedrorodrigues.gizmodobr.view.activity.presenter.PreviewPresenter
-import com.hpedrorodrigues.gizmodobr.view.activity.view.PreviewView
 import com.malinskiy.superrecyclerview.SuperRecyclerView
-import kotlinx.android.synthetic.main.activity_preview.superRecyclerView
-import kotlinx.android.synthetic.main.activity_preview.fabTop
+import kotlinx.android.synthetic.main.activity_preview.*
 
 class PreviewActivity : BaseActivity(), PreviewView {
 

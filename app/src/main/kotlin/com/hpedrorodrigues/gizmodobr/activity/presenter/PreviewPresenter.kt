@@ -1,11 +1,12 @@
-package com.hpedrorodrigues.gizmodobr.view.activity.presenter
+package com.hpedrorodrigues.gizmodobr.activity.presenter
 
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import com.hpedrorodrigues.gizmodobr.R
-import com.hpedrorodrigues.gizmodobr.view.activity.view.PreviewView
-import com.hpedrorodrigues.gizmodobr.view.adapter.PreviewAdapter
+import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
+import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
+import com.hpedrorodrigues.gizmodobr.listener.CustomScrollListener
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
@@ -27,6 +28,8 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
     fun configureRecyclerView() {
         view.recyclerView().setLayoutManager(LinearLayoutManager(view.recyclerView().context))
 
+        view.recyclerView().setOnScrollListener(CustomScrollListener(view.fabTop()))
+
         view.recyclerView().adapter = adapter
 
         view.recyclerView().recyclerView.setHasFixedSize(true)
@@ -41,11 +44,11 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
                 R.color.colorPrimaryDark
         )
 
-        view.recyclerView().setRefreshListener({
+        view.recyclerView().setRefreshListener {
             adapter.clear()
             page = INITIAL_PAGE
             loadPreviews()
-        })
+        }
 
         view.recyclerView().setupMoreListener({ numberOfItems, numberBeforeMore, currentItemPos ->
             page++

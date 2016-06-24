@@ -1,10 +1,10 @@
-package com.hpedrorodrigues.gizmodobr.view.adapter
+package com.hpedrorodrigues.gizmodobr.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.entity.Preview
-import com.hpedrorodrigues.gizmodobr.view.adapter.holder.PreviewHolder
+import com.hpedrorodrigues.gizmodobr.adapter.holder.PreviewHolder
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 

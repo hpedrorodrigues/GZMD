@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.gizmodobr.view.activity.view
+package com.hpedrorodrigues.gizmodobr.activity.view
 
 import android.support.design.widget.FloatingActionButton
 import com.malinskiy.superrecyclerview.SuperRecyclerView

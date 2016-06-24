@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.gizmodobr.view.adapter.holder
+package com.hpedrorodrigues.gizmodobr.adapter.holder
 
 import android.view.View
 import android.widget.ImageView

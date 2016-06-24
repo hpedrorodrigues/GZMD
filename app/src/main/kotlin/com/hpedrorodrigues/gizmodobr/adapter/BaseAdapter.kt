@@ -1,8 +1,8 @@
-package com.hpedrorodrigues.gizmodobr.view.adapter
+package com.hpedrorodrigues.gizmodobr.adapter
 
 import android.support.v7.widget.RecyclerView
 import com.hpedrorodrigues.gizmodobr.entity.BaseEntity
-import com.hpedrorodrigues.gizmodobr.view.adapter.holder.BaseHolder
+import com.hpedrorodrigues.gizmodobr.adapter.holder.BaseHolder
 import java.util.*
 
 abstract class BaseAdapter<E, H> : RecyclerView.Adapter<H>() where E : BaseEntity, H : BaseHolder {

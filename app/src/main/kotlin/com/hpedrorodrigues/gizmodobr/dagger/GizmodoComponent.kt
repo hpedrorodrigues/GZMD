@@ -1,8 +1,8 @@
 package com.hpedrorodrigues.gizmodobr.dagger
 
-import com.hpedrorodrigues.gizmodobr.view.activity.PreviewActivity
-import com.hpedrorodrigues.gizmodobr.view.activity.presenter.PreviewPresenter
-import com.hpedrorodrigues.gizmodobr.view.adapter.PreviewAdapter
+import com.hpedrorodrigues.gizmodobr.activity.PreviewActivity
+import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
+import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
 import dagger.Component
 import javax.inject.Singleton
 

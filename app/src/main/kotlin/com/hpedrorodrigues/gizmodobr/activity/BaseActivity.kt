@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.gizmodobr.view.activity
+package com.hpedrorodrigues.gizmodobr.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
