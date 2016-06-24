@@ -6,5 +6,6 @@
 
     <string name="action_settings">Settings</string>
     <string name="without_connection">Without network</string>
+    <string name="without_tag">Without tag</string>
 
 </resources>
