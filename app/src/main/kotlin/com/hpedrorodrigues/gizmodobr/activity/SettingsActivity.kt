@@ -51,7 +51,7 @@ class SettingsActivity : BaseActivity() {
             gizmodoPreferences.putBoolean(GizmodoConstant.ASK_TO_EXIT, isChecked)
         }
 
-        about_the_app.setOnClickListener { }
+        about_the_app.setOnClickListener { startWithFade(AboutActivity::class.java) }
 
         rate_the_app.setOnClickListener { GizmodoApp.view(this) }
 

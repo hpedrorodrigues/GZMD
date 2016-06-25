@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.gizmodobr.dagger
 
+import com.hpedrorodrigues.gizmodobr.activity.AboutActivity
 import com.hpedrorodrigues.gizmodobr.activity.PreviewActivity
 import com.hpedrorodrigues.gizmodobr.activity.SettingsActivity
 import com.hpedrorodrigues.gizmodobr.activity.SplashScreenActivity
@@ -18,6 +19,8 @@ interface GizmodoComponent {
     fun inject(previewActivity: PreviewActivity)
 
     fun inject(splashScreenActivity: SplashScreenActivity)
+
+    fun inject(aboutActivity: AboutActivity)
 
     fun inject(settingsActivity: SettingsActivity)
 

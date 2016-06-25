@@ -59,6 +59,10 @@ class PreviewActivity : BaseActivity(), PreviewView {
                 startWithFade(SettingsActivity::class.java)
                 true
             }
+            R.id.action_about -> {
+                startWithFade(AboutActivity::class.java)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
