@@ -24,9 +24,7 @@ class SplashScreenActivity : BaseActivity() {
         unregisterPreviewLoadedReceiver()
     }
 
-    override fun injectMembers(component: GizmodoComponent) {
-        component.inject(this)
-    }
+    override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
     override fun screenName(): String = "Splash Screen"
 

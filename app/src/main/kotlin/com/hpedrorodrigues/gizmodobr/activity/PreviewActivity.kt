@@ -46,7 +46,7 @@ class PreviewActivity : BaseActivity(), PreviewView {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> {
-                startWithSlideUp(SettingsActivity::class.java)
+                startWithFade(SettingsActivity::class.java)
                 true
             }
             else -> super.onOptionsItemSelected(item)
