@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.gizmodobr.dagger
 
 import com.hpedrorodrigues.gizmodobr.activity.PreviewActivity
+import com.hpedrorodrigues.gizmodobr.activity.SplashScreenActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
 import dagger.Component
@@ -17,4 +18,6 @@ interface GizmodoComponent {
     fun inject(previewAdapter: PreviewAdapter)
 
     fun inject(previewPresenter: PreviewPresenter)
+
+    fun inject(splashScreenActivity: SplashScreenActivity)
 }

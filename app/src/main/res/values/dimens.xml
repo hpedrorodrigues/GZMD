@@ -17,4 +17,6 @@
     <dimen name="spacing_xxlarge">32dp</dimen>
     <dimen name="spacing_xxxlarge">38dp</dimen>
 
+    <integer name="animations_duration">300</integer>
+
 </resources>

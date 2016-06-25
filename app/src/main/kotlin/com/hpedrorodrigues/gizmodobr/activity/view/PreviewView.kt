@@ -8,4 +8,6 @@ interface PreviewView : BaseView {
     fun recyclerView(): SuperRecyclerView
 
     fun fabTop(): FloatingActionButton
+
+    fun sendPreviewLoadedBroadcast()
 }

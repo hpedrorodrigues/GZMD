@@ -83,6 +83,7 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
                         {
                             view.recyclerView().swipeToRefresh?.isRefreshing = false
                             view.recyclerView().hideMoreProgress()
+                            view.sendPreviewLoadedBroadcast()
                         }
                 )
     }

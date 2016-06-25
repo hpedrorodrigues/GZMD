@@ -91,6 +91,10 @@ dependencies {
     // - Label View
     compile 'com.github.linger1216:labelview:v1.1.0'
 
+    // - Loading Library
+    compile group: 'com.wang.avi', name: 'library', version: '1.0.5'
+    compile group: 'com.nineoldandroids', name: 'library', version: '2.4.0'
+
     // - Dagger 2 dependencies
     compile group: 'com.google.dagger', name: 'dagger', version: '2.2'
     kapt group: 'com.google.dagger', name: 'dagger-compiler', version: '2.2'
