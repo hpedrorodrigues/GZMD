@@ -73,7 +73,7 @@ class PreviewActivity : BaseActivity(), PreviewView {
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
-    override fun screenName(): String = "Main Screen"
+    override fun screenName(): String = "Preview - Main"
 
     override fun sendPreviewLoadedBroadcast() {
         val intent = Intent(BroadcastActionKey.PREVIEW_LOADED)

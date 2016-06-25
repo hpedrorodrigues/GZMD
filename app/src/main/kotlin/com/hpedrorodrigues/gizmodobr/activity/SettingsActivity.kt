@@ -31,7 +31,7 @@ class SettingsActivity : BaseActivity() {
         configListeners()
     }
 
-    override fun screenName(): String = "Settings Screen"
+    override fun screenName(): String = "Settings"
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 

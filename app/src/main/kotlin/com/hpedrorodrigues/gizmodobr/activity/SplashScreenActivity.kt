@@ -26,7 +26,7 @@ class SplashScreenActivity : BaseActivity() {
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
-    override fun screenName(): String = "Splash Screen"
+    override fun screenName(): String = "Splash"
 
     private fun registerPreviewLoadedReceiver() {
         val intentFilter = IntentFilter()

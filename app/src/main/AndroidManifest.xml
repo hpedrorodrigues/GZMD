@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hpedrorodrigues.gizmodobr">
 
@@ -35,6 +36,11 @@
             android:name=".activity.AboutActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
             android:label="@string/about"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".activity.PostActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
             android:theme="@style/AppTheme" />
 
         <activity
