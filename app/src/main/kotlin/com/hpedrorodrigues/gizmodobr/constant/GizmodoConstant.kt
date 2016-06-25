@@ -2,9 +2,7 @@ package com.hpedrorodrigues.gizmodobr.constant
 
 object GizmodoConstant {
 
-    val DEVELOPER_EMAIL = "hs.pedro.rodrigues@gmail.com"
-    val DEVELOPER_NAME = "Pedro Rodrigues"
-    val DEVELOPER_GITHUB = "https://github.com/hpedrorodrigues"
+    val EMAIL = "brgzmd@gmail.com"
     val DEFAULT_SUBJECT = "GZMD -"
     val DEFAULT_EMAIL_TYPE = "message/rfc822"
     val PLAY_STORE_APP_URL = "market://details?id="

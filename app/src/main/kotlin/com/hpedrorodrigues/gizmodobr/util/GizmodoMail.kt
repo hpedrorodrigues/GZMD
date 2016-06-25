@@ -36,7 +36,7 @@ object GizmodoMail {
     private fun buildEmailIntent(activity: Activity, resSubjectId: Int): Intent {
         val intent = Intent(Intent.ACTION_SEND)
 
-        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(GizmodoConstant.DEVELOPER_EMAIL))
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(GizmodoConstant.EMAIL))
 
         val subject = "${GizmodoConstant.DEFAULT_SUBJECT} ${activity.getString(resSubjectId)}"
 
