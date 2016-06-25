@@ -1,9 +1,11 @@
 package com.hpedrorodrigues.gizmodobr.dagger
 
 import com.hpedrorodrigues.gizmodobr.activity.PreviewActivity
+import com.hpedrorodrigues.gizmodobr.activity.SettingsActivity
 import com.hpedrorodrigues.gizmodobr.activity.SplashScreenActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
+import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,9 +17,11 @@ interface GizmodoComponent {
 
     fun inject(previewActivity: PreviewActivity)
 
+    fun inject(splashScreenActivity: SplashScreenActivity)
+
+    fun inject(settingsActivity: SettingsActivity)
+
     fun inject(previewAdapter: PreviewAdapter)
 
     fun inject(previewPresenter: PreviewPresenter)
-
-    fun inject(splashScreenActivity: SplashScreenActivity)
 }

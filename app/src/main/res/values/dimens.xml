@@ -19,4 +19,10 @@
 
     <integer name="animations_duration">300</integer>
 
+    <dimen name="default_size_for_headers">36dp</dimen>
+    <dimen name="default_size_for_list_items">72dp</dimen>
+
+    <dimen name="vertical_size_header">48dp</dimen>
+    <dimen name="vertical_size_item">72dp</dimen>
+
 </resources>

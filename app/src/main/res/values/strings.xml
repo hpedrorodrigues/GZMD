@@ -7,5 +7,29 @@
     <string name="action_settings">Settings</string>
     <string name="without_connection">Without network</string>
     <string name="without_tag">Without tag</string>
+    <string name="interface_settings">Configurações de interface</string>
+    <string name="ask_to_exit">Perguntar ao sair</string>
+    <string name="display_an_alert_to_exit">Exibir um alerta perguntando se deseja sair</string>
+    <string name="about">Sobre</string>
+    <string name="about_the_app">Sobre o aplicativo</string>
+    <string name="rate_the_app">Avalie</string>
+    <string name="publish_a_review">Publique uma revisão sobre o GZMD</string>
+    <string name="share_the_app">Compartilhe</string>
+    <string name="share_the_app_with_your_friends">Compartilhe o GZMD com seus amigos</string>
+    <string name="report_a_bug">Reporte um erro</string>
+    <string name="tell_us_about_a_crash">Conte-nos sobre um acidente, um problema de design, travamentos…</string>
+    <string name="an_idea_to_improve">Uma idéia para melhorar o GZMD?</string>
+    <string name="send_us_your_ideas_and_suggestions">Envie-nos suas idéias e sugestões</string>
+    <string name="like_the_gzmd">Gostou do GZMD?</string>
+    <string name="send_us_your_feedback">Conte-nos suas experiências e opiniões</string>
+    <string name="contact_us">Contate-nos</string>
+    <string name="send_us_a_email">Envie-nos um email</string>
+    <string name="share_app_message">Instale o GZMD e visualize as notícias do Gizmodo Br mais
+        facilmente. Baixe agora o aplicativo no link %s e comece a usar.</string>
+    <string name="choose_app">Escolha um aplicativo</string>
+    <string name="suggestions">Sugestões</string>
+    <string name="new_bug">Novo erro</string>
+    <string name="feedback">Feedback</string>
+    <string name="contact">Contato</string>
 
 </resources>

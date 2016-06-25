@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/screens">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/AppTheme.SettingsHeader"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AppTheme.SettingsTextView"
+                    android:text="@string/interface_settings" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/close_app"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/toggleCloseTheApp"
+                    android:layout_toStartOf="@+id/toggleCloseTheApp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ask_to_exit"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/dark_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/display_an_alert_to_exit"
+                        android:textAppearance="@android:style/TextAppearance.Small"
+                        android:textColor="@color/light_gray" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/toggleCloseTheApp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/AppTheme.SettingsHeader"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.SettingsTextView"
+                        android:text="@string/about" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/about_the_app"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_size"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_action_info"
+                    android:tint="@color/dark_gray" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:layout_marginStart="@dimen/spacing_xlarge"
+                    android:layout_weight="9"
+                    android:text="@string/about_the_app"
+                    android:textAppearance="@android:style/TextAppearance.Medium"
+                    android:textColor="@color/dark_gray" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rate_the_app"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_size"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_action_rate"
+                    android:tint="@color/dark_gray" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:layout_marginStart="@dimen/spacing_xlarge"
+                    android:layout_weight="9"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rate_the_app"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/dark_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/publish_a_review" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/share_the_app"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_size"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_action_social_share"
+                    android:tint="@color/dark_gray" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:layout_marginStart="@dimen/spacing_xlarge"
+                    android:layout_weight="9"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_the_app"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/dark_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_the_app_with_your_friends" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/report_a_bug"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_size"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_action_bug_report"
+                    android:tint="@color/dark_gray" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:layout_marginStart="@dimen/spacing_xlarge"
+                    android:layout_weight="9"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/report_a_bug"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/dark_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tell_us_about_a_crash" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/idea_to_improve"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_size"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_action_idea"
+                    android:tint="@color/dark_gray" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:layout_marginStart="@dimen/spacing_xlarge"
+                    android:layout_weight="9"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/an_idea_to_improve"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/dark_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/send_us_your_ideas_and_suggestions" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/send_us_your_feedback"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_size"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_heart"
+                    android:tint="@color/dark_gray" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:layout_marginStart="@dimen/spacing_xlarge"
+                    android:layout_weight="9"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/like_the_gzmd"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/dark_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/send_us_your_feedback" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contact_us"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_size"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/ic_action_contact_us"
+                    android:tint="@color/dark_gray" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_xlarge"
+                    android:layout_marginStart="@dimen/spacing_xlarge"
+                    android:layout_weight="9"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_us"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:textColor="@color/dark_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/send_us_a_email" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
