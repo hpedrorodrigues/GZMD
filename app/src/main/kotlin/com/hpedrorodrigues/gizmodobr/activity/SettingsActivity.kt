@@ -36,19 +36,19 @@ class SettingsActivity : BaseActivity() {
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
     private fun loadValues() {
-        toggleCloseTheApp.isChecked = gizmodoPreferences.getBoolean(GizmodoConstant.CLOSE_APP)
+        toggleCloseTheApp.isChecked = gizmodoPreferences.getBoolean(GizmodoConstant.ASK_TO_EXIT)
     }
 
     private fun configListeners() {
         close_app.setOnClickListener {
             val isChecked = toggleCloseTheApp.isChecked
-            gizmodoPreferences.putBoolean(GizmodoConstant.CLOSE_APP, !isChecked)
+            gizmodoPreferences.putBoolean(GizmodoConstant.ASK_TO_EXIT, !isChecked)
             toggleCloseTheApp.isChecked = !isChecked
         }
 
         toggleCloseTheApp.setOnCheckedChangeListener {
             compoundButton: CompoundButton, isChecked: Boolean ->
-            gizmodoPreferences.putBoolean(GizmodoConstant.CLOSE_APP, isChecked)
+            gizmodoPreferences.putBoolean(GizmodoConstant.ASK_TO_EXIT, isChecked)
         }
 
         about_the_app.setOnClickListener { }

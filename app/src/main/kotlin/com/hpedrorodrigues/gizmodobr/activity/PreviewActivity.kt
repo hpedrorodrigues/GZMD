@@ -2,21 +2,31 @@ package com.hpedrorodrigues.gizmodobr.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.constant.BroadcastActionKey
+import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
+import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 import kotlinx.android.synthetic.main.activity_preview.*
+import javax.inject.Inject
 
 class PreviewActivity : BaseActivity(), PreviewView {
 
+    @Inject
+    lateinit var gizmodoPreferences: GizmodoPreferences
+
     lateinit var presenter: PreviewPresenter
+
+    private var backPressedOnce: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,5 +74,24 @@ class PreviewActivity : BaseActivity(), PreviewView {
     override fun sendPreviewLoadedBroadcast() {
         val intent = Intent(BroadcastActionKey.PREVIEW_LOADED)
         sendBroadcast(intent)
+    }
+
+    override fun onBackPressed() {
+        if (gizmodoPreferences.getBoolean(GizmodoConstant.ASK_TO_EXIT)) {
+            if (backPressedOnce) {
+
+                super.onBackPressed()
+                overrideTransitionWithFade()
+            } else {
+
+                backPressedOnce = true
+                Toast.makeText(this, R.string.back_again_to_exit, Toast.LENGTH_SHORT).show()
+                Handler().postDelayed({ backPressedOnce = false }, 2000L)
+            }
+        } else {
+
+            super.onBackPressed()
+            overrideTransitionWithFade()
+        }
     }
 }
