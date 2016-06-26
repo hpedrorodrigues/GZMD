@@ -31,11 +31,7 @@ import javax.inject.Singleton
 @Module
 class GizmodoModule(private val application: Application) {
 
-    /**
-     * Allow the application context to be injected but require that it be annotated with
-     * [ ][ForApplication] to explicitly differentiate it from an activity context.
-     */
-    @Provides @Singleton @ForApplication fun provideApplicationContext(): Context {
+    @Provides @Singleton fun provideApplicationContext(): Context {
         return application
     }
 
@@ -50,7 +46,7 @@ class GizmodoModule(private val application: Application) {
         return retrofit.create(GizmodoNetwork::class.java)
     }
 
-    @Provides fun provideLayoutInflater(@ForApplication context: Context): LayoutInflater {
+    @Provides fun provideLayoutInflater(context: Context): LayoutInflater {
         return LayoutInflater.from(context)
     }
 }

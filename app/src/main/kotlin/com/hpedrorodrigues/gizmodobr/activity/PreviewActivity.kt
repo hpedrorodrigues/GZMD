@@ -17,11 +17,13 @@
 package com.hpedrorodrigues.gizmodobr.activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatDelegate
 import android.view.Menu
 import android.view.MenuItem
 import com.hpedrorodrigues.gizmodobr.R
@@ -70,6 +72,28 @@ class PreviewActivity : BaseActivity(), PreviewView {
         return true
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        return when (AppCompatDelegate.getDefaultNightMode()) {
+            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> {
+                menu.findItem(R.id.menu_night_mode_system).isChecked = true
+                true
+            }
+            AppCompatDelegate.MODE_NIGHT_AUTO -> {
+                menu.findItem(R.id.menu_night_mode_auto).isChecked = true
+                true
+            }
+            AppCompatDelegate.MODE_NIGHT_YES -> {
+                menu.findItem(R.id.menu_night_mode_night).isChecked = true
+                true
+            }
+            AppCompatDelegate.MODE_NIGHT_NO -> {
+                menu.findItem(R.id.menu_night_mode_day).isChecked = true
+                true
+            }
+            else -> super.onPrepareOptionsMenu(menu)
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> {
@@ -78,6 +102,22 @@ class PreviewActivity : BaseActivity(), PreviewView {
             }
             R.id.action_about -> {
                 startWithFade(AboutActivity::class.java)
+                true
+            }
+            R.id.menu_night_mode_system -> {
+                setNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                true
+            }
+            R.id.menu_night_mode_day -> {
+                setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                true
+            }
+            R.id.menu_night_mode_night -> {
+                setNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                true
+            }
+            R.id.menu_night_mode_auto -> {
+                setNightMode(AppCompatDelegate.MODE_NIGHT_AUTO)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -123,6 +163,14 @@ class PreviewActivity : BaseActivity(), PreviewView {
 
             super.onBackPressed()
             overrideTransitionWithFade()
+        }
+    }
+
+    private fun setNightMode(@AppCompatDelegate.NightMode nightMode: Int) {
+        AppCompatDelegate.setDefaultNightMode(nightMode)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            recreate()
         }
     }
 }

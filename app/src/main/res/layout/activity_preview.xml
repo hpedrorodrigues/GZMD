@@ -72,7 +72,6 @@
             android:id="@+id/superRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/screens"
             android:scrollbars="vertical"
             app:layout_moreProgress="@layout/progress"
             app:recyclerClipToPadding="false" />

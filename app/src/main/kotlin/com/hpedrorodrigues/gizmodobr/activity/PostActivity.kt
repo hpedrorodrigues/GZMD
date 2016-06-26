@@ -17,7 +17,11 @@
 package com.hpedrorodrigues.gizmodobr.activity
 
 import android.os.Bundle
+import android.support.design.widget.CollapsingToolbarLayout
+import android.support.design.widget.FloatingActionButton
+import android.view.Window
 import android.webkit.WebView
+import android.widget.ImageView
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
@@ -46,8 +50,18 @@ class PostActivity : BaseActivity(), PostView {
 
         enableUpButton()
 
+        presenter.loadBackgroundImage(preview.imageUrl)
+
         presenter.loadPost(preview.postUrl)
     }
+
+    override fun backgroundImage(): ImageView = backgroundImage
+
+    override fun collapsingToolbar(): CollapsingToolbarLayout = collapsingToolbar
+
+    override fun linkButton(): FloatingActionButton = linkButton
+
+    override fun window(): Window = window
 
     override fun webView(): WebView = webView
 

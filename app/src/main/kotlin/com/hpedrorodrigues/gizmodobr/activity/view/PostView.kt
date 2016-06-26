@@ -16,9 +16,21 @@
 
 package com.hpedrorodrigues.gizmodobr.activity.view
 
+import android.support.design.widget.CollapsingToolbarLayout
+import android.support.design.widget.FloatingActionButton
+import android.view.Window
 import android.webkit.WebView
+import android.widget.ImageView
 
 interface PostView : BaseView {
 
     fun webView(): WebView
+
+    fun backgroundImage(): ImageView
+
+    fun collapsingToolbar(): CollapsingToolbarLayout
+
+    fun linkButton(): FloatingActionButton
+
+    fun window(): Window
 }

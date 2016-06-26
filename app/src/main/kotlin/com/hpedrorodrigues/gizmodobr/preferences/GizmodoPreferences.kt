@@ -18,7 +18,6 @@ package com.hpedrorodrigues.gizmodobr.preferences
 
 import android.content.Context
 import android.preference.PreferenceManager
-import com.hpedrorodrigues.gizmodobr.dagger.ForApplication
 import javax.inject.Inject
 
 class GizmodoPreferences {
@@ -26,7 +25,7 @@ class GizmodoPreferences {
     private lateinit var context: Context
 
     @Inject
-    constructor(@ForApplication context: Context) {
+    constructor(context: Context) {
         this.context = context
     }
 

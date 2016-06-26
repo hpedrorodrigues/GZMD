@@ -16,14 +16,33 @@
 
 package com.hpedrorodrigues.gizmodobr.activity.presenter
 
+import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
+import android.support.v7.graphics.Palette
 import android.util.Log
 import android.webkit.WebSettings
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
 import com.hpedrorodrigues.gizmodobr.rx.Rx
+import com.hpedrorodrigues.gizmodobr.util.ColorUtil
+import com.hpedrorodrigues.gizmodobr.util.PaletteUtil
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import javax.inject.Inject
 
 class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
+
+    @Inject
+    lateinit var context: Context
+
+    fun loadBackgroundImage(imageUrl: String) {
+        Picasso.with(context).load(imageUrl).into(view.backgroundImage(), loadImageCallback())
+    }
 
     fun loadPost(postUrl: String) {
         gizmodoNetwork
@@ -49,5 +68,27 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
         webView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
         webView.settings.setSupportZoom(true)
         webView.loadData(body, "text/html; charset=utf-8", "UTF-8")
+    }
+
+    fun loadImageCallback(): Callback = object : Callback {
+
+        override fun onSuccess() {
+            val bitmap = (view.backgroundImage().drawable as BitmapDrawable).bitmap
+            Palette.from(bitmap).generate { palette ->
+                val swatch = PaletteUtil.getSwatch(palette)
+                view.collapsingToolbar().contentScrim = ColorDrawable(swatch.rgb)
+
+                val darkColor = ColorUtil.getDarkerColor(swatch.rgb)
+                view.linkButton().backgroundTintList = ColorStateList.valueOf(darkColor)
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    view.window().statusBarColor = Color.TRANSPARENT
+                    view.window().navigationBarColor = darkColor
+                }
+            }
+        }
+
+        override fun onError() {
+        }
     }
 }

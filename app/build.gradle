@@ -84,12 +84,13 @@ dependencies {
     compile group: "com.android.support", name: "design", version: support_library_version
     compile group: "com.android.support", name: "cardview-v7", version: support_library_version
     compile group: "com.android.support", name: "recyclerview-v7", version: support_library_version
+    compile group: "com.android.support", name: "palette-v7", version: support_library_version
 
     // - Super Recycler View
     compile group: 'com.malinskiy', name: 'superrecyclerview', version: '1.1.4'
 
     // - Label View
-    compile 'com.github.linger1216:labelview:v1.1.0'
+    compile group: 'com.github.linger1216', name: 'labelview', version: 'v1.1.0'
 
     // - Image Loading
     compile group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
@@ -115,7 +116,7 @@ dependencies {
 
     // - Crashlytics
     compile('com.crashlytics.sdk.android:crashlytics:2.5.7@aar') {
-        transitive = true;
+        transitive = true
     }
 
     // - Analytics
