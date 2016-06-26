@@ -21,7 +21,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/screens">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
@@ -72,6 +73,7 @@
             android:id="@+id/superRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/screens"
             android:scrollbars="vertical"
             app:layout_moreProgress="@layout/progress"
             app:recyclerClipToPadding="false" />
@@ -85,6 +87,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@mipmap/ic_action_editor_vertical_align_top"
+        android:tint="@color/colorAccentInverse"
         android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

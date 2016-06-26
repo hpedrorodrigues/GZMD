@@ -40,7 +40,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/AppTheme.SettingsTextView"
+                    style="@style/AppTheme.SettingsHeaderTextView"
                     android:text="@string/interface_settings" />
 
             </LinearLayout>
@@ -96,7 +96,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/AppTheme.SettingsTextView"
+                        style="@style/AppTheme.SettingsHeaderTextView"
                         android:text="@string/about" />
 
                 </LinearLayout>
@@ -156,11 +156,8 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rate_the_app"
-                        android:textAppearance="@android:style/TextAppearance.Medium"
-                        android:textColor="@color/dark_gray" />
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/rate_the_app" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -196,11 +193,8 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/share_the_app"
-                        android:textAppearance="@android:style/TextAppearance.Medium"
-                        android:textColor="@color/dark_gray" />
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/share_the_app" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -236,11 +230,8 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/report_a_bug"
-                        android:textAppearance="@android:style/TextAppearance.Medium"
-                        android:textColor="@color/dark_gray" />
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/report_a_bug" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -276,11 +267,8 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/an_idea_to_improve"
-                        android:textAppearance="@android:style/TextAppearance.Medium"
-                        android:textColor="@color/dark_gray" />
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/an_idea_to_improve" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -316,11 +304,8 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/like_the_gzmd"
-                        android:textAppearance="@android:style/TextAppearance.Medium"
-                        android:textColor="@color/dark_gray" />
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/like_the_gzmd" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -356,11 +341,8 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/contact_us"
-                        android:textAppearance="@android:style/TextAppearance.Medium"
-                        android:textColor="@color/dark_gray" />
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/contact_us" />
 
                     <TextView
                         android:layout_width="wrap_content"

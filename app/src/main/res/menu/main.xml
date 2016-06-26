@@ -21,18 +21,19 @@
 
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="1"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_about"
-        android:orderInCategory="100"
+        android:orderInCategory="2"
         android:title="@string/about"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_night"
+        android:orderInCategory="3"
         android:title="@string/menu_night_mode"
         app:showAsAction="never">
 

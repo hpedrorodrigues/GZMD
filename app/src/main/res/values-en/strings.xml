@@ -46,5 +46,10 @@
     <string name="tell_us_about_a_crash">Tell us about a crash, a design problem, lags…</string>
     <string name="without_connection">Without network</string>
     <string name="without_tag">Without tag</string>
+    <string name="menu_night_mode">Night mode</string>
+    <string name="menu_night_mode_auto">Auto</string>
+    <string name="menu_night_mode_day">Day (always)</string>
+    <string name="menu_night_mode_night">Night (always)</string>
+    <string name="menu_night_mode_system">Follow system</string>
 
 </resources>

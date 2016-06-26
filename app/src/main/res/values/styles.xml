@@ -18,28 +18,6 @@
 
 <resources>
 
-    <style name="AppTheme" parent="BaseTheme" />
-
-    <style name="BaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
-    </style>
-
-    <style name="FullscreenTheme" parent="AppTheme">
-        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
-        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-    </style>
-
-    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
-    </style>
-
     <style name="AppTheme.SettingsHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -47,7 +25,7 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
-    <style name="AppTheme.SettingsTextView">
+    <style name="AppTheme.SettingsHeaderTextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/vertical_size_header</item>
         <item name="android:gravity">center_vertical|left</item>
@@ -66,6 +44,17 @@
         <item name="android:paddingLeft">@dimen/spacing_large</item>
         <item name="android:paddingRight">@dimen/spacing_large</item>
         <item name="android:minHeight">@dimen/default_size_for_list_items</item>
+    </style>
+
+    <style name="AppTheme.SettingsItemTitleTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.SettingsItemSubTitleTextView">
+
     </style>
 
 </resources>
