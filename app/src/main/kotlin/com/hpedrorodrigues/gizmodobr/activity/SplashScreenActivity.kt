@@ -16,6 +16,7 @@
 
 package com.hpedrorodrigues.gizmodobr.activity
 
+import android.content.BroadcastReceiver
 import android.content.IntentFilter
 import android.os.Bundle
 import com.hpedrorodrigues.gizmodobr.R
@@ -26,7 +27,7 @@ import com.hpedrorodrigues.gizmodobr.extension.broadcastReceiver
 
 class SplashScreenActivity : BaseActivity() {
 
-    private val previewLoadedReceiver = broadcastReceiver { context, intent -> finish() }
+    private var previewLoadedReceiver: BroadcastReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +50,15 @@ class SplashScreenActivity : BaseActivity() {
         val intentFilter = IntentFilter()
         intentFilter.addAction(BroadcastActionKey.PREVIEW_LOADED)
 
+        previewLoadedReceiver = broadcastReceiver { context, intent -> finish() }
+
         registerReceiver(previewLoadedReceiver, intentFilter)
     }
 
-    private fun unregisterPreviewLoadedReceiver() = unregisterReceiver(previewLoadedReceiver)
+    private fun unregisterPreviewLoadedReceiver() = {
+        if (previewLoadedReceiver != null) {
+            unregisterReceiver(previewLoadedReceiver)
+            previewLoadedReceiver = null
+        }
+    }
 }

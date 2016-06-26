@@ -17,6 +17,7 @@
 package com.hpedrorodrigues.gizmodobr.activity
 
 import android.os.Bundle
+import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.design.widget.FloatingActionButton
 import android.view.Window
@@ -65,6 +66,8 @@ class PostActivity : BaseActivity(), PostView {
     override fun window(): Window = window
 
     override fun webView(): WebView = webView
+
+    override fun appBar(): AppBarLayout = appBar
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 

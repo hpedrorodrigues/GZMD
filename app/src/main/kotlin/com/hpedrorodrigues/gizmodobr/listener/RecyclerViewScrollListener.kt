@@ -20,7 +20,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 
-class CustomScrollListener(val view: View) : RecyclerView.OnScrollListener() {
+class RecyclerViewScrollListener(val view: View) : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)

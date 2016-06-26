@@ -24,7 +24,7 @@ import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
 import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.extension.previewClick
-import com.hpedrorodrigues.gizmodobr.listener.CustomScrollListener
+import com.hpedrorodrigues.gizmodobr.listener.RecyclerViewScrollListener
 import com.hpedrorodrigues.gizmodobr.rx.Rx
 import javax.inject.Inject
 
@@ -45,7 +45,7 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
     fun configureRecyclerView() {
         view.recyclerView().setLayoutManager(LinearLayoutManager(view.recyclerView().context))
 
-        view.recyclerView().setOnScrollListener(CustomScrollListener(view.fabTop()))
+        view.recyclerView().setOnScrollListener(RecyclerViewScrollListener(view.fabTop()))
 
         view.recyclerView().adapter = adapter
 

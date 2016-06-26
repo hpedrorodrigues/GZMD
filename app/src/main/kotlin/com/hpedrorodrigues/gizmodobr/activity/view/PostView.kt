@@ -16,6 +16,7 @@
 
 package com.hpedrorodrigues.gizmodobr.activity.view
 
+import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.design.widget.FloatingActionButton
 import android.view.Window
@@ -33,4 +34,6 @@ interface PostView : BaseView {
     fun linkButton(): FloatingActionButton
 
     fun window(): Window
+
+    fun appBar(): AppBarLayout
 }

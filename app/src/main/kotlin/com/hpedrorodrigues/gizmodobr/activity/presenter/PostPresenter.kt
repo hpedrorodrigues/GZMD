@@ -22,12 +22,14 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
+import android.support.design.widget.AppBarLayout
 import android.support.v7.graphics.Palette
 import android.util.Log
 import android.webkit.WebSettings
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
+import com.hpedrorodrigues.gizmodobr.listener.AppBarStateChangeListener
 import com.hpedrorodrigues.gizmodobr.rx.Rx
 import com.hpedrorodrigues.gizmodobr.util.ColorUtil
 import com.hpedrorodrigues.gizmodobr.util.PaletteUtil
@@ -39,6 +41,8 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
     @Inject
     lateinit var context: Context
+
+    private var imageColor: Int? = null
 
     fun loadBackgroundImage(imageUrl: String) {
         Picasso.with(context).load(imageUrl).into(view.backgroundImage(), loadImageCallback())
@@ -81,14 +85,29 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 val darkColor = ColorUtil.getDarkerColor(swatch.rgb)
                 view.linkButton().backgroundTintList = ColorStateList.valueOf(darkColor)
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    view.window().statusBarColor = Color.TRANSPARENT
-                    view.window().navigationBarColor = darkColor
-                }
+                imageColor = darkColor
+
+                configureAppBar()
             }
         }
 
         override fun onError() {
+        }
+    }
+
+    fun configureAppBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            view.appBar().addOnOffsetChangedListener(object : AppBarStateChangeListener() {
+
+                override fun onStateChanged(appBarLayout: AppBarLayout, state: State) {
+                    if ((state.equals(State.COLLAPSED) || state.equals(State.IDLE)) && imageColor != null) {
+                        view.window().statusBarColor = imageColor!!
+                    } else {
+                        view.window().statusBarColor = Color.TRANSPARENT
+                    }
+                }
+            })
         }
     }
 }
