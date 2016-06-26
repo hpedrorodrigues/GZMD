@@ -33,6 +33,7 @@ import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.constant.BundleKey
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
+import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
 import kotlinx.android.synthetic.main.activity_post.*
 
 class PostActivity : BaseActivity(), PostView {
@@ -58,6 +59,8 @@ class PostActivity : BaseActivity(), PostView {
         presenter.loadBackgroundImage(preview.imageUrl)
 
         presenter.loadPost(preview.postUrl)
+
+        presenter.configureShareButton(this, preview.postUrl)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -72,6 +75,10 @@ class PostActivity : BaseActivity(), PostView {
                 presenter.seeLikePage(item.isChecked)
                 true
             }
+            R.id.action_open_in_browser -> {
+                GizmodoApp.openBrowser(this, preview.postUrl)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -80,7 +87,7 @@ class PostActivity : BaseActivity(), PostView {
 
     override fun collapsingToolbar(): CollapsingToolbarLayout = collapsingToolbar
 
-    override fun linkButton(): FloatingActionButton = linkButton
+    override fun shareButton(): FloatingActionButton = shareButton
 
     override fun window(): Window = window
 

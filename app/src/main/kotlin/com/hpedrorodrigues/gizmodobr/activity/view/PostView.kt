@@ -34,7 +34,7 @@ interface PostView : BaseView {
 
     fun collapsingToolbar(): CollapsingToolbarLayout
 
-    fun linkButton(): FloatingActionButton
+    fun shareButton(): FloatingActionButton
 
     fun window(): Window
 

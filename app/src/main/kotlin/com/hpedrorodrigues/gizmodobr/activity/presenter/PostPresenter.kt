@@ -16,6 +16,7 @@
 
 package com.hpedrorodrigues.gizmodobr.activity.presenter
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -29,12 +30,14 @@ import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
 import com.hpedrorodrigues.gizmodobr.listener.AppBarStateChangeListener
 import com.hpedrorodrigues.gizmodobr.rx.Rx
 import com.hpedrorodrigues.gizmodobr.util.ColorUtil
+import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
 import com.hpedrorodrigues.gizmodobr.util.PaletteUtil
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -51,6 +54,12 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
     fun loadBackgroundImage(imageUrl: String) {
         Picasso.with(context).load(imageUrl).into(view.backgroundImage(), loadImageCallback())
+    }
+
+    fun configureShareButton(activity: Activity, url: String) {
+        view.shareButton().setOnClickListener {
+            GizmodoApp.shareMessage(activity, activity.getString(R.string.shared_by, url))
+        }
     }
 
     fun loadPost(postUrl: String) {
@@ -106,7 +115,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 view.collapsingToolbar().contentScrim = ColorDrawable(swatch.rgb)
 
                 val darkColor = ColorUtil.getDarkerColor(swatch.rgb)
-                view.linkButton().backgroundTintList = ColorStateList.valueOf(darkColor)
+                view.shareButton().backgroundTintList = ColorStateList.valueOf(darkColor)
 
                 imageColor = darkColor
 

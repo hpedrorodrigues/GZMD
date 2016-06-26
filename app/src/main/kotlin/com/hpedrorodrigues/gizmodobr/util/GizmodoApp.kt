@@ -42,6 +42,10 @@ object GizmodoApp {
         val message = activity.getString(R.string.share_app_message,
                 GizmodoConstant.PLAY_STORE_WEB_URL + activity.packageName)
 
+        shareMessage(activity, message)
+    }
+
+    fun shareMessage(activity: Activity, message: String) {
         val intent = Intent()
 
         intent.action = Intent.ACTION_SEND

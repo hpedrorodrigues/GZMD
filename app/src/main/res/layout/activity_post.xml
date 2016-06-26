@@ -103,13 +103,13 @@
         </android.support.v4.widget.NestedScrollView>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/linkButton"
+            android:id="@+id/shareButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_large"
             android:clickable="true"
-            android:src="@mipmap/ic_action_link"
-            android:tint="@android:color/white"
+            android:src="@mipmap/ic_action_social_share"
+            android:tint="@color/white"
             app:layout_anchor="@id/appBar"
             app:layout_anchorGravity="bottom|right|end" />
 
