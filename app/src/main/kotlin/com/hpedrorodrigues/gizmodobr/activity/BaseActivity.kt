@@ -97,10 +97,6 @@ abstract class BaseActivity() : AppCompatActivity() {
         overrideTransitionWithReverse()
     }
 
-    protected fun setTranslucentToolbar(toolbar: Toolbar) {
-        (toolbar.background as ColorDrawable).alpha = GizmodoConstant.MIN_VALUE_ALPHA.toInt()
-    }
-
     protected fun <A : BaseActivity> startWithFade(activityClass: Class<A>) {
         start(activityClass, GizmodoAnimation.FADE)
     }

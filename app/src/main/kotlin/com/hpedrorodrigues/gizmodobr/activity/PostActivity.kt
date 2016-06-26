@@ -28,8 +28,6 @@ class PostActivity : BaseActivity(), PostView {
 
         configureToolbar(toolbar)
 
-        setTranslucentToolbar(toolbar)
-
         enableUpButton()
 
         presenter.loadPost(preview.postUrl)

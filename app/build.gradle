@@ -91,6 +91,9 @@ dependencies {
     // - Label View
     compile 'com.github.linger1216:labelview:v1.1.0'
 
+    // - Image Loading
+    compile group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
+
     // - Loading Library
     compile group: 'com.wang.avi', name: 'library', version: '1.0.5'
     compile group: 'com.nineoldandroids', name: 'library', version: '2.4.0'
@@ -104,7 +107,6 @@ dependencies {
     compile group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.1.0'
     compile group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.1.0'
     compile group: 'com.squareup.retrofit2', name: 'adapter-rxjava', version: '2.1.0'
-    compile group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
 
     // - Rx dependencies
     compile group: 'io.reactivex', name: 'rxandroid', version: '1.2.1'

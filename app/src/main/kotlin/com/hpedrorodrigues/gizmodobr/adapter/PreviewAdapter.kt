@@ -33,8 +33,6 @@ class PreviewAdapter : BaseAdapter<Preview, PreviewHolder> {
 
         holder.image.labelText = preview.tagName.toUpperCase()
 
-        holder.image.tag = preview
-
         holder.view.setOnClickListener { onPreviewClick?.onClick(preview) }
 
         Picasso.with(holder.image.context)
