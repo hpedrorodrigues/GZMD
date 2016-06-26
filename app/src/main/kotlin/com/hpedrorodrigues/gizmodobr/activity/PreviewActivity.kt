@@ -4,10 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
-import android.support.v7.widget.Toolbar
+import android.support.design.widget.Snackbar
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
@@ -96,7 +95,9 @@ class PreviewActivity : BaseActivity(), PreviewView {
             } else {
 
                 backPressedOnce = true
-                Toast.makeText(this, R.string.back_again_to_exit, Toast.LENGTH_SHORT).show()
+                Snackbar
+                        .make(superRecyclerView, R.string.back_again_to_exit, Snackbar.LENGTH_SHORT)
+                        .show()
                 Handler().postDelayed({ backPressedOnce = false }, 2000L)
             }
         } else {

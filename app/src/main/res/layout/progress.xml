@@ -13,6 +13,6 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:indicator="BallClipRotatePulse"
-        app:indicator_color="@color/colorPrimary" />
+        app:indicator_color="@color/colorAccent" />
 
 </LinearLayout>
