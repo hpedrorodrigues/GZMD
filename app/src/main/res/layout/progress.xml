@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/loading"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:gravity="center">
 
-    <ProgressBar
-        android:layout_width="@dimen/default_size"
-        android:layout_height="@dimen/default_size"
-        android:indeterminate="true" />
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progressBar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:indicator="BallClipRotatePulse"
+        app:indicator_color="@color/colorPrimary" />
 
 </LinearLayout>

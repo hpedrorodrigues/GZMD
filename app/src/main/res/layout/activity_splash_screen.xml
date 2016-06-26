@@ -27,7 +27,6 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginTop="@dimen/spacing_large"
-        android:visibility="visible"
         app:indicator="Pacman"
         app:indicator_color="@color/white" />
 
