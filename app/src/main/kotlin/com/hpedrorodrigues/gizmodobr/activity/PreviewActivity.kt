@@ -3,6 +3,7 @@ package com.hpedrorodrigues.gizmodobr.activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.support.design.widget.AppBarLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.view.Menu
@@ -70,6 +71,8 @@ class PreviewActivity : BaseActivity(), PreviewView {
     override fun recyclerView(): SuperRecyclerView = superRecyclerView
 
     override fun fabTop(): FloatingActionButton = fabTop
+
+    override fun appBar(): AppBarLayout = appBar
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 

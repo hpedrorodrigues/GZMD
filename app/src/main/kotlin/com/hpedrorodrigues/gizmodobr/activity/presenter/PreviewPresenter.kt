@@ -70,6 +70,7 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
             }
 
             recyclerView.smoothScrollToPosition(0)
+            view.appBar().setExpanded(true, true)
         }
     }
 
