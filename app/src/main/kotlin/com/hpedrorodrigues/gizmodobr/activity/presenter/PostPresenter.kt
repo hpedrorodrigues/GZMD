@@ -25,7 +25,10 @@ import android.os.Build
 import android.support.design.widget.AppBarLayout
 import android.support.v7.graphics.Palette
 import android.util.Log
+import android.view.View
 import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
@@ -56,7 +59,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 .subscribe(
                         {
                             Log.i("Post", it.toString())
-                            loadPostBody(it.body)
+                            loadPostBody(it.bodyHtml)
                         },
                         { Log.e("Error", "", it) }
                 )
@@ -64,14 +67,27 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
     fun loadPostBody(body: String) {
         val webView = view.webView()
+        val settings = webView.settings
 
-        webView.settings.javaScriptEnabled = true
-        webView.settings.builtInZoomControls = true
-        webView.settings.displayZoomControls = false
-        webView.settings.setRenderPriority(WebSettings.RenderPriority.HIGH)
-        webView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+        webView.clearCache(true)
+
+        settings.builtInZoomControls = true
+        settings.displayZoomControls = false
+        settings.loadWithOverviewMode = true
+        settings.javaScriptEnabled = true
+        settings.cacheMode = WebSettings.LOAD_NO_CACHE
         webView.settings.setSupportZoom(true)
+
         webView.loadData(body, "text/html; charset=utf-8", "UTF-8")
+
+        webView.setWebViewClient(object : WebViewClient() {
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+
+                webView.loadUrl("javascript:document.body.style.margin=\"8%\"; void 0");
+            }
+        })
     }
 
     fun loadImageCallback(): Callback = object : Callback {

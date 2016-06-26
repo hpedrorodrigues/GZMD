@@ -20,7 +20,9 @@ class Post() : BaseEntity() {
 
     var title: String = ""
 
-    var body: String = ""
+    var bodyHtml: String = ""
+
+    var bodyText: String = ""
 
     var authorName: String = ""
 
