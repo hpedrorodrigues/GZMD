@@ -6,6 +6,7 @@ import android.view.View
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
+import com.hpedrorodrigues.gizmodobr.extension.previewClick
 import com.hpedrorodrigues.gizmodobr.listener.CustomScrollListener
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -54,6 +55,8 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
             page++
             loadPreviews()
         }, ITEM_LEFT_TO_LOAD_MORE)
+
+        adapter.onPreviewClick = previewClick { view.onPreviewClick(it) }
     }
 
     fun configureFabTop() {

@@ -14,6 +14,7 @@ import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.constant.BroadcastActionKey
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
+import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 import kotlinx.android.synthetic.main.activity_preview.*
@@ -32,8 +33,7 @@ class PreviewActivity : BaseActivity(), PreviewView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview)
 
-        val toolbar = findViewById(R.id.toolbar) as Toolbar?
-        setSupportActionBar(toolbar)
+        configureToolbar()
 
         presenter = PreviewPresenter(this)
 
@@ -78,6 +78,10 @@ class PreviewActivity : BaseActivity(), PreviewView {
     override fun sendPreviewLoadedBroadcast() {
         val intent = Intent(BroadcastActionKey.PREVIEW_LOADED)
         sendBroadcast(intent)
+    }
+
+    override fun onPreviewClick(preview: Preview) {
+        startWithFade(PostActivity::class.java)
     }
 
     override fun onBackPressed() {

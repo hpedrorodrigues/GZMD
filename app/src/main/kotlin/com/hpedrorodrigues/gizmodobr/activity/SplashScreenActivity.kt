@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.constant.BroadcastActionKey
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
-import com.hpedrorodrigues.gizmodobr.receiver.broadcastReceiver
+import com.hpedrorodrigues.gizmodobr.extension.broadcastReceiver
 
 class SplashScreenActivity : BaseActivity() {
 

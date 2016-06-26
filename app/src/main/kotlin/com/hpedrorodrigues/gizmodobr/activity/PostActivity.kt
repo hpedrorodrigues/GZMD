@@ -9,6 +9,10 @@ class PostActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
+
+        configureToolbar()
+
+        enableUpButton()
     }
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)

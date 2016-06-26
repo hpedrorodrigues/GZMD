@@ -16,6 +16,8 @@ class PreviewAdapter : BaseAdapter<Preview, PreviewHolder> {
     @Inject
     constructor() : super()
 
+    var onPreviewClick: OnPreviewClick? = null
+
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PreviewHolder? {
         return PreviewHolder(inflater.inflate(R.layout.preview, parent, false))
     }
@@ -33,9 +35,16 @@ class PreviewAdapter : BaseAdapter<Preview, PreviewHolder> {
 
         holder.image.tag = preview
 
+        holder.view.setOnClickListener { onPreviewClick?.onClick(preview) }
+
         Picasso.with(holder.image.context)
                 .load(preview.imageUrl)
                 .placeholder(R.drawable.preview_background)
                 .into(holder.image)
+    }
+
+    interface OnPreviewClick {
+
+        fun onClick(preview: Preview)
     }
 }

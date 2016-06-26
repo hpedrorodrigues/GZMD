@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.crashlytics.android.answers.Answers
 import com.crashlytics.android.answers.ContentViewEvent
@@ -79,6 +80,10 @@ abstract class BaseActivity() : AppCompatActivity() {
             currentAnimation = GizmodoAnimation.find(animationOrder)
         }
     }
+
+    protected fun configureToolbar() = setSupportActionBar(findViewById(R.id.toolbar) as Toolbar?)
+
+    protected fun enableUpButton() = supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     override fun finish() {
         super.finish()
