@@ -17,7 +17,6 @@
 package com.hpedrorodrigues.gizmodobr.activity
 
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -30,7 +29,6 @@ import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.constant.AnimationInfo
 import com.hpedrorodrigues.gizmodobr.constant.BundleKey
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoAnimation
-import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoApplication
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import rx.subscriptions.CompositeSubscription
