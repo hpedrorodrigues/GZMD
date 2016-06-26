@@ -21,7 +21,7 @@ class SettingsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        configureToolbar()
+        configureToolbar(toolbar as Toolbar)
 
         enableUpButton()
 

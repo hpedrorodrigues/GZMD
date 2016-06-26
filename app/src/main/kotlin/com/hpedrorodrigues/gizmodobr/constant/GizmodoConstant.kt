@@ -20,4 +20,6 @@ object GizmodoConstant {
     val INSTAGRAM_APP_URL = "http://instagram.com/_u/"
     val INSTAGRAM_WEB_URL = "https://instagram.com/"
     val TWITTER_WEB_URL = "https://twitter.com/"
+    val MAX_VALUE_ALPHA = 255.0
+    val MIN_VALUE_ALPHA = 0.0
 }

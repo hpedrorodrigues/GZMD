@@ -1,12 +1,14 @@
 package com.hpedrorodrigues.gizmodobr.activity
 
 import android.os.Bundle
+import android.webkit.WebView
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.constant.BundleKey
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
+import kotlinx.android.synthetic.main.activity_post.*
 
 class PostActivity : BaseActivity(), PostView {
 
@@ -24,12 +26,16 @@ class PostActivity : BaseActivity(), PostView {
 
         component().inject(presenter)
 
-        configureToolbar()
+        configureToolbar(toolbar)
+
+        setTranslucentToolbar(toolbar)
 
         enableUpButton()
 
         presenter.loadPost(preview.postUrl)
     }
+
+    override fun webView(): WebView = webView
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 

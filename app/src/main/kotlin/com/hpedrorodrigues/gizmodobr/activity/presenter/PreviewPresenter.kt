@@ -18,6 +18,7 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
 
         @JvmStatic val ITEM_LEFT_TO_LOAD_MORE = 5
         @JvmStatic val INITIAL_PAGE = 1
+        @JvmStatic val ITEM_POSITION_TO_SCROLL = 5
     }
 
     @Inject
@@ -65,8 +66,8 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
             val firstItemPosition = (recyclerView.layoutManager as LinearLayoutManager)
                     .findFirstVisibleItemPosition()
 
-            if (firstItemPosition > 5) {
-                recyclerView.scrollToPosition(5)
+            if (firstItemPosition > ITEM_POSITION_TO_SCROLL) {
+                recyclerView.scrollToPosition(ITEM_POSITION_TO_SCROLL)
             }
 
             recyclerView.smoothScrollToPosition(0)

@@ -34,7 +34,7 @@ class PreviewActivity : BaseActivity(), PreviewView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview)
 
-        configureToolbar()
+        configureToolbar(toolbar)
 
         presenter = PreviewPresenter(this)
 
