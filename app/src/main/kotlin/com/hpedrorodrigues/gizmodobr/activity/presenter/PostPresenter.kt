@@ -47,6 +47,8 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
     private var imageColor: Int? = null
 
+    private lateinit var post: Post
+
     fun loadBackgroundImage(imageUrl: String) {
         Picasso.with(context).load(imageUrl).into(view.backgroundImage(), loadImageCallback())
     }
@@ -58,14 +60,19 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 .compose(Rx.applySchedulers<Post>())
                 .subscribe(
                         {
-                            Log.i("Post", it.toString())
-                            loadPostBody(it.bodyHtml)
+                            post = it
+                            loadPostBodyHtml(post.bodyHtml)
+                            loadPostBodyText(post.bodyText)
                         },
                         { Log.e("Error", "", it) }
                 )
     }
 
-    fun loadPostBody(body: String) {
+    fun loadPostBodyText(body: String) {
+        view.textView().text = body
+    }
+
+    fun loadPostBodyHtml(body: String) {
         val webView = view.webView()
         val settings = webView.settings
 
@@ -125,5 +132,10 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 }
             })
         }
+    }
+
+    fun seeLikePage(seeLikePage: Boolean) {
+        view.webView().visibility = if (seeLikePage) View.VISIBLE else View.GONE
+        view.textView().visibility = if (seeLikePage) View.GONE else View.VISIBLE
     }
 }

@@ -53,5 +53,6 @@
     <string name="menu_night_mode_day">Dia (sempre)</string>
     <string name="menu_night_mode_night">Noite (sempre)</string>
     <string name="menu_night_mode_auto">Auto</string>
+    <string name="see_like_page">Ver como página</string>
 
 </resources>

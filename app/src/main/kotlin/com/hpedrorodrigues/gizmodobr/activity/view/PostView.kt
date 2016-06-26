@@ -22,10 +22,13 @@ import android.support.design.widget.FloatingActionButton
 import android.view.Window
 import android.webkit.WebView
 import android.widget.ImageView
+import android.widget.TextView
 
 interface PostView : BaseView {
 
     fun webView(): WebView
+
+    fun textView(): TextView
 
     fun backgroundImage(): ImageView
 

@@ -98,6 +98,9 @@ dependencies {
     compile group: 'com.wang.avi', name: 'library', version: '1.0.5'
     compile group: 'com.nineoldandroids', name: 'library', version: '2.4.0'
 
+    // - Justified TextView
+    compile group: 'com.uncopt', name: 'android.justified', version: '1.0'
+
     // - Dagger 2 dependencies
     compile group: 'com.google.dagger', name: 'dagger', version: '2.2'
     kapt group: 'com.google.dagger', name: 'dagger-compiler', version: '2.2'

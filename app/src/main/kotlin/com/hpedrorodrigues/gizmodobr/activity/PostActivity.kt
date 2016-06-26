@@ -20,9 +20,12 @@ import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.design.widget.FloatingActionButton
+import android.view.Menu
+import android.view.MenuItem
 import android.view.Window
 import android.webkit.WebView
 import android.widget.ImageView
+import android.widget.TextView
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
@@ -57,6 +60,22 @@ class PostActivity : BaseActivity(), PostView {
         presenter.loadPost(preview.postUrl)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.post, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_see_like_page -> {
+                item.isChecked = !item.isChecked
+                presenter.seeLikePage(item.isChecked)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun backgroundImage(): ImageView = backgroundImage
 
     override fun collapsingToolbar(): CollapsingToolbarLayout = collapsingToolbar
@@ -66,6 +85,8 @@ class PostActivity : BaseActivity(), PostView {
     override fun window(): Window = window
 
     override fun webView(): WebView = webView
+
+    override fun textView(): TextView = textView
 
     override fun appBar(): AppBarLayout = appBar
 
