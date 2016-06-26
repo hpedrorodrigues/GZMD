@@ -34,6 +34,7 @@ import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
+import com.hpedrorodrigues.gizmodobr.extension.isBeforeLollipop
 import com.hpedrorodrigues.gizmodobr.listener.AppBarStateChangeListener
 import com.hpedrorodrigues.gizmodobr.rx.Rx
 import com.hpedrorodrigues.gizmodobr.util.ColorUtil
@@ -119,6 +120,10 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
                 imageColor = darkColor
 
+                if (!isBeforeLollipop()) {
+                    view.window().navigationBarColor = darkColor
+                }
+
                 configureAppBar()
             }
         }
@@ -128,7 +133,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     }
 
     fun configureAppBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (!isBeforeLollipop()) {
 
             view.appBar().addOnOffsetChangedListener(object : AppBarStateChangeListener() {
 
