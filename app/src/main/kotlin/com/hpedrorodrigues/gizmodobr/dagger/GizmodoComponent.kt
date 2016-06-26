@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.gizmodobr.dagger
 
 import com.hpedrorodrigues.gizmodobr.activity.*
+import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
 import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
@@ -26,4 +27,6 @@ interface GizmodoComponent {
     fun inject(previewAdapter: PreviewAdapter)
 
     fun inject(previewPresenter: PreviewPresenter)
+
+    fun inject(postPresenter: PostPresenter)
 }

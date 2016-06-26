@@ -6,10 +6,10 @@ import android.view.View
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
+import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.extension.previewClick
 import com.hpedrorodrigues.gizmodobr.listener.CustomScrollListener
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+import com.hpedrorodrigues.gizmodobr.rx.Rx
 import javax.inject.Inject
 
 class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
@@ -17,7 +17,6 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
     companion object {
 
         @JvmStatic val ITEM_LEFT_TO_LOAD_MORE = 5
-        @JvmStatic val MAX_RETRIES = 3L
         @JvmStatic val INITIAL_PAGE = 1
     }
 
@@ -77,9 +76,8 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
     fun loadPreviews() {
         gizmodoNetwork
                 .retrievePreviewByPage(page)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .retry(MAX_RETRIES)
+                .compose(Rx.applySchedulers<List<Preview>>())
                 .subscribe(
                         { adapter.add(it) },
                         { Log.e("Error", it.message) },

@@ -6,6 +6,11 @@ import javax.inject.Inject
 
 abstract class BasePresenter<T>(val view: T) where T : BaseView {
 
+    companion object {
+
+        @JvmStatic val MAX_RETRIES = 3L
+    }
+
     @Inject
     protected lateinit var gizmodoNetwork: GizmodoNetwork
 }

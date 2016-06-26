@@ -10,8 +10,7 @@ enum class GizmodoAnimation(val order: Int) {
 
     companion object {
 
-        @JvmStatic
-        fun find(order: Int): GizmodoAnimation = GizmodoAnimation
+        @JvmStatic fun find(order: Int): GizmodoAnimation = GizmodoAnimation
                 .values().filter { it.order == order } [0]
     }
 }

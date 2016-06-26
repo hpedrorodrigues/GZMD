@@ -11,8 +11,7 @@ enum class AnimationInfo(val animation: GizmodoAnimation, val reverseAnimation: 
 
     companion object {
 
-        @JvmStatic
-        fun findReverseByAnimation(animation: GizmodoAnimation) = AnimationInfo
+        @JvmStatic fun findReverseByAnimation(animation: GizmodoAnimation) = AnimationInfo
                 .values().filter { it.animation == animation } [0].reverseAnimation
     }
 }

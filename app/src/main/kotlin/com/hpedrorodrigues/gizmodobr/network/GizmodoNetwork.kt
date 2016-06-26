@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.gizmodobr.network
 
+import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
 import com.hpedrorodrigues.gizmodobr.entity.Preview
 import retrofit2.http.Body
@@ -14,5 +15,5 @@ interface GizmodoNetwork {
     fun retrievePreviewByPage(@Path("page") page: Int): Observable<List<Preview>>
 
     @POST("/post")
-    fun retrievePostByUrl(@Body postUrl: String): Observable<Post>
+    fun retrievePostByUrl(@Body postDTO: PostDTO): Observable<Post>
 }

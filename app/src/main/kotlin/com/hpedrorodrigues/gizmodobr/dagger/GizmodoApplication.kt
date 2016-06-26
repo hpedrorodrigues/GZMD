@@ -17,8 +17,7 @@ class GizmodoApplication : Application() {
 
     companion object {
 
-        @JvmStatic
-        lateinit var graph: GizmodoComponent
+        @JvmStatic lateinit var graph: GizmodoComponent
     }
 
     override fun onCreate() {
