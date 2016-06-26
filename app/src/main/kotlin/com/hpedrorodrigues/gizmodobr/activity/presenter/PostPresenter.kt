@@ -8,9 +8,9 @@ import com.hpedrorodrigues.gizmodobr.rx.Rx
 
 class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
-    fun loadPost() {
+    fun loadPost(postUrl: String) {
         gizmodoNetwork
-                .retrievePostByUrl(PostDTO("http://gizmodo.uol.com.br/melhores-apps-windows-43/"))
+                .retrievePostByUrl(PostDTO(postUrl))
                 .retry(MAX_RETRIES)
                 .compose(Rx.applySchedulers<Post>())
                 .subscribe(

@@ -119,6 +119,18 @@ abstract class BaseActivity() : AppCompatActivity() {
         start(activityClass, GizmodoAnimation.SLIDE_DOWN)
     }
 
+    protected fun startWithFade(intent: Intent) = start(GizmodoAnimation.FADE, intent)
+
+    protected fun startWithZoom(intent: Intent) = start(GizmodoAnimation.ZOOM, intent)
+
+    protected fun startWithSlideLeft(intent: Intent) = start(GizmodoAnimation.SLIDE_LEFT, intent)
+
+    protected fun startWithSlideRight(intent: Intent) = start(GizmodoAnimation.SLIDE_RIGHT, intent)
+
+    protected fun startWithSlideUp(intent: Intent) = start(GizmodoAnimation.SLIDE_UP, intent)
+
+    protected fun startWithSlideDown(intent: Intent) = start(GizmodoAnimation.SLIDE_DOWN, intent)
+
     protected fun <A : BaseActivity> startWithResultAndFade(activityClass: Class<A>, requestCode: Int) {
         startWithResult(activityClass, requestCode, GizmodoAnimation.FADE)
     }
@@ -168,8 +180,17 @@ abstract class BaseActivity() : AppCompatActivity() {
     }
 
     private fun <A : BaseActivity> start(activityClass: Class<A>, animation: GizmodoAnimation) {
-        val reverseAnimation = AnimationInfo.findReverseByAnimation(animation)
         val intent = Intent(this, activityClass)
+
+        val reverseAnimation = AnimationInfo.findReverseByAnimation(animation)
+        intent.putExtra(BundleKey.ARG_ANIMATION, reverseAnimation.order)
+
+        startActivity(intent)
+        overrideTransition(animation)
+    }
+
+    private fun start(animation: GizmodoAnimation, intent: Intent) {
+        val reverseAnimation = AnimationInfo.findReverseByAnimation(animation)
         intent.putExtra(BundleKey.ARG_ANIMATION, reverseAnimation.order)
 
         startActivity(intent)

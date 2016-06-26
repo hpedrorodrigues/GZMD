@@ -1,3 +1,5 @@
 package com.hpedrorodrigues.gizmodobr.entity
 
-abstract class BaseEntity
+import java.io.Serializable
+
+abstract class BaseEntity : Serializable

@@ -12,6 +12,7 @@ import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.constant.BroadcastActionKey
+import com.hpedrorodrigues.gizmodobr.constant.BundleKey
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
@@ -81,7 +82,9 @@ class PreviewActivity : BaseActivity(), PreviewView {
     }
 
     override fun onPreviewClick(preview: Preview) {
-        startWithFade(PostActivity::class.java)
+        val intent = Intent(this, PostActivity::class.java)
+        intent.putExtra(BundleKey.ARG_PREVIEW, preview)
+        startWithFade(intent)
     }
 
     override fun onBackPressed() {
