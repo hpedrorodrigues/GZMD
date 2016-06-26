@@ -18,7 +18,6 @@
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,27 +46,9 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
-            android:id="@+id/without_network"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone"
-            tools:ignore="UseCompoundDrawables">
+        <include layout="@layout/without_network" />
 
-            <ImageView
-                android:layout_width="62dp"
-                android:layout_height="62dp"
-                android:contentDescription="@string/app_name"
-                android:src="@mipmap/ic_cloud_off_black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/without_connection" />
-
-        </LinearLayout>
+        <include layout="@layout/splash" />
 
         <com.malinskiy.superrecyclerview.SuperRecyclerView
             android:id="@+id/superRecyclerView"

@@ -29,6 +29,7 @@ import com.hpedrorodrigues.gizmodobr.dagger.GizmodoApplication
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.extension.isAfterGingerbread
 import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
+import com.hpedrorodrigues.gizmodobr.service.ConnectionService
 import rx.subscriptions.CompositeSubscription
 import javax.inject.Inject
 
@@ -36,6 +37,9 @@ abstract class BaseActivity() : BaseTransitionActivity() {
 
     @Inject
     lateinit var preferences: GizmodoPreferences
+
+    @Inject
+    lateinit var connectionService: ConnectionService
 
     protected var compositeSubscription: CompositeSubscription = CompositeSubscription()
 
@@ -105,7 +109,7 @@ abstract class BaseActivity() : BaseTransitionActivity() {
         compositeSubscription = CompositeSubscription()
     }
 
-    protected open fun setNightMode(@AppCompatDelegate.NightMode nightMode: Int) {
+    protected fun setNightMode(@AppCompatDelegate.NightMode nightMode: Int) {
         val isDifferent = AppCompatDelegate.getDefaultNightMode() != nightMode
 
         if (isDifferent) {

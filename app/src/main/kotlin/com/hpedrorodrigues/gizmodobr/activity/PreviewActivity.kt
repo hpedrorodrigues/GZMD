@@ -25,23 +25,33 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatDelegate
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.animation.AnimationUtils
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
-import com.hpedrorodrigues.gizmodobr.constant.BroadcastActionKey
 import com.hpedrorodrigues.gizmodobr.constant.BundleKey
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
+import com.hpedrorodrigues.gizmodobr.observable.NetworkStateObservable
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 import kotlinx.android.synthetic.main.activity_preview.*
+import kotlinx.android.synthetic.main.splash.*
+import kotlinx.android.synthetic.main.without_network.*
+import java.util.*
 
 class PreviewActivity : BaseActivity(), PreviewView {
 
     lateinit var presenter: PreviewPresenter
 
     private var backPressedOnce: Boolean = false
+
+    private var networkStateObserver: Observer = Observer { observable, data ->
+        val hasConnection = connectionService.hasConnection()
+        reloadWithoutNetworkLayout(hasConnection)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +69,9 @@ class PreviewActivity : BaseActivity(), PreviewView {
 
         presenter.loadPreviews()
 
-        startWithFade(SplashScreenActivity::class.java)
+        NetworkStateObservable.addObserver(networkStateObserver)
+
+        showProgress()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -99,8 +111,17 @@ class PreviewActivity : BaseActivity(), PreviewView {
                 startWithFade(AboutActivity::class.java)
                 true
             }
+            R.id.action_refresh -> {
+                presenter.reloadPreviews()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onDestroy() {
+        NetworkStateObservable.deleteObserver(networkStateObserver)
+        super.onDestroy()
     }
 
     override fun recyclerView(): SuperRecyclerView = superRecyclerView
@@ -112,8 +133,6 @@ class PreviewActivity : BaseActivity(), PreviewView {
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
     override fun screenName(): String = "Preview - Main"
-
-    override fun sendFinishSplashScreenBroadcast() = sendBroadcast(Intent(BroadcastActionKey.FINISH_SPLASH_SCREEN))
 
     override fun onPreviewClick(preview: Preview) {
         val intent = Intent(this, PostActivity::class.java)
@@ -142,9 +161,22 @@ class PreviewActivity : BaseActivity(), PreviewView {
         }
     }
 
-    override fun setNightMode(nightMode: Int) {
-        super.setNightMode(nightMode)
+    override fun reloadWithoutNetworkLayout(hasConnection: Boolean) {
+        if (hasConnection) {
+            withoutNetwork.visibility = View.GONE
+        } else {
+            withoutNetwork.visibility = View.VISIBLE
+            withoutNetwork.startAnimation(AnimationUtils.loadAnimation(this, R.anim.jump))
+        }
+    }
 
-        sendFinishSplashScreenBroadcast()
+    override fun showProgress() {
+        superRecyclerView.visibility = View.GONE
+        splash.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        superRecyclerView.visibility = View.VISIBLE
+        splash.visibility = View.GONE
     }
 }

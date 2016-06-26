@@ -29,7 +29,11 @@ interface PreviewView : BaseView {
 
     fun appBar(): AppBarLayout
 
-    fun sendFinishSplashScreenBroadcast()
-
     fun onPreviewClick(preview: Preview)
+
+    fun reloadWithoutNetworkLayout(hasConnection: Boolean)
+
+    fun showProgress()
+
+    fun hideProgress()
 }

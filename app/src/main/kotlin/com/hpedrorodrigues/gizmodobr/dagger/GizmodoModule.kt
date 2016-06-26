@@ -18,6 +18,7 @@ package com.hpedrorodrigues.gizmodobr.dagger
 
 import android.app.Application
 import android.content.Context
+import android.net.ConnectivityManager
 import android.view.LayoutInflater
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoApiConstant
 import com.hpedrorodrigues.gizmodobr.network.GizmodoNetwork
@@ -40,6 +41,10 @@ class GizmodoModule(private val application: Application) {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(GizmodoApiConstant.GizmodoEndpoint).build()
+    }
+
+    @Provides fun provideConnectivityManager(context: Context): ConnectivityManager {
+        return context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     }
 
     @Provides fun provideGizmodoNetwork(retrofit: Retrofit): GizmodoNetwork {

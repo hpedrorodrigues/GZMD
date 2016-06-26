@@ -63,8 +63,7 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
 
         view.recyclerView().setRefreshListener {
             adapter.clear()
-            page = INITIAL_PAGE
-            loadPreviews()
+            reloadPreviews()
         }
 
         view.recyclerView().setupMoreListener({ numberOfItems, numberBeforeMore, currentItemPos ->
@@ -91,27 +90,37 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
         }
     }
 
+    fun reloadPreviews() {
+        view.recyclerView().swipeToRefresh?.isRefreshing = true
+        page = INITIAL_PAGE
+        loadPreviews()
+    }
+
     fun loadPreviews() {
+        val hasConnection = connectionService.hasConnection()
+        view.reloadWithoutNetworkLayout(hasConnection)
 
-        fun onCompleted() {
-            view.recyclerView().swipeToRefresh?.isRefreshing = false
-            view.recyclerView().hideMoreProgress()
-            view.sendFinishSplashScreenBroadcast()
+        if (hasConnection) {
+            fun onCompleted() {
+                view.recyclerView().swipeToRefresh?.isRefreshing = false
+                view.recyclerView().hideMoreProgress()
+                view.hideProgress()
+            }
+
+            gizmodoNetwork
+                    .retrievePreviewByPage(page)
+                    .retry(MAX_RETRIES)
+                    .compose(Rx.applySchedulers<List<Preview>>())
+                    .subscribe(
+                            {
+                                adapter.add(it)
+                                onCompleted()
+                            },
+                            {
+                                Log.e("Error", it.message)
+                                onCompleted()
+                            }
+                    )
         }
-
-        gizmodoNetwork
-                .retrievePreviewByPage(page)
-                .retry(MAX_RETRIES)
-                .compose(Rx.applySchedulers<List<Preview>>())
-                .subscribe(
-                        {
-                            adapter.add(it)
-                            onCompleted()
-                        },
-                        {
-                            Log.e("Error", it.message)
-                            onCompleted()
-                        }
-                )
     }
 }

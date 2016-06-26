@@ -56,5 +56,6 @@
     <string name="see_like_page">Ver como página</string>
     <string name="open_in_browser">Abrir no navegador</string>
     <string name="shared_by">%s\n\n- Compartilhado via GZMD</string>
+    <string name="action_refresh">Atualizar</string>
 
 </resources>
