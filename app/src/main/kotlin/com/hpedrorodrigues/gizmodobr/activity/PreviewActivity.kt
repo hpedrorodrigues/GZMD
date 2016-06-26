@@ -17,7 +17,6 @@
 package com.hpedrorodrigues.gizmodobr.activity
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.AppBarLayout
@@ -35,10 +34,8 @@ import com.hpedrorodrigues.gizmodobr.constant.BundleKey
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
-import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 import kotlinx.android.synthetic.main.activity_preview.*
-import javax.inject.Inject
 
 class PreviewActivity : BaseActivity(), PreviewView {
 
@@ -116,10 +113,7 @@ class PreviewActivity : BaseActivity(), PreviewView {
 
     override fun screenName(): String = "Preview - Main"
 
-    override fun sendPreviewLoadedBroadcast() {
-        val intent = Intent(BroadcastActionKey.PREVIEW_LOADED)
-        sendBroadcast(intent)
-    }
+    override fun sendFinishSplashScreenBroadcast() = sendBroadcast(Intent(BroadcastActionKey.FINISH_SPLASH_SCREEN))
 
     override fun onPreviewClick(preview: Preview) {
         val intent = Intent(this, PostActivity::class.java)
@@ -146,5 +140,11 @@ class PreviewActivity : BaseActivity(), PreviewView {
             super.onBackPressed()
             overrideTransitionWithFade()
         }
+    }
+
+    override fun setNightMode(nightMode: Int) {
+        super.setNightMode(nightMode)
+
+        sendFinishSplashScreenBroadcast()
     }
 }

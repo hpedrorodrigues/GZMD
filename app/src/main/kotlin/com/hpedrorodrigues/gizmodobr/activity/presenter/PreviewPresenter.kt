@@ -93,10 +93,10 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
 
     fun loadPreviews() {
 
-        fun onCompleted(isSuccessful: Boolean) {
+        fun onCompleted() {
             view.recyclerView().swipeToRefresh?.isRefreshing = false
             view.recyclerView().hideMoreProgress()
-            view.sendPreviewLoadedBroadcast()
+            view.sendFinishSplashScreenBroadcast()
         }
 
         gizmodoNetwork
@@ -106,11 +106,11 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
                 .subscribe(
                         {
                             adapter.add(it)
-                            onCompleted(true)
+                            onCompleted()
                         },
                         {
                             Log.e("Error", it.message)
-                            onCompleted(false)
+                            onCompleted()
                         }
                 )
     }

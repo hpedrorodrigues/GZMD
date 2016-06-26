@@ -16,7 +16,6 @@
 
 package com.hpedrorodrigues.gizmodobr.activity.base
 
-import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatDelegate
 import android.support.v7.widget.Toolbar
@@ -28,6 +27,7 @@ import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoApplication
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
+import com.hpedrorodrigues.gizmodobr.extension.isAfterGingerbread
 import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
 import rx.subscriptions.CompositeSubscription
 import javax.inject.Inject
@@ -105,7 +105,7 @@ abstract class BaseActivity() : BaseTransitionActivity() {
         compositeSubscription = CompositeSubscription()
     }
 
-    private fun setNightMode(@AppCompatDelegate.NightMode nightMode: Int) {
+    protected open fun setNightMode(@AppCompatDelegate.NightMode nightMode: Int) {
         val isDifferent = AppCompatDelegate.getDefaultNightMode() != nightMode
 
         if (isDifferent) {
@@ -113,7 +113,7 @@ abstract class BaseActivity() : BaseTransitionActivity() {
 
             preferences.putInt(GizmodoConstant.NIGHT_MODE, nightMode)
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            if (isAfterGingerbread()) {
                 recreate()
             }
         }

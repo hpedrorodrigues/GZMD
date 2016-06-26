@@ -22,7 +22,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.support.design.widget.AppBarLayout
 import android.support.v7.graphics.Palette
 import android.util.Log
@@ -64,6 +63,8 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     }
 
     fun loadPost(postUrl: String) {
+        view.showProgress()
+
         gizmodoNetwork
                 .retrievePostByUrl(PostDTO(postUrl))
                 .retry(MAX_RETRIES)
@@ -73,8 +74,12 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                             post = it
                             loadPostBodyHtml(post.bodyHtml)
                             loadPostBodyText(post.bodyText)
+                            view.hideProgress()
                         },
-                        { Log.e("Error", "", it) }
+                        {
+                            Log.e("Error", "", it)
+                            view.hideProgress()
+                        }
                 )
     }
 

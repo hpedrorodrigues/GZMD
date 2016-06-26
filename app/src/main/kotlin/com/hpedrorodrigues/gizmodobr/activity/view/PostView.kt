@@ -39,4 +39,8 @@ interface PostView : BaseView {
     fun window(): Window
 
     fun appBar(): AppBarLayout
+
+    fun showProgress()
+
+    fun hideProgress()
 }

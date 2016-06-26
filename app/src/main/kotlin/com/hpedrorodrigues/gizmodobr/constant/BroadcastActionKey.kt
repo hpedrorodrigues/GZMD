@@ -18,5 +18,5 @@ package com.hpedrorodrigues.gizmodobr.constant
 
 object BroadcastActionKey {
 
-    val PREVIEW_LOADED = "com.hpedrorodrigues.gizmodobr.PREVIEW_LOADED"
+    val FINISH_SPLASH_SCREEN = "com.hpedrorodrigues.gizmodobr.FINISH_SPLASH_SCREEN"
 }

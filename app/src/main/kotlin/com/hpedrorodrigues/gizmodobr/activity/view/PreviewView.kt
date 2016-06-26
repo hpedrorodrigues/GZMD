@@ -29,7 +29,7 @@ interface PreviewView : BaseView {
 
     fun appBar(): AppBarLayout
 
-    fun sendPreviewLoadedBroadcast()
+    fun sendFinishSplashScreenBroadcast()
 
     fun onPreviewClick(preview: Preview)
 }

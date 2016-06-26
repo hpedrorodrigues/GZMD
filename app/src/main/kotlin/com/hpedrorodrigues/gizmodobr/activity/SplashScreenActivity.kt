@@ -19,7 +19,6 @@ package com.hpedrorodrigues.gizmodobr.activity
 import android.content.BroadcastReceiver
 import android.content.IntentFilter
 import android.os.Bundle
-import android.os.Handler
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.constant.BroadcastActionKey
@@ -28,18 +27,11 @@ import com.hpedrorodrigues.gizmodobr.extension.broadcastReceiver
 
 class SplashScreenActivity : BaseActivity() {
 
-    companion object {
-
-        @JvmStatic val DELAY_SCREEN_TIME = 7000L
-    }
-
     private var previewLoadedReceiver: BroadcastReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-
-        Handler().postDelayed({ finish() }, DELAY_SCREEN_TIME)
     }
 
     override fun onResume() {
@@ -61,7 +53,7 @@ class SplashScreenActivity : BaseActivity() {
     private fun registerPreviewLoadedReceiver() {
         if (previewLoadedReceiver == null) {
             val intentFilter = IntentFilter()
-            intentFilter.addAction(BroadcastActionKey.PREVIEW_LOADED)
+            intentFilter.addAction(BroadcastActionKey.FINISH_SPLASH_SCREEN)
 
             previewLoadedReceiver = broadcastReceiver { context, intent -> finish() }
 

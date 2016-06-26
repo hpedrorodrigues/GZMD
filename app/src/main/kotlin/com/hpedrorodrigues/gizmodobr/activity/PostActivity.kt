@@ -22,6 +22,7 @@ import android.support.design.widget.CollapsingToolbarLayout
 import android.support.design.widget.FloatingActionButton
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.Window
 import android.webkit.WebView
 import android.widget.ImageView
@@ -100,4 +101,14 @@ class PostActivity : BaseActivity(), PostView {
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
     override fun screenName(): String = "Post"
+
+    override fun showProgress() {
+        progress.visibility = View.VISIBLE
+        coordinator.visibility = View.GONE
+    }
+
+    override fun hideProgress() {
+        progress.visibility = View.GONE
+        coordinator.visibility = View.VISIBLE
+    }
 }
