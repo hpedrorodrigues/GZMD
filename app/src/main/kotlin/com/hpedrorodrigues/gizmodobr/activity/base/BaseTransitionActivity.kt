@@ -14,77 +14,36 @@
  * limitations under the License.
  */
 
-package com.hpedrorodrigues.gizmodobr.activity
+package com.hpedrorodrigues.gizmodobr.activity.base
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
-import android.view.MenuItem
-import com.crashlytics.android.answers.Answers
-import com.crashlytics.android.answers.ContentViewEvent
-import com.google.android.gms.analytics.HitBuilders
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.constant.AnimationInfo
 import com.hpedrorodrigues.gizmodobr.constant.BundleKey
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoAnimation
-import com.hpedrorodrigues.gizmodobr.dagger.GizmodoApplication
-import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
-import rx.subscriptions.CompositeSubscription
 
 @Suppress("unused")
-abstract class BaseActivity() : AppCompatActivity() {
+abstract class BaseTransitionActivity : AppCompatActivity() {
 
     protected var currentAnimation: GizmodoAnimation = GizmodoAnimation.FADE
-
-    protected var compositeSubscription: CompositeSubscription = CompositeSubscription()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        injectMembers(component())
-
         loadAnimation()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        tracker().setScreenName(screenName())
-        tracker().send(HitBuilders.ScreenViewBuilder().build())
-        Answers.getInstance()
-                .logContentView(ContentViewEvent().putContentId("Screen:" + screenName()))
+    override fun finish() {
+        super.finish()
+        overrideTransitionWithReverse()
     }
 
-    override fun onDestroy() {
-        unsubscribeSubscriptions()
-        super.onDestroy()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    protected abstract fun injectMembers(component: GizmodoComponent)
-
-    protected abstract fun screenName(): String
-
-    protected fun gizmodoApplication() = application as GizmodoApplication
-
-    protected fun component() = gizmodoApplication().component()
-
-    protected fun tracker() = gizmodoApplication().tracker()
-
-    protected fun unsubscribeSubscriptions() {
-        compositeSubscription.unsubscribe()
-        compositeSubscription = CompositeSubscription()
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overrideTransitionWithReverse()
     }
 
     private fun loadAnimation() {
@@ -95,20 +54,6 @@ abstract class BaseActivity() : AppCompatActivity() {
 
             currentAnimation = GizmodoAnimation.find(animationOrder)
         }
-    }
-
-    protected fun configureToolbar(toolbar: Toolbar) = setSupportActionBar(toolbar)
-
-    protected fun enableUpButton() = supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-    override fun finish() {
-        super.finish()
-        overrideTransitionWithReverse()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        overrideTransitionWithReverse()
     }
 
     protected fun <A : BaseActivity> startWithFade(activityClass: Class<A>) {

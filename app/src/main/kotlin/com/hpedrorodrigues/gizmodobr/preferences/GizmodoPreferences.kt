@@ -29,12 +29,17 @@ class GizmodoPreferences {
         this.context = context
     }
 
+    private fun preferences() = PreferenceManager.getDefaultSharedPreferences(context)
+
+    fun getInt(name: String, default: Int) = PreferenceManager
+            .getDefaultSharedPreferences(context).getInt(name, default)
+
+    fun getInt(name: String) = getInt(name, -1)
+
+    fun putInt(name: String, value: Int) = preferences().edit().putInt(name, value).apply()
+
     fun getBoolean(name: String) = PreferenceManager
             .getDefaultSharedPreferences(context).getBoolean(name, false)
 
-    fun putBoolean(name: String, value: Boolean) {
-
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        sharedPreferences.edit().putBoolean(name, value).apply()
-    }
+    fun putBoolean(name: String, value: Boolean) = preferences().edit().putBoolean(name, value).apply()
 }

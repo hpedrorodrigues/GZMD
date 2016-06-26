@@ -23,6 +23,7 @@ import android.view.Window
 import android.webkit.WebView
 import android.widget.ImageView
 import com.hpedrorodrigues.gizmodobr.R
+import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.constant.BundleKey

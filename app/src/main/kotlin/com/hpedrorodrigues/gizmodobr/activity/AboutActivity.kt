@@ -19,6 +19,7 @@ package com.hpedrorodrigues.gizmodobr.activity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import com.hpedrorodrigues.gizmodobr.R
+import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import kotlinx.android.synthetic.main.activity_about.*
 

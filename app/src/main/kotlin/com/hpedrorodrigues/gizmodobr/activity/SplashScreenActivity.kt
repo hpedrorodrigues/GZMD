@@ -19,6 +19,7 @@ package com.hpedrorodrigues.gizmodobr.activity
 import android.content.IntentFilter
 import android.os.Bundle
 import com.hpedrorodrigues.gizmodobr.R
+import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.constant.BroadcastActionKey
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.extension.broadcastReceiver

@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.widget.CompoundButton
 import com.hpedrorodrigues.gizmodobr.R
+import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences

@@ -27,6 +27,7 @@ import android.support.v7.app.AppCompatDelegate
 import android.view.Menu
 import android.view.MenuItem
 import com.hpedrorodrigues.gizmodobr.R
+import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.constant.BroadcastActionKey
@@ -40,9 +41,6 @@ import kotlinx.android.synthetic.main.activity_preview.*
 import javax.inject.Inject
 
 class PreviewActivity : BaseActivity(), PreviewView {
-
-    @Inject
-    lateinit var gizmodoPreferences: GizmodoPreferences
 
     lateinit var presenter: PreviewPresenter
 
@@ -104,22 +102,6 @@ class PreviewActivity : BaseActivity(), PreviewView {
                 startWithFade(AboutActivity::class.java)
                 true
             }
-            R.id.menu_night_mode_system -> {
-                setNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                true
-            }
-            R.id.menu_night_mode_day -> {
-                setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                true
-            }
-            R.id.menu_night_mode_night -> {
-                setNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                true
-            }
-            R.id.menu_night_mode_auto -> {
-                setNightMode(AppCompatDelegate.MODE_NIGHT_AUTO)
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -146,7 +128,7 @@ class PreviewActivity : BaseActivity(), PreviewView {
     }
 
     override fun onBackPressed() {
-        if (gizmodoPreferences.getBoolean(GizmodoConstant.ASK_TO_EXIT)) {
+        if (preferences.getBoolean(GizmodoConstant.ASK_TO_EXIT)) {
             if (backPressedOnce) {
 
                 super.onBackPressed()
@@ -163,14 +145,6 @@ class PreviewActivity : BaseActivity(), PreviewView {
 
             super.onBackPressed()
             overrideTransitionWithFade()
-        }
-    }
-
-    private fun setNightMode(@AppCompatDelegate.NightMode nightMode: Int) {
-        AppCompatDelegate.setDefaultNightMode(nightMode)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            recreate()
         }
     }
 }
