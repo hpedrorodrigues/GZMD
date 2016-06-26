@@ -45,6 +45,6 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginTop="@dimen/spacing_large"
         app:indicator="Pacman"
-        app:indicator_color="@color/white" />
+        app:indicator_color="@color/colorAccent" />
 
 </RelativeLayout>

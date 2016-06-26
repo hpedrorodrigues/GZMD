@@ -27,6 +27,7 @@
         android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/screens"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.AppBarLayout
@@ -71,11 +72,13 @@
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/screens"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/screens"
                 android:orientation="vertical">
 
                 <com.uncopt.android.widget.text.justify.JustifiedTextView
@@ -83,6 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/spacing_xxxlarge"
+                    android:background="@color/screens"
                     android:paddingBottom="@dimen/spacing_xlarge"
                     android:paddingEnd="@dimen/spacing_medium"
                     android:paddingLeft="@dimen/spacing_medium"
