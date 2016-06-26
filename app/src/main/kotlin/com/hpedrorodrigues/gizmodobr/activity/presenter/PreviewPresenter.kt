@@ -92,17 +92,25 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
     }
 
     fun loadPreviews() {
+
+        fun onCompleted(isSuccessful: Boolean) {
+            view.recyclerView().swipeToRefresh?.isRefreshing = false
+            view.recyclerView().hideMoreProgress()
+            view.sendPreviewLoadedBroadcast()
+        }
+
         gizmodoNetwork
                 .retrievePreviewByPage(page)
                 .retry(MAX_RETRIES)
                 .compose(Rx.applySchedulers<List<Preview>>())
                 .subscribe(
-                        { adapter.add(it) },
-                        { Log.e("Error", it.message) },
                         {
-                            view.recyclerView().swipeToRefresh?.isRefreshing = false
-                            view.recyclerView().hideMoreProgress()
-                            view.sendPreviewLoadedBroadcast()
+                            adapter.add(it)
+                            onCompleted(true)
+                        },
+                        {
+                            Log.e("Error", it.message)
+                            onCompleted(false)
                         }
                 )
     }

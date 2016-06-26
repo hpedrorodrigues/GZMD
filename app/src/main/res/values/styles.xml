@@ -46,6 +46,13 @@
         <item name="android:minHeight">@dimen/default_size_for_list_items</item>
     </style>
 
+    <style name="AppTheme.SettingsItemImageView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/default_size</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:tint">@color/colorAccent</item>
+    </style>
+
     <style name="AppTheme.SettingsItemTitleTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -54,7 +61,10 @@
     </style>
 
     <style name="AppTheme.SettingsItemSubTitleTextView">
-
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Small</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 </resources>
