@@ -46,7 +46,7 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:id="@+id/close_app"
+                android:id="@+id/closeApp"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background">
 
@@ -80,6 +80,41 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/enableAutoScroll"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/toggleEnableAutoScroll"
+                    android:layout_toStartOf="@+id/toggleEnableAutoScroll"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/enable_auto_scroll_on_posts" />
+
+                    <TextView
+                        style="@style/AppTheme.SettingsItemSubTitleTextView"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/enable_auto_scroll_on_posts_description" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/toggleEnableAutoScroll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center" />
+
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,7 +133,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/about_the_app"
+                android:id="@+id/aboutTheApp"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
@@ -120,7 +155,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rate_the_app"
+                android:id="@+id/rateTheApp"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
@@ -152,7 +187,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/share_the_app"
+                android:id="@+id/shareTheApp"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
@@ -184,7 +219,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/report_a_bug"
+                android:id="@+id/reportABug"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
@@ -216,7 +251,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/idea_to_improve"
+                android:id="@+id/ideaToImprove"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
@@ -248,7 +283,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/send_us_your_feedback"
+                android:id="@+id/sendUsYourFeedback"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
@@ -280,7 +315,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/contact_us"
+                android:id="@+id/contactUs"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"

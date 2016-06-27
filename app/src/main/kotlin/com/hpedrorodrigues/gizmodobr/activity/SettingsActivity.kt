@@ -53,10 +53,11 @@ class SettingsActivity : BaseActivity() {
 
     private fun loadValues() {
         toggleCloseTheApp.isChecked = gizmodoPreferences.getBoolean(GizmodoConstant.ASK_TO_EXIT)
+        toggleEnableAutoScroll.isChecked = gizmodoPreferences.getBoolean(GizmodoConstant.ENABLE_AUTO_SCROLL)
     }
 
     private fun configListeners() {
-        close_app.setOnClickListener {
+        closeApp.setOnClickListener {
             val isChecked = toggleCloseTheApp.isChecked
             gizmodoPreferences.putBoolean(GizmodoConstant.ASK_TO_EXIT, !isChecked)
             toggleCloseTheApp.isChecked = !isChecked
@@ -67,18 +68,29 @@ class SettingsActivity : BaseActivity() {
             gizmodoPreferences.putBoolean(GizmodoConstant.ASK_TO_EXIT, isChecked)
         }
 
-        about_the_app.setOnClickListener { startWithFade(AboutActivity::class.java) }
+        enableAutoScroll.setOnClickListener {
+            val isChecked = !toggleEnableAutoScroll.isChecked
+            gizmodoPreferences.putBoolean(GizmodoConstant.ENABLE_AUTO_SCROLL, isChecked)
+            toggleEnableAutoScroll.isChecked = isChecked
+        }
 
-        rate_the_app.setOnClickListener { GizmodoApp.view(this) }
+        toggleEnableAutoScroll.setOnCheckedChangeListener {
+            compoundButton: CompoundButton, isChecked: Boolean ->
+            gizmodoPreferences.putBoolean(GizmodoConstant.ENABLE_AUTO_SCROLL, isChecked)
+        }
 
-        share_the_app.setOnClickListener { GizmodoApp.share(this) }
+        aboutTheApp.setOnClickListener { startWithFade(AboutActivity::class.java) }
 
-        report_a_bug.setOnClickListener { GizmodoMail.sendReportBugEmail(this) }
+        rateTheApp.setOnClickListener { GizmodoApp.view(this) }
 
-        idea_to_improve.setOnClickListener { GizmodoMail.sendImproveAppEmail(this) }
+        shareTheApp.setOnClickListener { GizmodoApp.share(this) }
 
-        send_us_your_feedback.setOnClickListener { GizmodoMail.sendFeedbackEmail(this) }
+        reportABug.setOnClickListener { GizmodoMail.sendReportBugEmail(this) }
 
-        contact_us.setOnClickListener { GizmodoMail.sendContactUsEmail(this) }
+        ideaToImprove.setOnClickListener { GizmodoMail.sendImproveAppEmail(this) }
+
+        sendUsYourFeedback.setOnClickListener { GizmodoMail.sendFeedbackEmail(this) }
+
+        contactUs.setOnClickListener { GizmodoMail.sendContactUsEmail(this) }
     }
 }

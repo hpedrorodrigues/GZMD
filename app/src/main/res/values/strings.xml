@@ -57,5 +57,7 @@
     <string name="open_in_browser">Abrir no navegador</string>
     <string name="shared_by">%s\n\n- Compartilhado via GZMD</string>
     <string name="action_refresh">Atualizar</string>
+    <string name="enable_auto_scroll_on_posts">Habilitar scroll automático de posts</string>
+    <string name="enable_auto_scroll_on_posts_description">Habilita movimentação automática dos posts para leitura</string>
 
 </resources>

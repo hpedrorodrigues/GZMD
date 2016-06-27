@@ -87,7 +87,7 @@ class PostActivity : BaseActivity(), PostView {
     }
 
     override fun onDestroy() {
-        presenter.nestedScrollViewManager.cancelAutoScroll = true
+        presenter.nestedScrollViewManager?.cancelAutoScroll = true
         super.onDestroy()
     }
 

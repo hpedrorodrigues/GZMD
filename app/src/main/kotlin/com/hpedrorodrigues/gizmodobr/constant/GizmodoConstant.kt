@@ -27,6 +27,7 @@ object GizmodoConstant {
     val GMAIL_CLASS_NAME_1 = "com.google.android.gm"
     val GMAIL_CLASS_NAME_2 = "com.google.android.gm.ComposeActivityGmail"
     val ASK_TO_EXIT = "close_app"
+    val ENABLE_AUTO_SCROLL = "enable_auto_scroll"
     val NIGHT_MODE = "night_mode"
     val FACEBOOK_CLASS_NAME = "com.facebook.katana"
     val FACEBOOK_CHANGE_VERSION = 3002850

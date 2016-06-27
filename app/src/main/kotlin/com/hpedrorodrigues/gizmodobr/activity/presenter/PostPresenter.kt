@@ -31,6 +31,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
+import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
 import com.hpedrorodrigues.gizmodobr.extension.isBeforeLollipop
@@ -53,7 +54,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
     private lateinit var post: Post
 
-    lateinit var nestedScrollViewManager: NestedScrollViewManager
+    var nestedScrollViewManager: NestedScrollViewManager? = null
         private set
 
     fun loadBackgroundImage(imageUrl: String) {
@@ -94,13 +95,15 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     }
 
     fun configureNestedViewScrolling() {
-        nestedScrollViewManager = NestedScrollViewManager(
-                view.nestedScrollView(),
-                view.appBar(),
-                view.coordinatorLayout()
-        )
+        if (gizmodoPreferences.getBoolean(GizmodoConstant.ENABLE_AUTO_SCROLL)) {
+            nestedScrollViewManager = NestedScrollViewManager(
+                    view.nestedScrollView(),
+                    view.appBar(),
+                    view.coordinatorLayout()
+            )
 
-        nestedScrollViewManager.enableAutoScroll()
+            nestedScrollViewManager?.enableAutoScroll()
+        }
     }
 
     fun loadPostBodyHtml(body: String) {
