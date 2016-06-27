@@ -23,6 +23,7 @@
     <color name="colorPrimaryDark">#2962FF</color>
     <color name="colorAccent">#EEEEEE</color>
     <color name="colorAccentInverse">#616161</color>
+    <color name="colorAccentInverseDark">#424242</color>
 
     <color name="screens">#616161</color>
 

@@ -22,6 +22,8 @@ import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
+import com.hpedrorodrigues.gizmodobr.extension.isBeforeLollipop
+import com.hpedrorodrigues.gizmodobr.util.ColorUtil
 import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
 import com.hpedrorodrigues.gizmodobr.util.VersionInfo
 import kotlinx.android.synthetic.main.about_body.*
@@ -44,6 +46,8 @@ class AboutActivity : BaseActivity() {
         loadVersion()
 
         configureListeners()
+
+        configureStatusAndNavigationBar()
     }
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
@@ -69,6 +73,17 @@ class AboutActivity : BaseActivity() {
 
         twitter.setOnClickListener {
             GizmodoApp.openTwitterProfile(this, GizmodoConstant.GIZMODO_BR_TWITTER_ID)
+        }
+
+        shareButton.setOnClickListener { GizmodoApp.share(this) }
+    }
+
+    private fun configureStatusAndNavigationBar() {
+        if (!isBeforeLollipop()) {
+            val colorAccentInverseColor = resources.getColor(R.color.colorAccentInverseDark, theme)
+            val darkColor = ColorUtil.getDarkerColor(colorAccentInverseColor)
+            window.statusBarColor = darkColor
+            window.navigationBarColor = darkColor
         }
     }
 }
