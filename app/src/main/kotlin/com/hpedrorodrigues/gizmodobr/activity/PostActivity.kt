@@ -116,12 +116,12 @@ class PostActivity : BaseActivity(), PostView {
 
     override fun showProgress() {
         progress.visibility = View.VISIBLE
-        coordinatorLayout.visibility = View.GONE
+        nestedScrollView.visibility = View.GONE
     }
 
     override fun hideProgress() {
         progress.visibility = View.GONE
-        coordinatorLayout.visibility = View.VISIBLE
+        nestedScrollView.visibility = View.VISIBLE
     }
 
     override fun bindSubscription(subscription: Subscription) = compositeSubscription.add(subscription)

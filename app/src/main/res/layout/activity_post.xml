@@ -69,6 +69,12 @@
 
         </android.support.design.widget.AppBarLayout>
 
+        <include
+            android:id="@+id/progress"
+            layout="@layout/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
@@ -119,11 +125,5 @@
             app:layout_anchorGravity="bottom|right|end" />
 
     </android.support.design.widget.CoordinatorLayout>
-
-    <include
-        android:id="@+id/progress"
-        layout="@layout/progress"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>

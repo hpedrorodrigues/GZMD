@@ -24,7 +24,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.support.design.widget.AppBarLayout
 import android.support.v7.graphics.Palette
-import android.util.Log
 import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
