@@ -19,7 +19,9 @@ package com.hpedrorodrigues.gizmodobr.activity
 import android.os.Bundle
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
+import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
+import android.support.v4.widget.NestedScrollView
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -84,9 +86,16 @@ class PostActivity : BaseActivity(), PostView {
         }
     }
 
+    override fun onDestroy() {
+        presenter.nestedScrollViewManager.cancelAutoScroll = true
+        super.onDestroy()
+    }
+
     override fun backgroundImage(): ImageView = backgroundImage
 
     override fun collapsingToolbar(): CollapsingToolbarLayout = collapsingToolbar
+
+    override fun coordinatorLayout(): CoordinatorLayout = coordinatorLayout
 
     override fun shareButton(): FloatingActionButton = shareButton
 
@@ -98,17 +107,19 @@ class PostActivity : BaseActivity(), PostView {
 
     override fun appBar(): AppBarLayout = appBar
 
+    override fun nestedScrollView(): NestedScrollView = nestedScrollView
+
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
     override fun screenName(): String = "Post"
 
     override fun showProgress() {
         progress.visibility = View.VISIBLE
-        coordinator.visibility = View.GONE
+        coordinatorLayout.visibility = View.GONE
     }
 
     override fun hideProgress() {
         progress.visibility = View.GONE
-        coordinator.visibility = View.VISIBLE
+        coordinatorLayout.visibility = View.VISIBLE
     }
 }

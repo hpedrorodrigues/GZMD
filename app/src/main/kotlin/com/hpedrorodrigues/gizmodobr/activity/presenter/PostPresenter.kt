@@ -35,6 +35,7 @@ import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
 import com.hpedrorodrigues.gizmodobr.extension.isBeforeLollipop
 import com.hpedrorodrigues.gizmodobr.listener.AppBarStateChangeListener
+import com.hpedrorodrigues.gizmodobr.manager.NestedScrollViewManager
 import com.hpedrorodrigues.gizmodobr.rx.Rx
 import com.hpedrorodrigues.gizmodobr.util.ColorUtil
 import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
@@ -51,6 +52,9 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     private var imageColor: Int? = null
 
     private lateinit var post: Post
+
+    lateinit var nestedScrollViewManager: NestedScrollViewManager
+        private set
 
     fun loadBackgroundImage(imageUrl: String) {
         Picasso.with(context).load(imageUrl).into(view.backgroundImage(), loadImageCallback())
@@ -85,6 +89,18 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
     fun loadPostBodyText(body: String) {
         view.textView().text = body
+
+        configureNestedViewScrolling()
+    }
+
+    fun configureNestedViewScrolling() {
+        nestedScrollViewManager = NestedScrollViewManager(
+                view.nestedScrollView(),
+                view.appBar(),
+                view.coordinatorLayout()
+        )
+
+        nestedScrollViewManager.enableAutoScroll()
     }
 
     fun loadPostBodyHtml(body: String) {
@@ -107,7 +123,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
 
-                webView.loadUrl("javascript:document.body.style.margin=\"8%\"; void 0");
+                webView.loadUrl("javascript:document.body.style.margin=\"8%\"; void 0")
             }
         })
     }
@@ -128,6 +144,8 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 if (!isBeforeLollipop()) {
                     view.window().navigationBarColor = darkColor
                 }
+
+                view.hideProgress()
 
                 configureAppBar()
             }

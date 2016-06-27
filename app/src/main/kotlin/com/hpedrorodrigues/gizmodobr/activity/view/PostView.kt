@@ -18,7 +18,9 @@ package com.hpedrorodrigues.gizmodobr.activity.view
 
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CollapsingToolbarLayout
+import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
+import android.support.v4.widget.NestedScrollView
 import android.view.Window
 import android.webkit.WebView
 import android.widget.ImageView
@@ -30,9 +32,13 @@ interface PostView : BaseView {
 
     fun textView(): TextView
 
+    fun nestedScrollView(): NestedScrollView
+
     fun backgroundImage(): ImageView
 
     fun collapsingToolbar(): CollapsingToolbarLayout
+
+    fun coordinatorLayout(): CoordinatorLayout
 
     fun shareButton(): FloatingActionButton
 
