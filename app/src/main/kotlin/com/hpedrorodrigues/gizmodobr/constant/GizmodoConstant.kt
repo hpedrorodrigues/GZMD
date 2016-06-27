@@ -26,9 +26,6 @@ object GizmodoConstant {
     val TEXT_PLAIN_TYPE = "text/plain"
     val GMAIL_CLASS_NAME_1 = "com.google.android.gm"
     val GMAIL_CLASS_NAME_2 = "com.google.android.gm.ComposeActivityGmail"
-    val ASK_TO_EXIT = "close_app"
-    val ENABLE_AUTO_SCROLL = "enable_auto_scroll"
-    val NIGHT_MODE = "night_mode"
     val FACEBOOK_CLASS_NAME = "com.facebook.katana"
     val FACEBOOK_CHANGE_VERSION = 3002850
     val FACEBOOK_PAGE_APP_WEB_MODAL_URL = "fb://facewebmodal/f?href="
@@ -38,6 +35,4 @@ object GizmodoConstant {
     val INSTAGRAM_APP_URL = "http://instagram.com/_u/"
     val INSTAGRAM_WEB_URL = "https://instagram.com/"
     val TWITTER_WEB_URL = "https://twitter.com/"
-    val MAX_VALUE_ALPHA = 255
-    val MIN_VALUE_ALPHA = 0
 }

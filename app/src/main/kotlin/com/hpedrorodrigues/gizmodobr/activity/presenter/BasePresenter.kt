@@ -38,7 +38,7 @@ abstract class BasePresenter<T>(val view: T) where T : BaseView {
     lateinit var connectionService: ConnectionService
 
     @Inject
-    lateinit var gizmodoPreferences: GizmodoPreferences
+    lateinit var preferences: GizmodoPreferences
 
     protected fun showSnackbar(view: View, resId: Int) {
         Snackbar.make(view, resId, Snackbar.LENGTH_SHORT).show()

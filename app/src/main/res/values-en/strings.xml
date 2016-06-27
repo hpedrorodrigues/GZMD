@@ -53,6 +53,8 @@
     <string name="menu_night_mode_system">Follow system</string>
     <string name="shared_by">%s\n\n- Shared by GZMD</string>
     <string name="open_in_browser">Open in browser</string>
+    <string name="keep_screen_on">Keep screen on</string>
+    <string name="keep_screen_on_description">Keep screen on in posts</string>
     <string name="action_refresh">Update</string>
     <string name="enable_auto_scroll_on_posts">Enable auto scroll on posts</string>
     <string name="enable_auto_scroll_on_posts_description">Enable automatic movement of the posts read</string>

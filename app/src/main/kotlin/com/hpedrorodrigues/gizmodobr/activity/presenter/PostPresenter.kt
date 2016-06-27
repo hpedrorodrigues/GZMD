@@ -26,7 +26,7 @@ import android.support.design.widget.AppBarLayout
 import android.support.v7.graphics.Palette
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
-import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
+import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
 import com.hpedrorodrigues.gizmodobr.extension.isBeforeLollipop
@@ -95,7 +95,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     }
 
     fun configureNestedViewScrolling() {
-        if (gizmodoPreferences.getBoolean(GizmodoConstant.ENABLE_AUTO_SCROLL)) {
+        if (preferences.getBoolean(PreferenceKey.ENABLE_AUTO_SCROLL)) {
             nestedScrollViewManager = NestedScrollViewManager(
                     view.nestedScrollView(),
                     view.appBar(),

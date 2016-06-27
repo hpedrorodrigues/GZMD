@@ -56,8 +56,10 @@
     <string name="open_in_browser">Abrir no navegador</string>
     <string name="shared_by">%s\n\n- Compartilhado via GZMD</string>
     <string name="action_refresh">Atualizar</string>
-    <string name="enable_auto_scroll_on_posts">Habilitar scroll automático de posts</string>
+    <string name="enable_auto_scroll_on_posts">Habilitar scroll automático</string>
     <string name="enable_auto_scroll_on_posts_description">Habilita movimentação automática dos posts para leitura</string>
+    <string name="keep_screen_on">Manter tela ativa</string>
+    <string name="keep_screen_on_description">Manter tela ativa durante leitura dos posts</string>
     <string name="error_trying_to_load_previews">Ocorreu um erro ao tentar carregar as pré-visualizações</string>
     <string name="error_trying_to_load_posts">Ocorreu um erro ao tentar carregar os posts</string>
 

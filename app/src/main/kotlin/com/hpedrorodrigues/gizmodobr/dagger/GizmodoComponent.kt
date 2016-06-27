@@ -19,6 +19,7 @@ package com.hpedrorodrigues.gizmodobr.dagger
 import com.hpedrorodrigues.gizmodobr.activity.*
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
+import com.hpedrorodrigues.gizmodobr.activity.presenter.SettingsPresenter
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
 import dagger.Component
 import javax.inject.Singleton
@@ -42,4 +43,6 @@ interface GizmodoComponent {
     fun inject(previewPresenter: PreviewPresenter)
 
     fun inject(postPresenter: PostPresenter)
+
+    fun inject(settingsPresenter: SettingsPresenter)
 }

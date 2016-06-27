@@ -47,4 +47,8 @@ interface PostView : BaseView {
     fun showProgress()
 
     fun hideProgress()
+
+    fun loadScreenOn()
+
+    fun unloadScreenOn()
 }

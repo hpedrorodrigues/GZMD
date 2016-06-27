@@ -32,7 +32,7 @@ import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.constant.BundleKey
-import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
+import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.observable.NetworkStateObservable
@@ -142,7 +142,7 @@ class PreviewActivity : BaseActivity(), PreviewView {
     }
 
     override fun onBackPressed() {
-        if (preferences.getBoolean(GizmodoConstant.ASK_TO_EXIT)) {
+        if (preferences.getBoolean(PreferenceKey.ASK_TO_EXIT)) {
             if (backPressedOnce) {
 
                 super.onBackPressed()

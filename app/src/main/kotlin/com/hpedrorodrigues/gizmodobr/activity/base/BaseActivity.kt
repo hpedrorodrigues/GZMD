@@ -24,7 +24,7 @@ import com.crashlytics.android.answers.Answers
 import com.crashlytics.android.answers.ContentViewEvent
 import com.google.android.gms.analytics.HitBuilders
 import com.hpedrorodrigues.gizmodobr.R
-import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
+import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoApplication
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.extension.isAfterGingerbread
@@ -49,7 +49,7 @@ abstract class BaseActivity() : BaseTransitionActivity() {
         injectMembers(component())
 
         val nightMode = preferences
-                .getInt(GizmodoConstant.NIGHT_MODE, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                .getInt(PreferenceKey.NIGHT_MODE, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         setNightMode(nightMode)
     }
@@ -115,7 +115,7 @@ abstract class BaseActivity() : BaseTransitionActivity() {
         if (isDifferent) {
             AppCompatDelegate.setDefaultNightMode(nightMode)
 
-            preferences.putInt(GizmodoConstant.NIGHT_MODE, nightMode)
+            preferences.putInt(PreferenceKey.NIGHT_MODE, nightMode)
 
             if (isAfterGingerbread()) {
                 recreate()

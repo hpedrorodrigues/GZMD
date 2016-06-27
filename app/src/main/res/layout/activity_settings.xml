@@ -115,6 +115,41 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/keepScreenOn"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/toggleKeepScreenOn"
+                    android:layout_toStartOf="@+id/toggleKeepScreenOn"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/keep_screen_on" />
+
+                    <TextView
+                        style="@style/AppTheme.SettingsItemSubTitleTextView"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/keep_screen_on_description" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/toggleKeepScreenOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center" />
+
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

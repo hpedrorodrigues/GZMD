@@ -22,10 +22,7 @@ import android.support.design.widget.CollapsingToolbarLayout
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.widget.NestedScrollView
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.Window
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import com.hpedrorodrigues.gizmodobr.R
@@ -33,6 +30,7 @@ import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.constant.BundleKey
+import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
@@ -81,6 +79,12 @@ class PostActivity : BaseActivity(), PostView {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+
+        unloadScreenOn()
+    }
+
     override fun onDestroy() {
         presenter.nestedScrollViewManager?.cancelAutoScroll = true
         super.onDestroy()
@@ -115,6 +119,14 @@ class PostActivity : BaseActivity(), PostView {
         progress.visibility = View.GONE
         nestedScrollView.visibility = View.VISIBLE
     }
+
+    override fun loadScreenOn() {
+        if (preferences.getBoolean(PreferenceKey.KEEP_SCREEN_ON)) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+    }
+
+    override fun unloadScreenOn() = window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
     override fun bindSubscription(subscription: Subscription) = compositeSubscription.add(subscription)
 }

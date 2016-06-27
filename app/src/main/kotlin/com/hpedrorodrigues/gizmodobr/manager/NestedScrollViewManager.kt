@@ -13,7 +13,7 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
 
     private var wasFullScrolled = false
 
-    private val durationScroll = 100L
+    private val durationScroll = 50L
 
     var cancelAutoScroll = false
 

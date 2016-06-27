@@ -18,21 +18,20 @@ package com.hpedrorodrigues.gizmodobr.activity
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
-import android.widget.CompoundButton
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import android.widget.Switch
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
-import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
+import com.hpedrorodrigues.gizmodobr.activity.presenter.SettingsPresenter
+import com.hpedrorodrigues.gizmodobr.activity.view.SettingsView
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
-import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
-import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
-import com.hpedrorodrigues.gizmodobr.util.GizmodoMail
 import kotlinx.android.synthetic.main.activity_settings.*
-import javax.inject.Inject
+import rx.Subscription
 
-class SettingsActivity : BaseActivity() {
+class SettingsActivity : BaseActivity(), SettingsView {
 
-    @Inject
-    lateinit var gizmodoPreferences: GizmodoPreferences
+    lateinit var presenter: SettingsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,55 +41,46 @@ class SettingsActivity : BaseActivity() {
 
         enableUpButton()
 
-        loadValues()
+        presenter = SettingsPresenter(this)
 
-        configListeners()
+        component().inject(presenter)
+
+        presenter.loadValues()
+
+        presenter.configListeners(this)
     }
 
     override fun screenName(): String = "Settings"
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
-    private fun loadValues() {
-        toggleCloseTheApp.isChecked = gizmodoPreferences.getBoolean(GizmodoConstant.ASK_TO_EXIT)
-        toggleEnableAutoScroll.isChecked = gizmodoPreferences.getBoolean(GizmodoConstant.ENABLE_AUTO_SCROLL)
-    }
+    override fun closeApp(): RelativeLayout = closeApp
 
-    private fun configListeners() {
-        closeApp.setOnClickListener {
-            val isChecked = toggleCloseTheApp.isChecked
-            gizmodoPreferences.putBoolean(GizmodoConstant.ASK_TO_EXIT, !isChecked)
-            toggleCloseTheApp.isChecked = !isChecked
-        }
+    override fun enableAutoScroll(): RelativeLayout = enableAutoScroll
 
-        toggleCloseTheApp.setOnCheckedChangeListener {
-            compoundButton: CompoundButton, isChecked: Boolean ->
-            gizmodoPreferences.putBoolean(GizmodoConstant.ASK_TO_EXIT, isChecked)
-        }
+    override fun keepScreenOn(): RelativeLayout = keepScreenOn
 
-        enableAutoScroll.setOnClickListener {
-            val isChecked = !toggleEnableAutoScroll.isChecked
-            gizmodoPreferences.putBoolean(GizmodoConstant.ENABLE_AUTO_SCROLL, isChecked)
-            toggleEnableAutoScroll.isChecked = isChecked
-        }
+    override fun toggleCloseTheApp(): Switch = toggleCloseTheApp
 
-        toggleEnableAutoScroll.setOnCheckedChangeListener {
-            compoundButton: CompoundButton, isChecked: Boolean ->
-            gizmodoPreferences.putBoolean(GizmodoConstant.ENABLE_AUTO_SCROLL, isChecked)
-        }
+    override fun toggleEnableAutoScroll(): Switch = toggleEnableAutoScroll
 
-        aboutTheApp.setOnClickListener { startWithFade(AboutActivity::class.java) }
+    override fun toggleKeepScreenOn(): Switch = toggleKeepScreenOn
 
-        rateTheApp.setOnClickListener { GizmodoApp.view(this) }
+    override fun aboutTheApp(): LinearLayout = aboutTheApp
 
-        shareTheApp.setOnClickListener { GizmodoApp.share(this) }
+    override fun rateTheApp(): LinearLayout = rateTheApp
 
-        reportABug.setOnClickListener { GizmodoMail.sendReportBugEmail(this) }
+    override fun shareTheApp(): LinearLayout = shareTheApp
 
-        ideaToImprove.setOnClickListener { GizmodoMail.sendImproveAppEmail(this) }
+    override fun reportABug(): LinearLayout = reportABug
 
-        sendUsYourFeedback.setOnClickListener { GizmodoMail.sendFeedbackEmail(this) }
+    override fun ideaToImprove(): LinearLayout = ideaToImprove
 
-        contactUs.setOnClickListener { GizmodoMail.sendContactUsEmail(this) }
-    }
+    override fun sendUsYourFeedback(): LinearLayout = sendUsYourFeedback
+
+    override fun contactUs(): LinearLayout = contactUs
+
+    override fun startAboutActivity() = startWithFade(AboutActivity::class.java)
+
+    override fun bindSubscription(subscription: Subscription) = compositeSubscription.add(subscription)
 }
