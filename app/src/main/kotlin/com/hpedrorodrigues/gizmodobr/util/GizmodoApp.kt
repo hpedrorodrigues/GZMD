@@ -17,6 +17,7 @@
 package com.hpedrorodrigues.gizmodobr.util
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -57,6 +58,22 @@ object GizmodoApp {
 
     fun openBrowser(activity: Activity, url: String) {
         activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
+
+    fun openGPlus(activity: Activity, profile: String) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW)
+
+            intent.setClassName(GizmodoConstant.GOOGLE_PLUS_PACKAGE_NAME,
+                    GizmodoConstant.GOOGLE_PLUS_CLASS_NAME)
+
+            intent.putExtra(GizmodoConstant.GOOGLE_PLUS_EXTRA_NAME, profile)
+
+            activity.startActivity(intent)
+        } catch(e: ActivityNotFoundException) {
+
+            openBrowser(activity, GizmodoConstant.GOOGLE_PLUS_URL.replace("%s", profile))
+        }
     }
 
     fun openFacebookPage(activity: Activity, pageId: String) {

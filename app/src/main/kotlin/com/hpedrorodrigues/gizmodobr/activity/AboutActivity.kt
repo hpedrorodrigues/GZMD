@@ -20,10 +20,18 @@ import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
+import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
+import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
+import com.hpedrorodrigues.gizmodobr.util.VersionInfo
+import kotlinx.android.synthetic.main.about_body.*
 import kotlinx.android.synthetic.main.activity_about.*
+import javax.inject.Inject
 
 class AboutActivity : BaseActivity() {
+
+    @Inject
+    lateinit var versionInfo: VersionInfo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +40,35 @@ class AboutActivity : BaseActivity() {
         configureToolbar(toolbar as Toolbar)
 
         enableUpButton()
+
+        loadVersion()
+
+        configureListeners()
     }
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
     override fun screenName(): String = "About"
+
+    private fun loadVersion() {
+        version.text = versionInfo.getVersionName()
+    }
+
+    private fun configureListeners() {
+        google_plus.setOnClickListener {
+            GizmodoApp.openGPlus(this, GizmodoConstant.GIZMODO_BR_GOOGLE_PLUS_ID)
+        }
+
+        facebook.setOnClickListener {
+            GizmodoApp.openFacebookPage(this, GizmodoConstant.GIZMODO_BR_FACEBOOK_ID)
+        }
+
+        instagram.setOnClickListener {
+            GizmodoApp.openInstagramProfile(this, GizmodoConstant.GIZMODO_BR_INSTAGRAM_ID)
+        }
+
+        twitter.setOnClickListener {
+            GizmodoApp.openTwitterProfile(this, GizmodoConstant.GIZMODO_BR_TWITTER_ID)
+        }
+    }
 }

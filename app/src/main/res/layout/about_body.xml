@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2016 Pedro Rodrigues
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/screens"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="@dimen/spacing_xsmall"
+            app:cardElevation="2sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:text="@string/gizmodo_about_title"
+                    android:textAppearance="@android:style/TextAppearance.Medium"
+                    android:textColor="@color/colorAccentInverse" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:gravity="center"
+                    android:text="@string/gizmodo_about_description"
+                    android:textAppearance="@android:style/TextAppearance.Small"
+                    android:textColor="@color/colorAccentInverse" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/google_plus"
+                        android:layout_width="@dimen/default_size"
+                        android:layout_height="@dimen/default_size"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:background="@drawable/selectable_item_background"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_xxlarge"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/ic_google_plus_box"
+                            android:tint="@color/colorAccentInverse" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/facebook"
+                        android:layout_width="@dimen/default_size"
+                        android:layout_height="@dimen/default_size"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:background="@drawable/selectable_item_background"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_xxlarge"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/ic_facebook_box"
+                            android:tint="@color/colorAccentInverse" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/instagram"
+                        android:layout_width="@dimen/default_size"
+                        android:layout_height="@dimen/default_size"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:background="@drawable/selectable_item_background"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_xxlarge"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/ic_instagram"
+                            android:tint="@color/colorAccentInverse" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/twitter"
+                        android:layout_width="@dimen/default_size"
+                        android:layout_height="@dimen/default_size"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:background="@drawable/selectable_item_background"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/spacing_xxlarge"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/ic_twitter_box"
+                            android:tint="@color/colorAccentInverse" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

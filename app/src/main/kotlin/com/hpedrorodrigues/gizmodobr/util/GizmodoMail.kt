@@ -37,7 +37,7 @@ object GizmodoMail {
         try {
 
             val intent = buildEmailIntent(activity, resSubjectId)
-            intent.setClassName(GizmodoConstant.GMAIL_CLASS_NAME_1, GizmodoConstant.GMAIL_CLASS_NAME_2)
+            intent.setClassName(GizmodoConstant.GMAIL_PACKAGE_NAME, GizmodoConstant.GMAIL_CLASS_NAME)
             activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
 

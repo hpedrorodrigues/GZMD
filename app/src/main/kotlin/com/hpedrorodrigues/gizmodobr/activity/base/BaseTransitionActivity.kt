@@ -192,7 +192,7 @@ abstract class BaseTransitionActivity : AppCompatActivity() {
                 transaction.setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up)
             GizmodoAnimation.SLIDE_DOWN ->
                 transaction.setCustomAnimations(R.anim.slide_in_down, R.anim.slide_out_down)
-            else -> IllegalArgumentException("Invalid animation $animation")
+            else -> throw IllegalArgumentException("Invalid animation $animation")
         }
 
         transaction.replace(containerId, fragment).commit()
@@ -213,8 +213,9 @@ abstract class BaseTransitionActivity : AppCompatActivity() {
                 overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
             GizmodoAnimation.SLIDE_DOWN ->
                 overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down)
-            else -> IllegalArgumentException("Invalid animation $animation")
+            else -> throw IllegalArgumentException("Invalid animation $animation")
         }
+
         currentAnimation = animation
     }
 
@@ -222,27 +223,15 @@ abstract class BaseTransitionActivity : AppCompatActivity() {
         overrideTransition(AnimationInfo.findReverseByAnimation(currentAnimation))
     }
 
-    protected fun overrideTransitionWithFade() {
-        overrideTransition(GizmodoAnimation.FADE)
-    }
+    protected fun overrideTransitionWithFade() = overrideTransition(GizmodoAnimation.FADE)
 
-    protected fun overrideTransitionWithZoom() {
-        overrideTransition(GizmodoAnimation.ZOOM)
-    }
+    protected fun overrideTransitionWithZoom() = overrideTransition(GizmodoAnimation.ZOOM)
 
-    protected fun overrideTransitionWithSlideLeft() {
-        overrideTransition(GizmodoAnimation.SLIDE_LEFT)
-    }
+    protected fun overrideTransitionWithSlideLeft() = overrideTransition(GizmodoAnimation.SLIDE_LEFT)
 
-    protected fun overrideTransitionWithSlideRight() {
-        overrideTransition(GizmodoAnimation.SLIDE_RIGHT)
-    }
+    protected fun overrideTransitionWithSlideRight() = overrideTransition(GizmodoAnimation.SLIDE_RIGHT)
 
-    protected fun overrideTransitionWithSlideUp() {
-        overrideTransition(GizmodoAnimation.SLIDE_UP)
-    }
+    protected fun overrideTransitionWithSlideUp() = overrideTransition(GizmodoAnimation.SLIDE_UP)
 
-    protected fun overrideTransitionWithSlideDown() {
-        overrideTransition(GizmodoAnimation.SLIDE_DOWN)
-    }
+    protected fun overrideTransitionWithSlideDown() = overrideTransition(GizmodoAnimation.SLIDE_DOWN)
 }

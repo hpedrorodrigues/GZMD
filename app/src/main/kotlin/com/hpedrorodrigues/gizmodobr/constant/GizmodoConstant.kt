@@ -20,12 +20,17 @@ object GizmodoConstant {
 
     val EMAIL = "brgzmd@gmail.com"
     val DEFAULT_SUBJECT = "GZMD -"
+
     val DEFAULT_EMAIL_TYPE = "message/rfc822"
     val PLAY_STORE_APP_URL = "market://details?id="
     val PLAY_STORE_WEB_URL = "https://play.google.com/store/apps/details?id="
     val TEXT_PLAIN_TYPE = "text/plain"
-    val GMAIL_CLASS_NAME_1 = "com.google.android.gm"
-    val GMAIL_CLASS_NAME_2 = "com.google.android.gm.ComposeActivityGmail"
+    val GMAIL_PACKAGE_NAME = "com.google.android.gm"
+    val GMAIL_CLASS_NAME = "com.google.android.gm.ComposeActivityGmail"
+    val GOOGLE_PLUS_PACKAGE_NAME = "com.google.android.apps.plus"
+    val GOOGLE_PLUS_CLASS_NAME = "com.google.android.apps.plus.phone.UrlGatewayActivity"
+    val GOOGLE_PLUS_EXTRA_NAME = "customAppUri"
+    val GOOGLE_PLUS_URL = "https://plus.google.com/%s/posts"
     val FACEBOOK_CLASS_NAME = "com.facebook.katana"
     val FACEBOOK_CHANGE_VERSION = 3002850
     val FACEBOOK_PAGE_APP_WEB_MODAL_URL = "fb://facewebmodal/f?href="
@@ -35,4 +40,12 @@ object GizmodoConstant {
     val INSTAGRAM_APP_URL = "http://instagram.com/_u/"
     val INSTAGRAM_WEB_URL = "https://instagram.com/"
     val TWITTER_WEB_URL = "https://twitter.com/"
+
+    val GIZMODO_BR_FACEBOOK_ID = "gizmodobrasil"
+
+    val GIZMODO_BR_TWITTER_ID = "GizmodoBR"
+
+    val GIZMODO_BR_INSTAGRAM_ID = "gizmodobrasil"
+
+    val GIZMODO_BR_GOOGLE_PLUS_ID = "+gizmodobrasil"
 }

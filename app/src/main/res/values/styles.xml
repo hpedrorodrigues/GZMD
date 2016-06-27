@@ -25,6 +25,11 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
+    <style name="CollapsingToolbarLayout.NoTitle" parent="AppTheme">
+        <item name="android:textColor">@color/transparent</item>
+        <item name="android:textSize">0.1sp</item>
+    </style>
+
     <style name="AppTheme.SettingsHeaderTextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/vertical_size_header</item>
