@@ -26,7 +26,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
-import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
 import com.hpedrorodrigues.gizmodobr.R
@@ -74,11 +73,6 @@ class PostActivity : BaseActivity(), PostView {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_see_like_page -> {
-                item.isChecked = !item.isChecked
-                presenter.seeLikePage(item.isChecked)
-                true
-            }
             R.id.action_open_in_browser -> {
                 GizmodoApp.openBrowser(this, preview.postUrl)
                 true
@@ -101,8 +95,6 @@ class PostActivity : BaseActivity(), PostView {
     override fun shareButton(): FloatingActionButton = shareButton
 
     override fun window(): Window = window
-
-    override fun webView(): WebView = webView
 
     override fun textView(): TextView = textView
 

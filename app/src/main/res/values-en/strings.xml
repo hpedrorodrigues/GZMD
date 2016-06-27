@@ -52,7 +52,6 @@
     <string name="menu_night_mode_night">Night (always)</string>
     <string name="menu_night_mode_system">Follow system</string>
     <string name="shared_by">%s\n\n- Shared by GZMD</string>
-    <string name="see_like_page">See like page</string>
     <string name="open_in_browser">Open in browser</string>
     <string name="action_refresh">Update</string>
     <string name="enable_auto_scroll_on_posts">Enable auto scroll on posts</string>

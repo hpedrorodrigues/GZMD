@@ -20,19 +20,9 @@ class Post() : BaseEntity() {
 
     var title: String = ""
 
-    var bodyHtml: String = ""
-
-    var bodyText: String = ""
-
-    var authorName: String = ""
-
-    var authorProfileUrl: String = ""
-
-    var postedAt: String = ""
+    var body: String = ""
 
     var info: String = ""
-
-    var imageUrl: String = ""
 
     var crawledAt: Long = 0L
 }

@@ -16,10 +16,7 @@
 
 package com.hpedrorodrigues.gizmodobr.dagger
 
-import com.hpedrorodrigues.gizmodobr.activity.AboutActivity
-import com.hpedrorodrigues.gizmodobr.activity.PostActivity
-import com.hpedrorodrigues.gizmodobr.activity.PreviewActivity
-import com.hpedrorodrigues.gizmodobr.activity.SettingsActivity
+import com.hpedrorodrigues.gizmodobr.activity.*
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PreviewPresenter
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter

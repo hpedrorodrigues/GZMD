@@ -24,10 +24,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.support.design.widget.AppBarLayout
 import android.support.v7.graphics.Palette
-import android.view.View
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
@@ -79,8 +75,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 .subscribe(
                         {
                             post = it
-                            loadPostBodyHtml(post.bodyHtml)
-                            loadPostBodyText(post.bodyText)
+                            loadBody(post.body)
                             onCompleted()
                         },
                         {
@@ -93,7 +88,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
         view.bindSubscription(subscription)
     }
 
-    fun loadPostBodyText(body: String) {
+    fun loadBody(body: String) {
         view.textView().text = body
 
         configureNestedViewScrolling()
@@ -109,31 +104,6 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
             nestedScrollViewManager?.enableAutoScroll()
         }
-    }
-
-    fun loadPostBodyHtml(body: String) {
-        val webView = view.webView()
-        val settings = webView.settings
-
-        webView.clearCache(true)
-
-        settings.builtInZoomControls = true
-        settings.displayZoomControls = false
-        settings.loadWithOverviewMode = true
-        settings.javaScriptEnabled = true
-        settings.cacheMode = WebSettings.LOAD_NO_CACHE
-        webView.settings.setSupportZoom(true)
-
-        webView.loadData(body, "text/html; charset=utf-8", "UTF-8")
-
-        webView.setWebViewClient(object : WebViewClient() {
-
-            override fun onPageFinished(view: WebView?, url: String?) {
-                super.onPageFinished(view, url)
-
-                webView.loadUrl("javascript:document.body.style.margin=\"8%\"; void 0")
-            }
-        })
     }
 
     fun loadImageCallback(): Callback = object : Callback {
@@ -175,10 +145,5 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 }
             })
         }
-    }
-
-    fun seeLikePage(seeLikePage: Boolean) {
-        view.webView().visibility = if (seeLikePage) View.VISIBLE else View.GONE
-        view.textView().visibility = if (seeLikePage) View.GONE else View.VISIBLE
     }
 }

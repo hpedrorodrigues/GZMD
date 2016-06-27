@@ -25,11 +25,4 @@
         android:title="@string/open_in_browser"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_see_like_page"
-        android:checkable="true"
-        android:orderInCategory="2"
-        android:title="@string/see_like_page"
-        app:showAsAction="never" />
-
 </menu>

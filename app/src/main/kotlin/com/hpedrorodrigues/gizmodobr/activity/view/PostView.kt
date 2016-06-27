@@ -28,8 +28,6 @@ import android.widget.TextView
 
 interface PostView : BaseView {
 
-    fun webView(): WebView
-
     fun textView(): TextView
 
     fun nestedScrollView(): NestedScrollView
