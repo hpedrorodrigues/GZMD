@@ -17,7 +17,6 @@
 package com.hpedrorodrigues.gizmodobr.activity.presenter
 
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
@@ -25,6 +24,7 @@ import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
 import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.extension.previewClick
 import com.hpedrorodrigues.gizmodobr.listener.RecyclerViewScrollListener
+import com.hpedrorodrigues.gizmodobr.logger.Logger
 import com.hpedrorodrigues.gizmodobr.rx.Rx
 import javax.inject.Inject
 
@@ -112,7 +112,7 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
                 view.hideProgress()
             }
 
-            gizmodoNetwork
+            val subscription = gizmodoNetwork
                     .retrievePreviewByPage(page)
                     .retry(MAX_RETRIES)
                     .compose(Rx.applySchedulers<List<Preview>>())
@@ -122,10 +122,14 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
                                 onCompleted()
                             },
                             {
-                                Log.e("Error", it.message)
+
+                                Logger.e("Error", it)
+                                showSnackbar(view.recyclerView(), R.string.error_trying_to_load_previews)
                                 onCompleted()
                             }
                     )
+
+            view.bindSubscription(subscription)
         }
     }
 }

@@ -16,6 +16,8 @@
 
 package com.hpedrorodrigues.gizmodobr.activity.presenter
 
+import android.support.design.widget.Snackbar
+import android.view.View
 import com.hpedrorodrigues.gizmodobr.network.GizmodoNetwork
 import com.hpedrorodrigues.gizmodobr.activity.view.BaseView
 import com.hpedrorodrigues.gizmodobr.preferences.GizmodoPreferences
@@ -37,4 +39,8 @@ abstract class BasePresenter<T>(val view: T) where T : BaseView {
 
     @Inject
     lateinit var gizmodoPreferences: GizmodoPreferences
+
+    protected fun showSnackbar(view: View, resId: Int) {
+        Snackbar.make(view, resId, Snackbar.LENGTH_SHORT).show()
+    }
 }

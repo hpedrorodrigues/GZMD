@@ -36,6 +36,7 @@ import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
 import com.hpedrorodrigues.gizmodobr.extension.isBeforeLollipop
 import com.hpedrorodrigues.gizmodobr.listener.AppBarStateChangeListener
+import com.hpedrorodrigues.gizmodobr.logger.Logger
 import com.hpedrorodrigues.gizmodobr.manager.NestedScrollViewManager
 import com.hpedrorodrigues.gizmodobr.rx.Rx
 import com.hpedrorodrigues.gizmodobr.util.ColorUtil
@@ -70,7 +71,9 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     fun loadPost(postUrl: String) {
         view.showProgress()
 
-        gizmodoNetwork
+        fun onCompleted() = view.hideProgress()
+
+        val subscription = gizmodoNetwork
                 .retrievePostByUrl(PostDTO(postUrl))
                 .retry(MAX_RETRIES)
                 .compose(Rx.applySchedulers<Post>())
@@ -79,13 +82,16 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                             post = it
                             loadPostBodyHtml(post.bodyHtml)
                             loadPostBodyText(post.bodyText)
-                            view.hideProgress()
+                            onCompleted()
                         },
                         {
-                            Log.e("Error", "", it)
-                            view.hideProgress()
+                            Logger.e("Error", it)
+                            showSnackbar(view.backgroundImage(), R.string.error_trying_to_load_posts)
+                            onCompleted()
                         }
                 )
+
+        view.bindSubscription(subscription)
     }
 
     fun loadPostBodyText(body: String) {
@@ -147,8 +153,6 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                 if (!isBeforeLollipop()) {
                     view.window().navigationBarColor = darkColor
                 }
-
-                view.hideProgress()
 
                 configureAppBar()
             }

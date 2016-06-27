@@ -59,5 +59,7 @@
     <string name="action_refresh">Atualizar</string>
     <string name="enable_auto_scroll_on_posts">Habilitar scroll automático de posts</string>
     <string name="enable_auto_scroll_on_posts_description">Habilita movimentação automática dos posts para leitura</string>
+    <string name="error_trying_to_load_previews">Ocorreu um erro ao tentar carregar as pré-visualizações</string>
+    <string name="error_trying_to_load_posts">Ocorreu um erro ao tentar carregar os posts</string>
 
 </resources>

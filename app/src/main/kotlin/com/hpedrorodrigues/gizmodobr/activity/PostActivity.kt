@@ -38,6 +38,7 @@ import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
 import kotlinx.android.synthetic.main.activity_post.*
+import rx.Subscription
 
 class PostActivity : BaseActivity(), PostView {
 
@@ -122,4 +123,6 @@ class PostActivity : BaseActivity(), PostView {
         progress.visibility = View.GONE
         coordinatorLayout.visibility = View.VISIBLE
     }
+
+    override fun bindSubscription(subscription: Subscription) = compositeSubscription.add(subscription)
 }

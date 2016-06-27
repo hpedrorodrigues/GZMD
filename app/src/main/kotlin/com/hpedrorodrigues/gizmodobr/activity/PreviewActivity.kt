@@ -40,6 +40,7 @@ import com.malinskiy.superrecyclerview.SuperRecyclerView
 import kotlinx.android.synthetic.main.activity_preview.*
 import kotlinx.android.synthetic.main.splash.*
 import kotlinx.android.synthetic.main.without_network.*
+import rx.Subscription
 import java.util.*
 
 class PreviewActivity : BaseActivity(), PreviewView {
@@ -179,4 +180,6 @@ class PreviewActivity : BaseActivity(), PreviewView {
         superRecyclerView.visibility = View.VISIBLE
         splash.visibility = View.GONE
     }
+
+    override fun bindSubscription(subscription: Subscription) = compositeSubscription.add(subscription)
 }

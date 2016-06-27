@@ -16,4 +16,9 @@
 
 package com.hpedrorodrigues.gizmodobr.activity.view
 
-interface BaseView
+import rx.Subscription
+
+interface BaseView {
+
+    fun bindSubscription(subscription: Subscription)
+}
