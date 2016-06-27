@@ -93,6 +93,11 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
     fun reloadPreviews() {
         view.recyclerView().swipeToRefresh?.isRefreshing = true
         page = INITIAL_PAGE
+
+        if (connectionService.hasConnection()) {
+            adapter.clear()
+        }
+
         loadPreviews()
     }
 

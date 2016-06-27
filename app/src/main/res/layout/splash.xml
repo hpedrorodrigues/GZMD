@@ -16,35 +16,32 @@
   ~ limitations under the License.
 -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/screens">
+    android:background="@color/screens"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:gravity="center"
-        android:keepScreenOn="true"
         android:text="@string/app_name"
         android:textColor="@color/colorAccent"
-        android:textSize="50sp"
+        android:textSize="60sp"
         android:textStyle="bold" />
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/progressBar"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/fullscreen_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_xxlarge"
         app:indicator="Pacman"
         app:indicator_color="@color/colorAccent" />
 
-</RelativeLayout>
+</LinearLayout>
