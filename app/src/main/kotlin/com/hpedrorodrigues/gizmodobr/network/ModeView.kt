@@ -16,17 +16,6 @@
 
 package com.hpedrorodrigues.gizmodobr.network
 
-import com.hpedrorodrigues.gizmodobr.dto.PostDTO
-import com.hpedrorodrigues.gizmodobr.entity.Post
-import com.hpedrorodrigues.gizmodobr.entity.Preview
-import retrofit2.http.*
-import rx.Observable
-
-interface GizmodoNetwork {
-
-    @GET("/preview/{page}")
-    fun retrievePreviewByPage(@Path("page") page: Int, @Query("view") view: ModeView): Observable<List<Preview>>
-
-    @POST("/post")
-    fun retrievePostByUrl(@Body postDTO: PostDTO): Observable<Post>
+enum class ModeView {
+    Home, Special, HandsOn, Review, Game
 }

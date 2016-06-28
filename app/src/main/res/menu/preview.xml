@@ -38,8 +38,40 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_night"
+        android:id="@+id/action_view"
         android:orderInCategory="4"
+        android:title="@string/menu_view"
+        app:showAsAction="never">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/menu_home"
+                    android:title="@string/menu_home" />
+                <item
+                    android:id="@+id/menu_special"
+                    android:title="@string/menu_special" />
+                <item
+                    android:id="@+id/menu_hands_on"
+                    android:title="@string/menu_hands_on" />
+                <item
+                    android:id="@+id/menu_review"
+                    android:title="@string/menu_review" />
+                <item
+                    android:id="@+id/menu_game"
+                    android:title="@string/menu_game" />
+
+            </group>
+
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/action_night"
+        android:orderInCategory="5"
         android:title="@string/menu_night_mode"
         app:showAsAction="never">
 

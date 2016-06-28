@@ -35,6 +35,7 @@ import com.hpedrorodrigues.gizmodobr.constant.BundleKey
 import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import com.hpedrorodrigues.gizmodobr.entity.Preview
+import com.hpedrorodrigues.gizmodobr.network.ModeView
 import com.hpedrorodrigues.gizmodobr.observable.NetworkStateObservable
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 import kotlinx.android.synthetic.main.activity_preview.*
@@ -48,6 +49,8 @@ class PreviewActivity : BaseActivity(), PreviewView {
     lateinit var presenter: PreviewPresenter
 
     private var backPressedOnce: Boolean = false
+
+    private var modeView: ModeView = ModeView.Home
 
     private var networkStateObserver: Observer = Observer { observable, data ->
         val hasConnection = connectionService.hasConnection()
@@ -81,6 +84,8 @@ class PreviewActivity : BaseActivity(), PreviewView {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        loadModeView(menu)
+
         return when (AppCompatDelegate.getDefaultNightMode()) {
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> {
                 menu.findItem(R.id.menu_night_mode_system).isChecked = true
@@ -116,6 +121,26 @@ class PreviewActivity : BaseActivity(), PreviewView {
                 presenter.reloadPreviews()
                 true
             }
+            R.id.menu_home -> {
+                setModeView(ModeView.Home, item)
+                true
+            }
+            R.id.menu_special -> {
+                setModeView(ModeView.Special, item)
+                true
+            }
+            R.id.menu_hands_on -> {
+                setModeView(ModeView.HandsOn, item)
+                true
+            }
+            R.id.menu_review -> {
+                setModeView(ModeView.Review, item)
+                true
+            }
+            R.id.menu_game -> {
+                setModeView(ModeView.Game, item)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -130,6 +155,8 @@ class PreviewActivity : BaseActivity(), PreviewView {
     override fun fabTop(): FloatingActionButton = fabTop
 
     override fun appBar(): AppBarLayout = appBar
+
+    override fun modeView(): ModeView = modeView
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
@@ -179,6 +206,19 @@ class PreviewActivity : BaseActivity(), PreviewView {
     override fun hideProgress() {
         superRecyclerView.visibility = View.VISIBLE
         splash.visibility = View.GONE
+    }
+
+    private fun setModeView(modeView: ModeView, item: MenuItem) {
+        item.isChecked = !item.isChecked
+        this.modeView = modeView
+        presenter.reloadPreviewsWithProgress()
+    }
+
+    private fun loadModeView(menu: Menu) {
+        val menuItem = menu.findItem(R.id.menu_home)
+        if (modeView.equals(ModeView.Home) && menuItem != null) {
+            menuItem.isChecked = true
+        }
     }
 
     override fun bindSubscription(subscription: Subscription) = compositeSubscription.add(subscription)

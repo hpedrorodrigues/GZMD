@@ -19,6 +19,7 @@ package com.hpedrorodrigues.gizmodobr.activity.view
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.FloatingActionButton
 import com.hpedrorodrigues.gizmodobr.entity.Preview
+import com.hpedrorodrigues.gizmodobr.network.ModeView
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 
 interface PreviewView : BaseView {
@@ -36,4 +37,6 @@ interface PreviewView : BaseView {
     fun showProgress()
 
     fun hideProgress()
+
+    fun modeView(): ModeView
 }

@@ -26,6 +26,7 @@ import com.hpedrorodrigues.gizmodobr.extension.previewClick
 import com.hpedrorodrigues.gizmodobr.listener.RecyclerViewScrollListener
 import com.hpedrorodrigues.gizmodobr.logger.Logger
 import com.hpedrorodrigues.gizmodobr.rx.Rx
+import rx.Subscription
 import javax.inject.Inject
 
 class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
@@ -41,6 +42,8 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
     lateinit var adapter: PreviewAdapter
 
     private var page = INITIAL_PAGE
+
+    private var subscription: Subscription? = null
 
     fun configureRecyclerView() {
         view.recyclerView().setLayoutManager(LinearLayoutManager(view.recyclerView().context))
@@ -75,19 +78,26 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
     }
 
     fun configureFabTop() {
-        view.fabTop().setOnClickListener {
-            val recyclerView = view.recyclerView().recyclerView
+        view.fabTop().setOnClickListener { scrollRecyclerViewToTop() }
+    }
 
-            val firstItemPosition = (recyclerView.layoutManager as LinearLayoutManager)
-                    .findFirstVisibleItemPosition()
+    fun scrollRecyclerViewToTop() {
+        val recyclerView = view.recyclerView().recyclerView
 
-            if (firstItemPosition > ITEM_POSITION_TO_SCROLL) {
-                recyclerView.scrollToPosition(ITEM_POSITION_TO_SCROLL)
-            }
+        val firstItemPosition = (recyclerView.layoutManager as LinearLayoutManager)
+                .findFirstVisibleItemPosition()
 
-            recyclerView.smoothScrollToPosition(0)
-            view.appBar().setExpanded(true, true)
+        if (firstItemPosition > ITEM_POSITION_TO_SCROLL) {
+            recyclerView.scrollToPosition(ITEM_POSITION_TO_SCROLL)
         }
+
+        recyclerView.smoothScrollToPosition(0)
+        view.appBar().setExpanded(true, true)
+    }
+
+    fun reloadPreviewsWithProgress() {
+        view.showProgress()
+        reloadPreviews()
     }
 
     fun reloadPreviews() {
@@ -106,14 +116,16 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
         view.reloadWithoutNetworkLayout(hasConnection)
 
         if (hasConnection) {
+            cancelOldSubscription()
+
             fun onCompleted() {
                 view.recyclerView().swipeToRefresh?.isRefreshing = false
                 view.recyclerView().hideMoreProgress()
                 view.hideProgress()
             }
 
-            val subscription = gizmodoNetwork
-                    .retrievePreviewByPage(page)
+            subscription = gizmodoNetwork
+                    .retrievePreviewByPage(page, view.modeView())
                     .compose(Rx.applySchedulers<List<Preview>>())
                     .subscribe(
                             {
@@ -128,7 +140,12 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
                             }
                     )
 
-            view.bindSubscription(subscription)
+            view.bindSubscription(subscription!!)
         }
+    }
+
+    fun cancelOldSubscription() {
+        subscription?.unsubscribe()
+        subscription = null
     }
 }
