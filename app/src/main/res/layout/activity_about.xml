@@ -77,8 +77,8 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/default_size"
-                            android:layout_height="@dimen/default_size"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
                             android:contentDescription="@string/app_name"
                             android:src="@mipmap/ic_launcher" />
 
