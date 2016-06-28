@@ -80,7 +80,7 @@ class AboutActivity : BaseActivity() {
 
     private fun configureStatusAndNavigationBar() {
         if (!isBeforeLollipop()) {
-            val colorAccentInverseColor = resources.getColor(R.color.colorAccentInverseDark, theme)
+            val colorAccentInverseColor = resources.getColor(R.color.colorPrimary, theme)
             val darkColor = ColorUtil.getDarkerColor(colorAccentInverseColor)
             window.statusBarColor = darkColor
             window.navigationBarColor = darkColor

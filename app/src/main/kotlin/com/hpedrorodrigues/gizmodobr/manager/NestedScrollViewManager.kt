@@ -24,8 +24,8 @@ import android.support.v4.widget.NestedScrollView
 import com.hpedrorodrigues.gizmodobr.listener.AppBarStateChangeListener
 
 class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
-                              val appBarLayout: AppBarLayout,
-                              val coordinatorLayout: CoordinatorLayout) {
+                              val appBar: AppBarLayout,
+                              val coordinator: CoordinatorLayout) {
 
     private var wasFullScrolled = false
 
@@ -41,11 +41,11 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
     val appBarStateChangedListener = object : AppBarStateChangeListener() {
 
         override fun onStateChanged(appBarLayout: AppBarLayout, state: State) {
-            isAppBarExpanded = if (state.equals(State.COLLAPSED)) false else true
+            isAppBarExpanded = !state.equals(State.COLLAPSED)
         }
     }
 
-    private fun registerAppBarScrollListener() = appBarLayout
+    private fun registerAppBarScrollListener() = appBar
             .addOnOffsetChangedListener(appBarStateChangedListener)
 
     fun enableAutoScroll() {
@@ -79,31 +79,19 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
     }
 
     fun scrollWithCoordinatorLayout() {
-        (appBarLayout.layoutParams as CoordinatorLayout.LayoutParams)
-                .behavior?.onNestedPreScroll(
-                coordinatorLayout,
-                appBarLayout,
-                nestedScrollView,
-                0,
-                1,
-                intArrayOf(0, 0)
-        )
+        (appBar.layoutParams as CoordinatorLayout.LayoutParams)
+                .behavior
+                ?.onNestedPreScroll(coordinator, appBar, nestedScrollView, 0, 1, intArrayOf(0, 0))
     }
 
     fun scrollOnlyNestedView() {
         val targetScroll = nestedScrollView.scrollY + 1
         nestedScrollView.scrollTo(0, targetScroll)
         nestedScrollView.isSmoothScrollingEnabled = true
-        ViewCompat.setNestedScrollingEnabled(nestedScrollView, false)
-        val currentScrollY = nestedScrollView.scrollY
+
         ViewCompat.postOnAnimationDelayed(nestedScrollView, object : Runnable {
 
             override fun run() {
-                if (currentScrollY == nestedScrollView.scrollY) {
-                    ViewCompat.setNestedScrollingEnabled(nestedScrollView, true)
-                    return
-                }
-
                 ViewCompat.postOnAnimation(nestedScrollView, this)
             }
         }, durationScroll)
