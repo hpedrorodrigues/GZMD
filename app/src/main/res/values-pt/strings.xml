@@ -64,6 +64,12 @@
     <string name="error_trying_to_load_posts">Ocorreu um erro ao tentar carregar os posts</string>
     <string name="gizmodo_about_title">GZMD é um aplicativo não oficial pro Gizmodo BR</string>
     <string name="gizmodo_about_description">Acompanhe o Gizmodo BR pelas redes sociais</string>
-    <string name="open_source_licenses">Licenças de Código aberto</string>
+    <string name="open_source_licenses">Licenças de código aberto</string>
+    <string name="menu_game">Jogos</string>
+    <string name="menu_hands_on">Nas mãos</string>
+    <string name="menu_home">Início</string>
+    <string name="menu_review">Revisões</string>
+    <string name="menu_special">Especiais</string>
+    <string name="menu_view">Visualizar</string>
 
 </resources>

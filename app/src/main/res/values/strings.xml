@@ -65,9 +65,9 @@
     <string name="gizmodo_about_description">Acompanhe o Gizmodo BR pelas redes sociais</string>
     <string name="menu_view">View</string>
     <string name="menu_hands_on">Hands On</string>
-    <string name="menu_review">Review</string>
+    <string name="menu_review">Reviews</string>
     <string name="menu_special">Special</string>
-    <string name="menu_game">Game</string>
+    <string name="menu_game">Games</string>
     <string name="menu_home">Home</string>
 
 </resources>
