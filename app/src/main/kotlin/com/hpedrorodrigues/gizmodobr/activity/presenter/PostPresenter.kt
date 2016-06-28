@@ -70,7 +70,6 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
         val subscription = gizmodoNetwork
                 .retrievePostByUrl(PostDTO(postUrl))
-                .retry(MAX_RETRIES)
                 .compose(Rx.applySchedulers<Post>())
                 .subscribe(
                         {

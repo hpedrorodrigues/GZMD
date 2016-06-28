@@ -114,7 +114,6 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
 
             val subscription = gizmodoNetwork
                     .retrievePreviewByPage(page)
-                    .retry(MAX_RETRIES)
                     .compose(Rx.applySchedulers<List<Preview>>())
                     .subscribe(
                             {
