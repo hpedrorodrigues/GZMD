@@ -76,6 +76,9 @@
 -keep interface okhttp3.* { *; }
 -dontwarn okhttp3.*
 
+# Okio
+-dontwarn okio.**
+
 # Rx
 -dontwarn rx.**
 
@@ -85,14 +88,11 @@
 
 # Picasso
 #-dontwarn com.squareup.picasso.**
--keep class com.squareup.picasso.** { *; }
--keepclasseswithmembers class * {
-    @com.squareup.picasso.** *;
-}
--keepclassmembers class * {
-    @com.squareup.picasso.** *;
-}
+-dontwarn com.squareup.okhttp.**
 
 # Firebase
 -keep class com.google.firebase. { *; }
 -dontwarn com.google.firebase.
+
+# Licenses Dialog
+-dontwarn de.psdev.licensesdialog.**
