@@ -95,6 +95,11 @@ dependencies {
     // - Image Loading
     compile group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
 
+    // - Licenses Dialog
+    compile(group: 'de.psdev.licensesdialog', name: 'licensesdialog', version: '1.8.0') {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+
     // - Loading Library
     compile group: 'com.wang.avi', name: 'library', version: '1.0.5'
     compile group: 'com.nineoldandroids', name: 'library', version: '2.4.0'

@@ -60,6 +60,7 @@
     <string name="enable_auto_scroll_on_posts_description">Enable automatic movement of the posts read</string>
     <string name="error_trying_to_load_posts">Error trying to load posts</string>
     <string name="error_trying_to_load_previews">Error trying to load previews</string>
+    <string name="open_source_licenses">Open source licenses</string>
     <string name="gizmodo_about_title">GZMD é um aplicativo não oficial pro Gizmodo BR</string>
     <string name="gizmodo_about_description">Acompanhe o Gizmodo BR pelas redes sociais</string>
 

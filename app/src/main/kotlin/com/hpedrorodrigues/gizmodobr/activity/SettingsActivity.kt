@@ -80,6 +80,8 @@ class SettingsActivity : BaseActivity(), SettingsView {
 
     override fun contactUs(): LinearLayout = contactUs
 
+    override fun openSourceLicenses(): LinearLayout = openSourceLicenses
+
     override fun startAboutActivity() = startWithFade(AboutActivity::class.java)
 
     override fun bindSubscription(subscription: Subscription) = compositeSubscription.add(subscription)

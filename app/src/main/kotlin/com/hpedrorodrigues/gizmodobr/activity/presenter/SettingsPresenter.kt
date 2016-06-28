@@ -18,10 +18,13 @@ package com.hpedrorodrigues.gizmodobr.activity.presenter
 
 import android.app.Activity
 import android.widget.CompoundButton
+import com.hpedrorodrigues.gizmodobr.R
+import com.hpedrorodrigues.gizmodobr.activity.SettingsActivity
 import com.hpedrorodrigues.gizmodobr.activity.view.SettingsView
 import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
 import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
 import com.hpedrorodrigues.gizmodobr.util.GizmodoMail
+import de.psdev.licensesdialog.LicensesDialogFragment
 
 class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) {
 
@@ -78,5 +81,10 @@ class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) 
         view.sendUsYourFeedback().setOnClickListener { GizmodoMail.sendFeedbackEmail(activity) }
 
         view.contactUs().setOnClickListener { GizmodoMail.sendContactUsEmail(activity) }
+
+        view.openSourceLicenses().setOnClickListener {
+            val dialog = LicensesDialogFragment.Builder(activity).setNotices(R.raw.notices).build()
+            dialog.show((activity as SettingsActivity).supportFragmentManager, null)
+        }
     }
 }

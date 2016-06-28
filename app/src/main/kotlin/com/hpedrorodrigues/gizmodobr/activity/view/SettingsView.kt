@@ -48,5 +48,7 @@ interface SettingsView : BaseView {
 
     fun contactUs(): LinearLayout
 
+    fun openSourceLicenses(): LinearLayout
+
     fun startAboutActivity()
 }
