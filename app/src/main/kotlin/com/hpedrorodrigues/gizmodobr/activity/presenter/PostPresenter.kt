@@ -29,6 +29,7 @@ import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
+import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.extension.isBeforeLollipop
 import com.hpedrorodrigues.gizmodobr.listener.AppBarStateChangeListener
 import com.hpedrorodrigues.gizmodobr.logger.Logger
@@ -63,18 +64,18 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
         }
     }
 
-    fun loadPost(postUrl: String) {
+    fun loadPost(preview: Preview) {
         view.showProgress()
 
         fun onCompleted() = view.hideProgress()
 
         val subscription = gizmodoNetwork
-                .retrievePostByUrl(PostDTO(postUrl))
+                .retrievePostByUrl(PostDTO(preview.postUrl))
                 .compose(Rx.applySchedulers<Post>())
                 .subscribe(
                         {
                             post = it
-                            loadBody(post.body)
+                            loadInternalPost(preview, post)
                             onCompleted()
                         },
                         {
@@ -87,8 +88,12 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
         view.bindSubscription(subscription)
     }
 
-    fun loadBody(body: String) {
-        view.textView().text = body
+    private fun loadInternalPost(preview: Preview, post: Post) {
+        view.textView().text = post.body
+
+        view.titleView().text = preview.title
+
+        view.infoView().text = preview.info
 
         configureNestedViewScrolling()
     }

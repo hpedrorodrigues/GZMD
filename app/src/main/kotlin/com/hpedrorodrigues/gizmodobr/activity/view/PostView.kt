@@ -40,6 +40,10 @@ interface PostView : BaseView {
 
     fun shareButton(): FloatingActionButton
 
+    fun titleView(): TextView
+
+    fun infoView(): TextView
+
     fun window(): Window
 
     fun appBar(): AppBarLayout

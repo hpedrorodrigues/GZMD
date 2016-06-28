@@ -59,7 +59,7 @@ class PostActivity : BaseActivity(), PostView {
 
         presenter.loadBackgroundImage(preview.imageUrl)
 
-        presenter.loadPost(preview.postUrl)
+        presenter.loadPost(preview)
 
         presenter.configureShareButton(this, preview.postUrl)
     }
@@ -105,6 +105,10 @@ class PostActivity : BaseActivity(), PostView {
     override fun appBar(): AppBarLayout = appBar
 
     override fun nestedScrollView(): NestedScrollView = nestedScrollView
+
+    override fun titleView(): TextView = titleView
+
+    override fun infoView(): TextView = infoView
 
     override fun injectMembers(component: GizmodoComponent) = component.inject(this)
 
