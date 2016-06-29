@@ -27,6 +27,7 @@ import com.hpedrorodrigues.gizmodobr.activity.presenter.SettingsPresenter
 import com.hpedrorodrigues.gizmodobr.activity.view.SettingsView
 import com.hpedrorodrigues.gizmodobr.dagger.GizmodoComponent
 import kotlinx.android.synthetic.main.activity_settings.*
+import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
 import rx.Subscription
 
 class SettingsActivity : BaseActivity(), SettingsView {
@@ -79,6 +80,8 @@ class SettingsActivity : BaseActivity(), SettingsView {
     override fun sendUsYourFeedback(): LinearLayout = sendUsYourFeedback
 
     override fun contactUs(): LinearLayout = contactUs
+
+    override fun scrollSpeed(): DiscreteSeekBar = scrollSpeed
 
     override fun openSourceLicenses(): LinearLayout = openSourceLicenses
 

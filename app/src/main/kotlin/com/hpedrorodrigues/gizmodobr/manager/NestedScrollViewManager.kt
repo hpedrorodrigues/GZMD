@@ -25,11 +25,10 @@ import com.hpedrorodrigues.gizmodobr.listener.AppBarStateChangeListener
 
 class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
                               val appBar: AppBarLayout,
-                              val coordinator: CoordinatorLayout) {
+                              val coordinator: CoordinatorLayout,
+                              val scrollSpeed: Long) {
 
     private var wasFullScrolled = false
-
-    private val durationScroll = 50L
 
     var cancelAutoScroll = false
 
@@ -70,12 +69,12 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
                 }
 
                 if (!cancelAutoScroll) {
-                    handler.postDelayed(this, durationScroll)
+                    handler.postDelayed(this, scrollSpeed)
                 } else {
                     running = false
                 }
             }
-        }, durationScroll)
+        }, scrollSpeed)
     }
 
     fun scrollWithCoordinatorLayout() {
@@ -94,7 +93,7 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
             override fun run() {
                 ViewCompat.postOnAnimation(nestedScrollView, this)
             }
-        }, durationScroll)
+        }, scrollSpeed)
     }
 
     fun isFullScrolled(): Boolean {

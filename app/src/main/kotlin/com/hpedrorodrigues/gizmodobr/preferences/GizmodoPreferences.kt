@@ -38,6 +38,13 @@ class GizmodoPreferences {
 
     fun putInt(name: String, value: Int) = preferences().edit().putInt(name, value).apply()
 
+    fun getLong(name: String) = getLong(name, -1L)
+
+    fun getLong(name: String, default: Long) = PreferenceManager
+            .getDefaultSharedPreferences(context).getLong(name, default)
+
+    fun putLong(name: String, value: Long) = preferences().edit().putLong(name, value).apply()
+
     fun getBoolean(name: String) = PreferenceManager
             .getDefaultSharedPreferences(context).getBoolean(name, false)
 

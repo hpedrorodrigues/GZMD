@@ -22,4 +22,5 @@ object PreferenceKey {
     val ENABLE_AUTO_SCROLL = "enable_auto_scroll"
     val NIGHT_MODE = "night_mode"
     val KEEP_SCREEN_ON = "keep_screen_on"
+    val SCROLL_SPEED = "scroll_speed"
 }

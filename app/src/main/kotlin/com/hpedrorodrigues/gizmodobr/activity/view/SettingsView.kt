@@ -19,6 +19,7 @@ package com.hpedrorodrigues.gizmodobr.activity.view
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.Switch
+import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
 
 interface SettingsView : BaseView {
 
@@ -49,6 +50,8 @@ interface SettingsView : BaseView {
     fun contactUs(): LinearLayout
 
     fun openSourceLicenses(): LinearLayout
+
+    fun scrollSpeed(): DiscreteSeekBar
 
     fun startAboutActivity()
 }

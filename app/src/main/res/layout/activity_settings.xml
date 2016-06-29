@@ -17,6 +17,7 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -114,6 +115,30 @@
                     android:gravity="center" />
 
             </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/scrollSpeedContainer"
+                style="@style/AppTheme.SettingsItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selectable_item_background"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AppTheme.SettingsItemTitleTextView"
+                    android:text="@string/scroll_speed" />
+
+                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                    android:id="@+id/scrollSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:dsb_indicatorColor="@color/colorPrimaryLight"
+                    app:dsb_max="200"
+                    app:dsb_min="10"
+                    app:dsb_progressColor="@color/colorPrimary" />
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/keepScreenOn"

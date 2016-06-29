@@ -71,5 +71,6 @@
     <string name="menu_review">Revisões</string>
     <string name="menu_special">Especiais</string>
     <string name="menu_view">Visualizar</string>
+    <string name="scroll_speed">Velocidade de movimentação</string>
 
 </resources>

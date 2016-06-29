@@ -105,6 +105,9 @@ dependencies {
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     }
 
+    // - Discrete Seekbar
+    compile group: 'org.adw.library', name: 'discrete-seekbar', version: '1.0.1'
+
     // - Loading Library
     compile group: 'com.wang.avi', name: 'library', version: '1.0.5'
     compile group: 'com.nineoldandroids', name: 'library', version: '2.4.0'

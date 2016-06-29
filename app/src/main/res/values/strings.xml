@@ -69,5 +69,6 @@
     <string name="menu_special">Special</string>
     <string name="menu_game">Games</string>
     <string name="menu_home">Home</string>
+    <string name="scroll_speed">Scroll Speed</string>
 
 </resources>

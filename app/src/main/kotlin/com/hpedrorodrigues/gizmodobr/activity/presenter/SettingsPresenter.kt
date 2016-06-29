@@ -21,10 +21,12 @@ import android.widget.CompoundButton
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.SettingsActivity
 import com.hpedrorodrigues.gizmodobr.activity.view.SettingsView
+import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
 import com.hpedrorodrigues.gizmodobr.util.GizmodoApp
 import com.hpedrorodrigues.gizmodobr.util.GizmodoMail
 import de.psdev.licensesdialog.LicensesDialogFragment
+import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
 
 class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) {
 
@@ -32,6 +34,8 @@ class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) 
         view.toggleCloseTheApp().isChecked = preferences.getBoolean(PreferenceKey.ASK_TO_EXIT)
         view.toggleEnableAutoScroll().isChecked = preferences.getBoolean(PreferenceKey.ENABLE_AUTO_SCROLL)
         view.toggleKeepScreenOn().isChecked = preferences.getBoolean(PreferenceKey.KEEP_SCREEN_ON)
+        view.scrollSpeed().progress = preferences
+                .getLong(PreferenceKey.SCROLL_SPEED, GizmodoConstant.DEFAULT_SCROLL_SPEED).toInt()
     }
 
     fun configListeners(activity: Activity) {
@@ -86,5 +90,20 @@ class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) 
             val dialog = LicensesDialogFragment.Builder(activity).setNotices(R.raw.notices).build()
             dialog.show((activity as SettingsActivity).supportFragmentManager, null)
         }
+
+        view.scrollSpeed()
+                .setOnProgressChangeListener(object : DiscreteSeekBar.OnProgressChangeListener {
+                    override fun onStopTrackingTouch(seekBar: DiscreteSeekBar) {
+                        view.toggleEnableAutoScroll().isChecked = true
+                        preferences.putLong(PreferenceKey.SCROLL_SPEED, seekBar.progress.toLong())
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: DiscreteSeekBar?) {
+                    }
+
+                    override fun onProgressChanged(seekBar: DiscreteSeekBar?, value: Int,
+                                                   fromUser: Boolean) {
+                    }
+                })
     }
 }

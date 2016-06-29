@@ -48,4 +48,6 @@ object GizmodoConstant {
     val GIZMODO_BR_INSTAGRAM_ID = "gizmodobrasil"
 
     val GIZMODO_BR_GOOGLE_PLUS_ID = "+gizmodobrasil"
+
+    val DEFAULT_SCROLL_SPEED = 50L
 }
