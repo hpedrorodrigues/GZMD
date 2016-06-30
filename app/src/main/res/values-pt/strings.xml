@@ -69,8 +69,8 @@
     <string name="menu_hands_on">Nas mãos</string>
     <string name="menu_home">Início</string>
     <string name="menu_review">Revisões</string>
-    <string name="menu_special">Especiais</string>
-    <string name="menu_view">Visualizar</string>
+    <string name="menu_special">Destaques</string>
+    <string name="menu_view">Seção</string>
     <string name="scroll_speed">Velocidade de movimentação</string>
 
 </resources>
