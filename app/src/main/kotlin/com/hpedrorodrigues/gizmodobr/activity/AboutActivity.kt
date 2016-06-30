@@ -18,6 +18,8 @@ package com.hpedrorodrigues.gizmodobr.activity
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import com.crashlytics.android.answers.Answers
+import com.crashlytics.android.answers.CustomEvent
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
@@ -61,21 +63,28 @@ class AboutActivity : BaseActivity() {
     private fun configureListeners() {
         google_plus.setOnClickListener {
             GizmodoApp.openGPlus(this, GizmodoConstant.GIZMODO_BR_GOOGLE_PLUS_ID)
+            Answers.getInstance().logCustom(CustomEvent("Opened Gizmodo Social Media: Google Plus"))
         }
 
         facebook.setOnClickListener {
             GizmodoApp.openFacebookPage(this, GizmodoConstant.GIZMODO_BR_FACEBOOK_ID)
+            Answers.getInstance().logCustom(CustomEvent("Opened Gizmodo Social Media: Facebook"))
         }
 
         instagram.setOnClickListener {
             GizmodoApp.openInstagramProfile(this, GizmodoConstant.GIZMODO_BR_INSTAGRAM_ID)
+            Answers.getInstance().logCustom(CustomEvent("Opened Gizmodo Social Media: Instagram"))
         }
 
         twitter.setOnClickListener {
             GizmodoApp.openTwitterProfile(this, GizmodoConstant.GIZMODO_BR_TWITTER_ID)
+            Answers.getInstance().logCustom(CustomEvent("Opened Gizmodo Social Media: Twitter"))
         }
 
-        shareButton.setOnClickListener { GizmodoApp.share(this) }
+        shareButton.setOnClickListener {
+            GizmodoApp.share(this)
+            Answers.getInstance().logCustom(CustomEvent("GZMD Shared"))
+        }
     }
 
     private fun configureStatusAndNavigationBar() {

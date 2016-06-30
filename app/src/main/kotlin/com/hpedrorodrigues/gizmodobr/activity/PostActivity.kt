@@ -25,6 +25,8 @@ import android.support.v4.widget.NestedScrollView
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import com.crashlytics.android.answers.Answers
+import com.crashlytics.android.answers.CustomEvent
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.base.BaseActivity
 import com.hpedrorodrigues.gizmodobr.activity.presenter.PostPresenter
@@ -73,6 +75,8 @@ class PostActivity : BaseActivity(), PostView {
         return when (item.itemId) {
             R.id.action_open_in_browser -> {
                 GizmodoApp.openBrowser(this, preview.postUrl)
+                Answers.getInstance().
+                        logCustom(CustomEvent("Opened browser with url: ${preview.postUrl}"))
                 true
             }
             else -> super.onOptionsItemSelected(item)

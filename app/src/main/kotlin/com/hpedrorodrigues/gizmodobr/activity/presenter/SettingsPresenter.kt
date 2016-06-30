@@ -18,6 +18,8 @@ package com.hpedrorodrigues.gizmodobr.activity.presenter
 
 import android.app.Activity
 import android.widget.CompoundButton
+import com.crashlytics.android.answers.Answers
+import com.crashlytics.android.answers.CustomEvent
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.SettingsActivity
 import com.hpedrorodrigues.gizmodobr.activity.view.SettingsView
@@ -43,52 +45,103 @@ class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) 
             val isChecked = !view.toggleCloseTheApp().isChecked
             preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked)
             view.toggleCloseTheApp().isChecked = isChecked
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Close app check changed by container: $isChecked"))
         }
 
         view.toggleCloseTheApp().setOnCheckedChangeListener {
             compoundButton: CompoundButton, isChecked: Boolean ->
             preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked)
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Close app check changed by switch: $isChecked"))
         }
 
         view.enableAutoScroll().setOnClickListener {
             val isChecked = !view.toggleEnableAutoScroll().isChecked
             preferences.putBoolean(PreferenceKey.ENABLE_AUTO_SCROLL, isChecked)
             view.toggleEnableAutoScroll().isChecked = isChecked
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Enable auto acroll check changed by container: $isChecked"))
         }
 
         view.toggleEnableAutoScroll().setOnCheckedChangeListener {
             compoundButton: CompoundButton, isChecked: Boolean ->
             preferences.putBoolean(PreferenceKey.ENABLE_AUTO_SCROLL, isChecked)
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Enable auto acroll check changed by switch: $isChecked"))
         }
 
         view.keepScreenOn().setOnClickListener {
             val isChecked = !view.toggleKeepScreenOn().isChecked
             preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked)
             view.toggleKeepScreenOn().isChecked = isChecked
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Keep scree on check changed by container: $isChecked"))
         }
 
         view.toggleKeepScreenOn().setOnCheckedChangeListener {
             compoundButton: CompoundButton, isChecked: Boolean ->
             preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked)
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Keep scree on check changed by switch: $isChecked"))
         }
 
         view.aboutTheApp().setOnClickListener { view.startAboutActivity() }
 
-        view.rateTheApp().setOnClickListener { GizmodoApp.view(activity) }
+        view.rateTheApp().setOnClickListener {
+            GizmodoApp.view(activity)
 
-        view.shareTheApp().setOnClickListener { GizmodoApp.share(activity) }
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Rate the app action triggered"))
+        }
 
-        view.reportABug().setOnClickListener { GizmodoMail.sendReportBugEmail(activity) }
+        view.shareTheApp().setOnClickListener {
+            GizmodoApp.share(activity)
 
-        view.ideaToImprove().setOnClickListener { GizmodoMail.sendImproveAppEmail(activity) }
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Share the app action triggered"))
+        }
 
-        view.sendUsYourFeedback().setOnClickListener { GizmodoMail.sendFeedbackEmail(activity) }
+        view.reportABug().setOnClickListener {
+            GizmodoMail.sendReportBugEmail(activity)
 
-        view.contactUs().setOnClickListener { GizmodoMail.sendContactUsEmail(activity) }
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Report a bug action triggered"))
+        }
+
+        view.ideaToImprove().setOnClickListener {
+            GizmodoMail.sendImproveAppEmail(activity)
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Idea to improve action triggered"))
+        }
+
+        view.sendUsYourFeedback().setOnClickListener {
+            GizmodoMail.sendFeedbackEmail(activity)
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Send us your feedback action triggered"))
+        }
+
+        view.contactUs().setOnClickListener {
+            GizmodoMail.sendContactUsEmail(activity)
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Contact us action triggered"))
+        }
 
         view.openSourceLicenses().setOnClickListener {
             val dialog = LicensesDialogFragment.Builder(activity).setNotices(R.raw.notices).build()
             dialog.show((activity as SettingsActivity).supportFragmentManager, null)
+
+            Answers.getInstance()
+                    .logCustom(CustomEvent("Open source licenses action triggered"))
         }
 
         view.scrollSpeed()
@@ -96,6 +149,9 @@ class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) 
                     override fun onStopTrackingTouch(seekBar: DiscreteSeekBar) {
                         view.toggleEnableAutoScroll().isChecked = true
                         preferences.putLong(PreferenceKey.SCROLL_SPEED, seekBar.progress.toLong())
+
+                        Answers.getInstance()
+                                .logCustom(CustomEvent("Scroll speed changed: ${seekBar.progress}"))
                     }
 
                     override fun onStartTrackingTouch(seekBar: DiscreteSeekBar?) {

@@ -3,6 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 
+def getStoreFilePath() {
+    def storeFilePath = System.getenv("GZMD_STORE_FILE")
+    return (storeFilePath == null || storeFilePath.isEmpty()) ? "gzmd_debug.keystore" : storeFilePath
+}
+
 android {
 
     compileSdkVersion 24
@@ -23,7 +28,7 @@ android {
 
         release {
 
-            storeFile file(System.getenv("GZMD_STORE_FILE"))
+            storeFile file(getStoreFilePath())
             storePassword System.getenv("GZMD_STORE_PASSWORD")
             keyAlias System.getenv("GZMD_STORE_KEY_ALIAS")
             keyPassword System.getenv("GZMD_KEY_PASSWORD")
