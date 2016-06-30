@@ -38,6 +38,8 @@
 
     <color name="transparent">#00000000</color>
 
+    <color name="touch_background">#99000000</color>
+
     <!--
         100% — FF
         95% — F2

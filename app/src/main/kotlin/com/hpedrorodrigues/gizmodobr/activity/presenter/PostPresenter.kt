@@ -28,6 +28,7 @@ import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PostView
 import com.hpedrorodrigues.gizmodobr.constant.GizmodoConstant
 import com.hpedrorodrigues.gizmodobr.constant.PreferenceKey
+import com.hpedrorodrigues.gizmodobr.crawler.Crawler
 import com.hpedrorodrigues.gizmodobr.dto.PostDTO
 import com.hpedrorodrigues.gizmodobr.entity.Post
 import com.hpedrorodrigues.gizmodobr.entity.Preview
@@ -65,10 +66,10 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
         }
     }
 
+    fun loadPostCompleted() = view.hideProgress()
+
     fun loadPost(preview: Preview) {
         view.showProgress()
-
-        fun onCompleted() = view.hideProgress()
 
         val subscription = gizmodoNetwork
                 .retrievePostByUrl(PostDTO(preview.postUrl))
@@ -77,12 +78,33 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                         {
                             post = it
                             loadInternalPost(preview, post)
-                            onCompleted()
+                            loadPostCompleted()
+                        },
+                        {
+                            Logger.e("Error", it)
+                            retryLoadPost(preview)
+                        }
+                )
+
+        view.bindSubscription(subscription)
+    }
+
+    fun retryLoadPost(preview: Preview) {
+        view.showProgress()
+
+        val subscription = Crawler
+                .retrievePostByUrl(PostDTO(preview.postUrl))
+                .compose(Rx.applySchedulers<Post>())
+                .subscribe(
+                        {
+                            post = it
+                            loadInternalPost(preview, post)
+                            loadPostCompleted()
                         },
                         {
                             Logger.e("Error", it)
                             showSnackbar(view.backgroundImage(), R.string.error_trying_to_load_posts)
-                            onCompleted()
+                            loadPostCompleted()
                         }
                 )
 

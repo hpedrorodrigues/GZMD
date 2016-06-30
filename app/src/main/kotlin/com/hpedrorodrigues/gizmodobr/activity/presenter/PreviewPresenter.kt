@@ -21,6 +21,7 @@ import android.view.View
 import com.hpedrorodrigues.gizmodobr.R
 import com.hpedrorodrigues.gizmodobr.activity.view.PreviewView
 import com.hpedrorodrigues.gizmodobr.adapter.PreviewAdapter
+import com.hpedrorodrigues.gizmodobr.crawler.Crawler
 import com.hpedrorodrigues.gizmodobr.entity.Preview
 import com.hpedrorodrigues.gizmodobr.extension.previewClick
 import com.hpedrorodrigues.gizmodobr.listener.RecyclerViewScrollListener
@@ -111,6 +112,12 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
         loadPreviews()
     }
 
+    fun loadPreviewCompleted() {
+        view.recyclerView().swipeToRefresh?.isRefreshing = false
+        view.recyclerView().hideMoreProgress()
+        view.hideProgress()
+    }
+
     fun loadPreviews() {
         val hasConnection = connectionService.hasConnection()
         view.reloadWithoutNetworkLayout(hasConnection)
@@ -118,25 +125,45 @@ class PreviewPresenter(view: PreviewView) : BasePresenter<PreviewView>(view) {
         if (hasConnection) {
             cancelOldSubscription()
 
-            fun onCompleted() {
-                view.recyclerView().swipeToRefresh?.isRefreshing = false
-                view.recyclerView().hideMoreProgress()
-                view.hideProgress()
-            }
-
             subscription = gizmodoNetwork
                     .retrievePreviewByPage(page, view.modeView())
                     .compose(Rx.applySchedulers<List<Preview>>())
                     .subscribe(
                             {
                                 adapter.add(it)
-                                onCompleted()
+                                loadPreviewCompleted()
+                            },
+                            {
+
+                                Logger.e("Error", it)
+                                retryLoadPreviews()
+                            }
+                    )
+
+            view.bindSubscription(subscription!!)
+        }
+    }
+
+    private fun retryLoadPreviews() {
+        val hasConnection = connectionService.hasConnection()
+        view.reloadWithoutNetworkLayout(hasConnection)
+
+        if (hasConnection) {
+
+            cancelOldSubscription()
+
+            subscription = Crawler.retrievePreviewByPage(page, view.modeView())
+                    .compose(Rx.applySchedulers<List<Preview>>())
+                    .subscribe(
+                            {
+                                adapter.add(it)
+                                loadPreviewCompleted()
                             },
                             {
 
                                 Logger.e("Error", it)
                                 showSnackbar(view.recyclerView(), R.string.error_trying_to_load_previews)
-                                onCompleted()
+                                loadPreviewCompleted()
                             }
                     )
 
