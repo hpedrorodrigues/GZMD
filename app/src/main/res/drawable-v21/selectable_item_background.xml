@@ -21,6 +21,6 @@
 
     <item
         android:id="@android:id/mask"
-        android:drawable="@color/dark_gray" />
+        android:drawable="@color/touch_background" />
 
 </ripple>
