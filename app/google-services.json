@@ -19,9 +19,35 @@
       ],
       "services": {
         "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049038569239:android:723a1f51b201fe03",
+        "android_client_info": {
+          "package_name": "com.hpedrorodrigues.gzmd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk-N3-XFaD_Se2asLotMydlSqtjvhE5-Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
           "status": 2,
           "analytics_property": {
-            "tracking_id": "UA-66231011-4"
+            "tracking_id": "UA-66231011-5"
           }
         },
         "appinvite_service": {

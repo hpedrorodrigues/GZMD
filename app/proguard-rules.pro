@@ -123,4 +123,4 @@
 -dontwarn de.psdev.licensesdialog.**
 
 # Local code
--keep class com.hpedrorodrigues.gizmodobr.** { *; }
+-keep class com.hpedrorodrigues.gzmd.** { *; }

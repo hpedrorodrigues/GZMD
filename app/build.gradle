@@ -15,13 +15,13 @@ android {
 
     defaultConfig {
 
-        applicationId "com.hpedrorodrigues.gizmodobr"
+        applicationId "com.hpedrorodrigues.gzmd"
 
         minSdkVersion 15
         targetSdkVersion 24
 
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 1
+        versionName "1.0.0"
     }
 
     signingConfigs {
