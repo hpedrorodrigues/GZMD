@@ -48,16 +48,22 @@
     java.lang.Object readResolve();
 }
 
-# Local code
--keep class com.hpedrorodrigues.gizmodobr.** { *; }
-
 # Support library v4
 -dontwarn android.support.v4.app.**
 -dontwarn android.support.v4.view.**
 -dontwarn android.support.v4.widget.**
 
 # Support library v7
--dontwarn android.support.v7.media.**
+-keep public class android.support.v7.widget.** { *; }
+-keep public class android.support.v7.internal.widget.** { *; }
+-keep public class android.support.v7.internal.view.menu.** { *; }
+
+-keep public class * extends android.support.v4.view.ActionProvider {
+    public <init>(android.content.Context);
+}
+
+# Card View
+-keep class android.support.v7.widget.RoundRectDrawable { *; }
 
 # Support Design
 -keep class android.support.design.widget.** { *; }
@@ -67,14 +73,15 @@
 # SuperRecyclerView
 -dontwarn com.malinskiy.superrecyclerview.**
 
-# Retrofit
+# Retrofit 2
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
 
-# Okhttp
--keep class okhttp3.** { *; }
--keep interface okhttp3.* { *; }
--dontwarn okhttp3.*
+# Picasso / OkHttp
+-dontwarn com.squareup.okhttp.**
 
 # Okio
 -dontwarn okio.**
@@ -108,13 +115,12 @@
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.examples.android.model.** { *; }
 
-# Picasso
-#-dontwarn com.squareup.picasso.**
--dontwarn com.squareup.okhttp.**
-
 # Firebase
 -keep class com.google.firebase. { *; }
 -dontwarn com.google.firebase.
 
 # Licenses Dialog
 -dontwarn de.psdev.licensesdialog.**
+
+# Local code
+-keep class com.hpedrorodrigues.gizmodobr.** { *; }

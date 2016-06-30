@@ -61,8 +61,8 @@
     <string name="error_trying_to_load_posts">Error trying to load posts</string>
     <string name="error_trying_to_load_previews">Error trying to load previews</string>
     <string name="open_source_licenses">Open source licenses</string>
-    <string name="gizmodo_about_title">GZMD é um aplicativo não oficial pro Gizmodo BR</string>
-    <string name="gizmodo_about_description">Acompanhe o Gizmodo BR pelas redes sociais</string>
+    <string name="gizmodo_about_title">GZMD is an unofficial application for Gizmodo BR</string>
+    <string name="gizmodo_about_description">Follow Gizmodo BR by social networks</string>
     <string name="menu_view">View</string>
     <string name="menu_hands_on">Hands On</string>
     <string name="menu_review">Reviews</string>
