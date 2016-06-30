@@ -19,9 +19,22 @@ android {
         versionName "1.0.0"
     }
 
+    signingConfigs {
+
+        release {
+
+            storeFile file(GZMD_STORE_FILE)
+            storePassword GZMD_STORE_PASSWORD
+            keyAlias GZMD_STORE_KEY_ALIAS
+            keyPassword GZMD_KEY_PASSWORD
+        }
+    }
+
     buildTypes {
 
         release {
+
+            signingConfig signingConfigs.release
 
             shrinkResources true
             useProguard true
