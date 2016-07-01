@@ -2,9 +2,9 @@
 
 [![Build Status][travis-image]][travis-url]
 
-A simple Gizmodo Android App.
+A simple android app to Gizmodo BR.
 
-This project use my own Gizmodo [api][gizmodo-api].
+This project use my own Gizmodo BR [api][gizmodo-api].
 
 Currently available on the Play store.
 
