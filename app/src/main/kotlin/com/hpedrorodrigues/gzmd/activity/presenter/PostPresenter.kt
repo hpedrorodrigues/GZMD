@@ -141,20 +141,28 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
 
         override fun onSuccess() {
             val bitmap = (view.backgroundImage().drawable as BitmapDrawable).bitmap
-            Palette.from(bitmap).generate { palette ->
-                val swatch = PaletteUtil.getSwatch(palette)
-                view.collapsingToolbar().contentScrim = ColorDrawable(swatch.rgb)
 
-                val darkColor = ColorUtil.getDarkerColor(swatch.rgb)
-                view.shareButton().backgroundTintList = ColorStateList.valueOf(darkColor)
+            if (bitmap != null && !bitmap.isRecycled) {
 
-                imageColor = darkColor
+                Palette.Builder(bitmap).generate { palette ->
 
-                if (!isBeforeLollipop()) {
-                    view.window().navigationBarColor = darkColor
+                    if (palette != null) {
+
+                        val swatch = PaletteUtil.getSwatch(palette)
+                        view.collapsingToolbar().contentScrim = ColorDrawable(swatch.rgb)
+
+                        val darkColor = ColorUtil.getDarkerColor(swatch.rgb)
+                        view.shareButton().backgroundTintList = ColorStateList.valueOf(darkColor)
+
+                        imageColor = darkColor
+
+                        if (!isBeforeLollipop()) {
+                            view.window().navigationBarColor = darkColor
+                        }
+
+                        configureAppBar()
+                    }
                 }
-
-                configureAppBar()
             }
         }
 
