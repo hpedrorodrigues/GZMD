@@ -2,9 +2,13 @@
 
 [![Build Status][travis-image]][travis-url]
 
-A simple Gizmodo Android App.
+A simple android app to Gizmodo BR.
 
-This project use my own Gizmodo [api][gizmodo-api].
+This project use my own Gizmodo BR [api][gizmodo-api].
+
+Currently available on the Play store.
+
+[![Play Store Badge](./assets/en-play-badge.png)][app-url]
 
 ## More
 
@@ -29,3 +33,4 @@ GZMD is a work in progress, but feel free to study it.
 [travis-image]: https://travis-ci.org/hpedrorodrigues/GZMD.svg?branch=master
 [travis-url]: https://travis-ci.org/hpedrorodrigues/GZMD
 [gizmodo-api]: https://github.com/hpedrorodrigues/GizmodoBr
+[app-url]: https://play.google.com/store/apps/details?id=com.hpedrorodrigues.gzmd
