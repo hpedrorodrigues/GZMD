@@ -24,8 +24,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.support.design.widget.AppBarLayout
 import android.support.v7.graphics.Palette
-import com.crashlytics.android.answers.Answers
-import com.crashlytics.android.answers.CustomEvent
 import com.hpedrorodrigues.gzmd.R
 import com.hpedrorodrigues.gzmd.activity.view.PostView
 import com.hpedrorodrigues.gzmd.constant.GizmodoConstant
@@ -37,6 +35,7 @@ import com.hpedrorodrigues.gzmd.entity.Preview
 import com.hpedrorodrigues.gzmd.extension.isBeforeLollipop
 import com.hpedrorodrigues.gzmd.listener.AppBarStateChangeListener
 import com.hpedrorodrigues.gzmd.logger.Logger
+import com.hpedrorodrigues.gzmd.logger.MyAnswer
 import com.hpedrorodrigues.gzmd.manager.NestedScrollViewManager
 import com.hpedrorodrigues.gzmd.rx.Rx
 import com.hpedrorodrigues.gzmd.util.ColorUtil
@@ -65,7 +64,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     fun configureShareButton(activity: Activity, url: String) {
         view.shareButton().setOnClickListener {
             GizmodoApp.shareMessage(activity, activity.getString(R.string.shared_by, url))
-            Answers.getInstance().logCustom(CustomEvent("Post shared with url: $url"))
+            MyAnswer.logShare("Post shared", url)
         }
     }
 
@@ -85,8 +84,7 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
                         },
                         {
                             Logger.e("Error", it)
-                            Answers.getInstance()
-                                    .logCustom(CustomEvent("Error loading post from server with url: ${preview.postUrl}"))
+                            MyAnswer.log("Error loading post from server", preview.postUrl)
                             retryLoadPost(preview)
                         }
                 )

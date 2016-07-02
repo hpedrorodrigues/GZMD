@@ -20,7 +20,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatDelegate
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
-import com.crashlytics.android.answers.Answers
 import com.crashlytics.android.answers.ContentViewEvent
 import com.google.android.gms.analytics.HitBuilders
 import com.hpedrorodrigues.gzmd.R
@@ -28,6 +27,7 @@ import com.hpedrorodrigues.gzmd.constant.PreferenceKey
 import com.hpedrorodrigues.gzmd.dagger.GizmodoApplication
 import com.hpedrorodrigues.gzmd.dagger.GizmodoComponent
 import com.hpedrorodrigues.gzmd.extension.isAfterGingerbread
+import com.hpedrorodrigues.gzmd.logger.MyAnswer
 import com.hpedrorodrigues.gzmd.preferences.GizmodoPreferences
 import com.hpedrorodrigues.gzmd.service.ConnectionService
 import rx.subscriptions.CompositeSubscription
@@ -59,7 +59,7 @@ abstract class BaseActivity() : BaseTransitionActivity() {
 
         tracker().setScreenName(screenName())
         tracker().send(HitBuilders.ScreenViewBuilder().build())
-        Answers.getInstance()
+        MyAnswer.instance()
                 .logContentView(ContentViewEvent().putContentId("Screen:" + screenName()))
     }
 

@@ -25,8 +25,6 @@ import android.support.v4.widget.NestedScrollView
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
-import com.crashlytics.android.answers.Answers
-import com.crashlytics.android.answers.CustomEvent
 import com.hpedrorodrigues.gzmd.R
 import com.hpedrorodrigues.gzmd.activity.base.BaseActivity
 import com.hpedrorodrigues.gzmd.activity.presenter.PostPresenter
@@ -35,6 +33,7 @@ import com.hpedrorodrigues.gzmd.constant.BundleKey
 import com.hpedrorodrigues.gzmd.constant.PreferenceKey
 import com.hpedrorodrigues.gzmd.dagger.GizmodoComponent
 import com.hpedrorodrigues.gzmd.entity.Preview
+import com.hpedrorodrigues.gzmd.logger.MyAnswer
 import com.hpedrorodrigues.gzmd.util.GizmodoApp
 import kotlinx.android.synthetic.main.activity_post.*
 import rx.Subscription
@@ -75,8 +74,7 @@ class PostActivity : BaseActivity(), PostView {
         return when (item.itemId) {
             R.id.action_open_in_browser -> {
                 GizmodoApp.openBrowser(this, preview.postUrl)
-                Answers.getInstance().
-                        logCustom(CustomEvent("Opened browser with url: ${preview.postUrl}"))
+                MyAnswer.log("Opened post in browser", preview.postUrl)
                 true
             }
             else -> super.onOptionsItemSelected(item)

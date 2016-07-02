@@ -27,8 +27,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
-import com.crashlytics.android.answers.Answers
-import com.crashlytics.android.answers.CustomEvent
 import com.hpedrorodrigues.gzmd.R
 import com.hpedrorodrigues.gzmd.activity.base.BaseActivity
 import com.hpedrorodrigues.gzmd.activity.presenter.PreviewPresenter
@@ -37,6 +35,7 @@ import com.hpedrorodrigues.gzmd.constant.BundleKey
 import com.hpedrorodrigues.gzmd.constant.PreferenceKey
 import com.hpedrorodrigues.gzmd.dagger.GizmodoComponent
 import com.hpedrorodrigues.gzmd.entity.Preview
+import com.hpedrorodrigues.gzmd.logger.MyAnswer
 import com.hpedrorodrigues.gzmd.network.ModeView
 import com.hpedrorodrigues.gzmd.observable.NetworkStateObservable
 import com.malinskiy.superrecyclerview.SuperRecyclerView
@@ -91,26 +90,22 @@ class PreviewActivity : BaseActivity(), PreviewView {
         return when (AppCompatDelegate.getDefaultNightMode()) {
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> {
                 menu.findItem(R.id.menu_night_mode_system).isChecked = true
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Night mode changed: MODE_NIGHT_FOLLOW_SYSTEM"))
+                MyAnswer.log("Night mode changed", "MODE_NIGHT_FOLLOW_SYSTEM")
                 true
             }
             AppCompatDelegate.MODE_NIGHT_AUTO -> {
                 menu.findItem(R.id.menu_night_mode_auto).isChecked = true
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Night mode changed: MODE_NIGHT_AUTO"))
+                MyAnswer.log("Night mode changed", "MODE_NIGHT_AUTO")
                 true
             }
             AppCompatDelegate.MODE_NIGHT_YES -> {
                 menu.findItem(R.id.menu_night_mode_night).isChecked = true
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Night mode changed: MODE_NIGHT_YES"))
+                MyAnswer.log("Night mode changed", "MODE_NIGHT_YES")
                 true
             }
             AppCompatDelegate.MODE_NIGHT_NO -> {
                 menu.findItem(R.id.menu_night_mode_day).isChecked = true
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Night mode changed: MODE_NIGHT_NO"))
+                MyAnswer.log("Night mode changed", "MODE_NIGHT_NO")
                 true
             }
             else -> super.onPrepareOptionsMenu(menu)
@@ -129,38 +124,32 @@ class PreviewActivity : BaseActivity(), PreviewView {
 //            }
             R.id.action_refresh -> {
                 presenter.reloadPreviews()
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Action refresh triggered on ${screenName()}"))
+                MyAnswer.log("Action refresh triggered", "Screen", screenName())
                 true
             }
             R.id.menu_home -> {
                 setModeView(ModeView.Home, item)
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Section changed: Home"))
+                MyAnswer.log("Section changed", "Home")
                 true
             }
             R.id.menu_special -> {
                 setModeView(ModeView.Special, item)
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Section changed: Special"))
+                MyAnswer.log("Section changed", "Special")
                 true
             }
             R.id.menu_hands_on -> {
                 setModeView(ModeView.HandsOn, item)
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Section changed: HandsOn"))
+                MyAnswer.log("Section changed", "HandsOn")
                 true
             }
             R.id.menu_review -> {
                 setModeView(ModeView.Review, item)
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Section changed: Review"))
+                MyAnswer.log("Section changed", "Review")
                 true
             }
             R.id.menu_game -> {
                 setModeView(ModeView.Game, item)
-                Answers.getInstance()
-                        .logCustom(CustomEvent("Section changed: Game"))
+                MyAnswer.log("Section changed", "Game")
                 true
             }
             else -> super.onOptionsItemSelected(item)
