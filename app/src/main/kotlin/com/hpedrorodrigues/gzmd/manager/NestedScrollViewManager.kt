@@ -31,6 +31,13 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
     private var wasFullScrolled = false
 
     var cancelAutoScroll = false
+        set(value) {
+            field = value
+
+            if (!running && !value) {
+                enableAutoScroll()
+            }
+        }
 
     var running = false
         private set

@@ -58,6 +58,8 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     var nestedScrollViewManager: NestedScrollViewManager? = null
         private set
 
+    var cancelAutoScroll: Boolean = false
+
     fun loadBackgroundImage(imageUrl: String) {
         Picasso.with(context).load(imageUrl).into(view.backgroundImage(), loadImageCallback())
     }
@@ -129,16 +131,21 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     }
 
     fun configureNestedViewScrolling() {
-        if (preferences.getBoolean(PreferenceKey.ENABLE_AUTO_SCROLL)) {
-            nestedScrollViewManager = NestedScrollViewManager(
-                    view.nestedScrollView(),
-                    view.appBar(),
-                    view.coordinatorLayout(),
-                    preferences.getLong(PreferenceKey.SCROLL_SPEED, GizmodoConstant.DEFAULT_SCROLL_SPEED)
-            )
+        nestedScrollViewManager = NestedScrollViewManager(
+                view.nestedScrollView(),
+                view.appBar(),
+                view.coordinatorLayout(),
+                preferences.getLong(PreferenceKey.SCROLL_SPEED, GizmodoConstant.DEFAULT_SCROLL_SPEED)
+        )
 
-            nestedScrollViewManager?.enableAutoScroll()
-        }
+        nestedScrollViewManager?.enableAutoScroll()
+
+        nestedScrollViewManager?.cancelAutoScroll = cancelAutoScroll
+    }
+
+    fun enableScroll(enabled: Boolean) {
+        cancelAutoScroll = !enabled
+        nestedScrollViewManager?.cancelAutoScroll = !enabled
     }
 
     fun loadImageCallback(): Callback = object : Callback {

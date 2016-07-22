@@ -67,6 +67,10 @@ class PostActivity : BaseActivity(), PostView {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.post, menu)
+
+        val enableAutoScroll = preferences.getBoolean(PreferenceKey.ENABLE_AUTO_SCROLL)
+        menu.findItem(R.id.action_enable_auto_scroll).isChecked = enableAutoScroll
+        presenter.enableScroll(enableAutoScroll)
         return true
     }
 
@@ -75,6 +79,14 @@ class PostActivity : BaseActivity(), PostView {
             R.id.action_open_in_browser -> {
                 GizmodoApp.openBrowser(this, preview.postUrl)
                 MyAnswer.log("Opened post in browser", preview.postUrl)
+                true
+            }
+            R.id.action_enable_auto_scroll -> {
+                val isChecked = !preferences.getBoolean(PreferenceKey.ENABLE_AUTO_SCROLL)
+                preferences.putBoolean(PreferenceKey.ENABLE_AUTO_SCROLL, isChecked)
+
+                item.isChecked = isChecked
+                presenter.enableScroll(isChecked)
                 true
             }
             else -> super.onOptionsItemSelected(item)
