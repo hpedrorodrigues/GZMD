@@ -44,6 +44,8 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
         }
     }
 
+    private fun formatScrollSpeed() = 200 - scrollSpeed
+
     private fun registerAppBarScrollListener() = appBar
             .addOnOffsetChangedListener(appBarStateChangedListener)
 
@@ -69,12 +71,12 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
                 }
 
                 if (!cancelAutoScroll) {
-                    handler.postDelayed(this, scrollSpeed)
+                    handler.postDelayed(this, formatScrollSpeed())
                 } else {
                     running = false
                 }
             }
-        }, scrollSpeed)
+        }, formatScrollSpeed())
     }
 
     fun scrollWithCoordinatorLayout() {
@@ -93,7 +95,7 @@ class NestedScrollViewManager(val nestedScrollView: NestedScrollView,
             override fun run() {
                 ViewCompat.postOnAnimation(nestedScrollView, this)
             }
-        }, scrollSpeed)
+        }, formatScrollSpeed())
     }
 
     fun isFullScrolled(): Boolean {
