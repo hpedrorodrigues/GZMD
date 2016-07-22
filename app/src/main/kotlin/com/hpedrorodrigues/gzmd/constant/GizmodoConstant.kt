@@ -50,4 +50,6 @@ object GizmodoConstant {
     val GIZMODO_BR_GOOGLE_PLUS_ID = "+gizmodobrasil"
 
     val DEFAULT_SCROLL_SPEED = 50L
+
+    val DEFAULT_TEXT_SIZE = 10L
 }

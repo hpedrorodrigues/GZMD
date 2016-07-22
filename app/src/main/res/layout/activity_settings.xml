@@ -176,6 +176,30 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/textSizeContainer"
+                style="@style/AppTheme.SettingsItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selectable_item_background"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AppTheme.SettingsItemTitleTextView"
+                    android:text="@string/text_size" />
+
+                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                    android:id="@+id/textSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:dsb_indicatorColor="@color/colorPrimaryLight"
+                    app:dsb_max="30"
+                    app:dsb_min="10"
+                    app:dsb_progressColor="@color/colorPrimary" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -193,25 +217,25 @@
             </LinearLayout>
 
             <!--<LinearLayout-->
-                <!--android:id="@+id/aboutTheApp"-->
-                <!--style="@style/AppTheme.SettingsItem"-->
-                <!--android:background="@drawable/selectable_item_background"-->
-                <!--android:gravity="center_vertical"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:weightSum="10">-->
-<!---->
-                <!--<ImageView-->
-                    <!--style="@style/AppTheme.SettingsItemImageView"-->
-                    <!--android:src="@mipmap/ic_action_info" />-->
-<!---->
-                <!--<TextView-->
-                    <!--style="@style/AppTheme.SettingsItemTitleTextView"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_marginLeft="@dimen/spacing_xlarge"-->
-                    <!--android:layout_marginStart="@dimen/spacing_xlarge"-->
-                    <!--android:layout_weight="9"-->
-                    <!--android:text="@string/about_the_app" />-->
-<!---->
+            <!--android:id="@+id/aboutTheApp"-->
+            <!--style="@style/AppTheme.SettingsItem"-->
+            <!--android:background="@drawable/selectable_item_background"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:weightSum="10">-->
+            <!---->
+            <!--<ImageView-->
+            <!--style="@style/AppTheme.SettingsItemImageView"-->
+            <!--android:src="@mipmap/ic_action_info" />-->
+            <!---->
+            <!--<TextView-->
+            <!--style="@style/AppTheme.SettingsItemTitleTextView"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_marginLeft="@dimen/spacing_xlarge"-->
+            <!--android:layout_marginStart="@dimen/spacing_xlarge"-->
+            <!--android:layout_weight="9"-->
+            <!--android:text="@string/about_the_app" />-->
+            <!---->
             <!--</LinearLayout>-->
 
             <LinearLayout

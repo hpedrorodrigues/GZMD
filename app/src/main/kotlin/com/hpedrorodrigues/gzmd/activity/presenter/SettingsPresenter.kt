@@ -37,6 +37,8 @@ class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) 
         view.toggleKeepScreenOn().isChecked = preferences.getBoolean(PreferenceKey.KEEP_SCREEN_ON)
         view.scrollSpeed().progress = preferences
                 .getLong(PreferenceKey.SCROLL_SPEED, GizmodoConstant.DEFAULT_SCROLL_SPEED).toInt()
+        view.textSize().progress = preferences
+                .getLong(PreferenceKey.TEXT_SIZE, GizmodoConstant.DEFAULT_TEXT_SIZE).toInt()
     }
 
     fun configListeners(activity: Activity) {
@@ -137,6 +139,22 @@ class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) 
                         preferences.putLong(PreferenceKey.SCROLL_SPEED, seekBar.progress.toLong())
 
                         MyAnswer.log("Scroll speed changed", seekBar.progress.toString())
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: DiscreteSeekBar?) {
+                    }
+
+                    override fun onProgressChanged(seekBar: DiscreteSeekBar?, value: Int,
+                                                   fromUser: Boolean) {
+                    }
+                })
+
+        view.textSize()
+                .setOnProgressChangeListener(object : DiscreteSeekBar.OnProgressChangeListener {
+                    override fun onStopTrackingTouch(seekBar: DiscreteSeekBar) {
+                        preferences.putLong(PreferenceKey.TEXT_SIZE, seekBar.progress.toLong())
+
+                        MyAnswer.log("Text size changed", seekBar.progress.toString())
                     }
 
                     override fun onStartTrackingTouch(seekBar: DiscreteSeekBar?) {

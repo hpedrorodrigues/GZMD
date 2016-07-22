@@ -53,5 +53,7 @@ interface SettingsView : BaseView {
 
     fun scrollSpeed(): DiscreteSeekBar
 
+    fun textSize(): DiscreteSeekBar
+
     fun startAboutActivity()
 }

@@ -83,6 +83,8 @@ class SettingsActivity : BaseActivity(), SettingsView {
 
     override fun scrollSpeed(): DiscreteSeekBar = scrollSpeed
 
+    override fun textSize(): DiscreteSeekBar = textSize
+
     override fun openSourceLicenses(): LinearLayout = openSourceLicenses
 
     override fun startAboutActivity() = startWithFade(AboutActivity::class.java)

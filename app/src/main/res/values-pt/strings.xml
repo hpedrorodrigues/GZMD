@@ -72,5 +72,6 @@
     <string name="menu_special">Destaques</string>
     <string name="menu_view">Seção</string>
     <string name="scroll_speed">Velocidade de movimentação</string>
+    <string name="text_size">Tamanho do texto</string>
 
 </resources>

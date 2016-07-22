@@ -70,5 +70,6 @@
     <string name="menu_game">Games</string>
     <string name="menu_home">Home</string>
     <string name="scroll_speed">Scroll Speed</string>
+    <string name="text_size">Text Size</string>
 
 </resources>

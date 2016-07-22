@@ -24,6 +24,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.support.design.widget.AppBarLayout
 import android.support.v7.graphics.Palette
+import android.util.TypedValue
 import com.hpedrorodrigues.gzmd.R
 import com.hpedrorodrigues.gzmd.activity.view.PostView
 import com.hpedrorodrigues.gzmd.constant.GizmodoConstant
@@ -115,11 +116,14 @@ class PostPresenter(view: PostView) : BasePresenter<PostView>(view) {
     }
 
     private fun loadInternalPost(preview: Preview, post: Post) {
-        view.textView().text = post.body
-
         view.titleView().text = preview.title
 
         view.infoView().text = preview.info
+
+        view.textView().text = post.body
+
+        val textSize = preferences.getLong(PreferenceKey.TEXT_SIZE, GizmodoConstant.DEFAULT_TEXT_SIZE)
+        view.textView().setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize.toFloat())
 
         configureNestedViewScrolling()
     }
