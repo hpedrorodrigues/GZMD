@@ -18,7 +18,7 @@ package com.hpedrorodrigues.gzmd.constant
 
 object GizmodoConstant {
 
-    val EMAIL = "brgzmd@gmail.com"
+    val EMAIL = "drivateam@gmail.com"
     val DEFAULT_SUBJECT = "GZMD -"
 
     val DEFAULT_EMAIL_TYPE = "message/rfc822"
