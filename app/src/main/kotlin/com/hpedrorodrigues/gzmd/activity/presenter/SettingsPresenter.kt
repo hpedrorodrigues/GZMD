@@ -62,14 +62,14 @@ class SettingsPresenter(view: SettingsView) : BasePresenter<SettingsView>(view) 
             preferences.putBoolean(PreferenceKey.ENABLE_AUTO_SCROLL, isChecked)
             view.toggleEnableAutoScroll().isChecked = isChecked
 
-            MyAnswer.log("Enable auto acroll check changed by container", isChecked.toString())
+            MyAnswer.log("Enable auto scroll check changed by container", isChecked.toString())
         }
 
         view.toggleEnableAutoScroll().setOnCheckedChangeListener {
             compoundButton: CompoundButton, isChecked: Boolean ->
             preferences.putBoolean(PreferenceKey.ENABLE_AUTO_SCROLL, isChecked)
 
-            MyAnswer.log("Enable auto acroll check changed by switch", isChecked.toString())
+            MyAnswer.log("Enable auto scroll check changed by switch", isChecked.toString())
         }
 
         view.keepScreenOn().setOnClickListener {
